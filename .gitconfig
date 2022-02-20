@@ -1,0 +1,63 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	g = !git grep --break --heading --line-number
+	rb = !git pull --rebase
+	ri = rebase -i --autosquash
+	reste = reset
+	rh = reset HEAD^ --hard
+	rs = reset HEAD^
+	rscan =!git rs && git can
+	rc = rebase --continue
+        cherryc = cherry-pick --continue
+	cp = cherry-pick
+	ca = commit -a --amend
+	can = commit -a --amend --no-edit
+	cm = commit -a -m
+	cf = commit -a --fixup
+	df = !git diff HEAD^ HEAD
+	dft = !git difftool --dir-diff HEAD^ HEAD
+	dftool = difftool --dir-diff
+	ct = !git checkout --theirs
+	wp = worktree prune
+	jstest = !./tests/pre_build/test_chroot_js.sh
+        hash = !git-hash
+	h = !git-hash
+	rev= rev-list --pretty=fuller
+[user]
+	name = Kai Guo
+	email = kguo@fortinet.com
+[core]
+	editor = vim
+[merge]
+	tool = meld
+[mergetool "meld"]
+	cmd = meld --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\" --label \"MERGE (REMOTE BASE MY)\"
+	trustExitCode = false
+[mergetool]
+	# don't ask if we want to skip merge
+	prompt = false
+	
+	# don't create backup *.orig files
+	keepBackup = false
+
+[remote "origin"]
+	tagopt = --tags
+[grep]
+	extendRegexp = true
+	lineNumber = true
+[diff]
+	tool = meld
+	algorithm = patience
+[difftool]
+	cmd = meld --auto-merge \"$LOCAL\" \"$REMOTE\" --label \"DIFF (ORIGINAL MY)\" --dir-diff
+        prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+[log]
+	abbrevCommit = true
+[rerere]
+	enabled = true
+[gui]
+	editor = code
+[cola]
+	blameviewer = git gui blame
