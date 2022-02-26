@@ -128,6 +128,8 @@ alias ifconfig='ip -c a'
 alias dirs="dirs -v"
 alias gs="git status"
 alias r="source ranger"
+alias vim="/home/kguo/app/nvim.appimage"
+alias fd="fdfind"
 
 source ~/build/devtools/fos/fos_node_env
 export USESUDO=$(which sudo)
