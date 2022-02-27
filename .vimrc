@@ -12,6 +12,7 @@ call plug#begin('~/.vim/vim-plug-plugins')
 	Plug 'Valloric/YouCompleteMe'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
+	Plug 'myusuf3/numbers.vim'
 	" {{{
 		" This is the default extra key bindings
 		let g:fzf_action = {
