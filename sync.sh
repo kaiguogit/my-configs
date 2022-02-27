@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cp ./.tmux.conf ~/
-cp ./.vim.rc ~/
+cp ./.vimrc ~/
 cp ./.zshrc ~/
 cp ./.alacritty.yml ~/
 
