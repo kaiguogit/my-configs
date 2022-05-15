@@ -67,6 +67,10 @@
         "when": "editorFocus"
     },
     {
+        "key": "alt+d",
+        "command": "editor.action.addSelectionToPreviousFindMatch"
+    },
+    {
         "key": "ctrl+k ctrl+d",
         "command": "-editor.action.moveSelectionToNextFindMatch",
         "when": "editorFocus"
