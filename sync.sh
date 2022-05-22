@@ -4,4 +4,4 @@ cp ./.tmux.conf ~/
 cp ./.vimrc ~/
 cp ./.zshrc ~/
 cp ./.alacritty.yml ~/
-
+cp ./.gitconfig ~/
