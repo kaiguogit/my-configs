@@ -194,6 +194,10 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
+      "before": ["e", "e"],
+      "after": ["<Esc>"]
+    },
+    {
       "before": ["k", "k"],
       "after": ["<Esc>"]
     },
