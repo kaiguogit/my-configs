@@ -9,12 +9,12 @@
     "editor.selectionBackground": "#ff3d02",
     "editor.wordHighlightBackground": "#b96750",
     "editor.findMatchBackground": "#0228ff",
-    "editor.wordHighlightStrongBackground": "#b96750",
+    "editor.wordHighlightStrongBackground": "#a76750",
     "editorRuler.foreground": "#ff333388"
   },
   "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'Monaco', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.renderWhitespace": "boundary",
-  "workbench.iconTheme": "vscode-great-icons",
+  // "workbench.iconTheme": "vscode-great-icons",
   "eslint.workingDirectories": [
     {
       "mode": "auto"
@@ -36,6 +36,7 @@
     "editor.formatOnSave": true
   },
   "files.exclude": {
+    "**/dist/**": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/node_modules/*/**": true,
@@ -79,6 +80,7 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/cooked/node_modules": true,
+    "**/.angular/cache": true,
     "**/.build": true,
     ".tmpdir*": true,
     "**/node_modules/**": true,
@@ -183,5 +185,58 @@
   },
   "javascript.updateImportsOnFileMove.enabled": "never",
   "problems.showCurrentInStatus": true,
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "vim.surround": true,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["k", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["k", "j"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["w", "w"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["b", "b"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["h", "h"],
+      "after": ["<Esc>"]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+  },
+  "vim.neovimPath": "/home/kguo/app/nvim.appimage",
+  "vim.neovimConfigPath": "/home/kguo/.vimrc"
 }
