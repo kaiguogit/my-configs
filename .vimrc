@@ -9,10 +9,8 @@ call plug#begin('~/.vim/vim-plug-plugins')
 	Plug 'airblade/vim-gitgutter'
 	Plug 'tpope/vim-fugitive'
  	Plug 'flazz/vim-colorschemes'
-	Plug 'Valloric/YouCompleteMe'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'myusuf3/numbers.vim'
 	" {{{
 		" This is the default extra key bindings
 		let g:fzf_action = {
@@ -108,7 +106,7 @@ colorscheme Monokai
 "endw
 
 set timeout ttimeoutlen=50
-set clipboard=unnamed
+" set clipboard=unnamed
 " needed by YouCompleteMe
 set encoding=utf-8
 "colorscheme jellybeans
@@ -148,9 +146,11 @@ function! s:swap_down()
 	exec n + 1
 endfunction
 
+" noremap <M-Down> :call <SID>swap_up()<CR>
+" noremap <M-Up> :call <SID>swap_down()<CR>
 
-noremap <C-n> :call <SID>swap_up()<CR>
-noremap <C-m> :call <SID>swap_down()<CR>
+noremap <C-n> :call <SID>swap_down()<CR>
+noremap <C-m> :call <SID>swap_up()<CR>
 " move buffer with ctrl pageup and pagedown
 nmap <C-PageUp> :bp<CR>
 nmap <C-PageDown> :bn<CR>
@@ -193,4 +193,60 @@ map <C-c> :BD<cr>
 
 "fzf.vim
 
+" https://github.com/vscode-neovim/vscode-neovim/issues/200#issuecomment-1057887772
+function! MoveVisualSelection(direction)
+     ": Summary: This calls the editor.action.moveLines and manually recalculates the new visual selection
+
+    let markStartLine = "'<"                     " Special mark for the start line of the previous visual selection
+    let markEndLine =   "'>"                     " Special mark for the end line of the previous visual selection
+    let startLine = getpos(markStartLine)[1]     " Getpos(mark) => [?, lineNum, colNumber, ?]
+    let endLine = getpos(markEndLine)[1]
+    let removeVsCodeSelectionAfterCommand = 1    " We set the visual selection manually after this command as otherwise it will use the line numbers that correspond to the old positions
+    call VSCodeCallRange('editor.action.moveLines'. a:direction . 'Action', startLine, endLine, removeVsCodeSelectionAfterCommand )
+
+    if a:direction == "Up"                       " Calculate where the new visual selection lines should be
+        let newStart = startLine - 1
+        let newEnd = endLine - 1
+    else ": == 'Down'
+        let newStart = startLine + 1
+        let newEnd = endLine + 1
+    endif
+
+    ": This command basically:
+    ": 1. Jumps to the `newStart` line
+    ": 2. Makes a linewise visual selection
+    ": 3. Jumps to the `newEnd` line
+    let newVis = "normal!" . newStart . "GV". newEnd . "G"
+    ":                  │  └──────────────────── " The dot combines the strings together
+    ":                  └─────────────────────── " ! means don't respect any remaps the user has made when executing
+    execute newVis
+endfunction
+
+":        ┌───────────────────────────────────── " Exit visual mode otherwise our :call will be '<,'>call
+vmap J <Esc>:call MoveVisualSelection("Down")<cr>
+vmap K <Esc>:call MoveVisualSelection("Up")<cr>
+
+"inoremap ww <Esc>
+"inoremap jj <Esc>
+"inoremap bb <Esc>
+"inoremap kk <Esc>
+:set ignorecase
+:set smartcase
+set clipboard+=unnamedplus
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary neovim
+inoremap hh <Esc>
+inoremap ll <Esc>
+inoremap jh <Esc>
+inoremap jj <Esc>
+inoremap kk <Esc>
+inoremap ww <Esc>
+inoremap bb <Esc>
+endif
+" copy into register a
+:vnoremap <Leader>a "ay
+" past from register a
+:noremap <Leader>s "ap
 

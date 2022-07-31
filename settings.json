@@ -194,6 +194,10 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
+      "before": ["l", "l"],
+      "after": ["<Esc>"]
+    },
+    {
       "before": ["e", "e"],
       "after": ["<Esc>"]
     },
@@ -242,5 +246,7 @@
     "<C-a>": false,
   },
   "vim.neovimPath": "/home/kguo/app/nvim.appimage",
-  "vim.neovimConfigPath": "/home/kguo/.vimrc"
+  "vim.neovimConfigPath": "/home/kguo/.vimrc",
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/kguo/app/nvim.appimage",
+  "workbench.activityBar.visible": false
 }

@@ -46,10 +46,6 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+shift+b",
-        "command": "workbench.action.toggleActivityBarVisibility"
-    },
-    {
         "key": "ctrl+k d",
         "command": "-workbench.files.action.compareWithSaved"
     },
@@ -58,11 +54,11 @@
         "command": "-workbench.view.debug"
     },
     {
-        "key": "ctrl+alt+d",
+        "key": "ctrl+d",
         "command": "editor.action.addSelectionToNextFindMatch"
     },
     {
-        "key": "ctrl+d",
+        "key": "ctrl+alt+d",
         "command": "editor.action.moveSelectionToNextFindMatch",
         "when": "editorFocus"
     },
@@ -144,5 +140,78 @@
     {
         "key": "f1",
         "command": "-workbench.action.showCommands"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "w",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "w"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "b",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "b"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j",
+    },
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "k",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "k"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.outdentLines",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+n",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<c-n>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+up",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<c-up>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "shift+up",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<S-up>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "shift+down",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<S-down>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "shift+left",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<S-left>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "shift+right",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<S-right>"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     }
 ]
