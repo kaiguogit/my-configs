@@ -11,6 +11,9 @@ sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux vlc
 # Install gnome shell
 sudo apt-get install -yy chrome-gnome-shell gnome-tweaks
 
+# Install nvm
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
 # Install zsh and make it default
 $SCRIPT_DIR/automated/zsh.sh
 
@@ -36,3 +39,7 @@ $SCRIPT_DIR/automated/easyeffect.sh
 
 # Import config files
 $SCRIPT_DIR/../sync.sh
+
+# Set file watch limit
+echo fs.inotify.max_user_watches=16384 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
