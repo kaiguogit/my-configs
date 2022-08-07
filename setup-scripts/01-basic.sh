@@ -42,3 +42,6 @@ $SCRIPT_DIR/../sync.sh
 
 # Set file watch limit
 $SCRIPT_DIR/automated/change-file-watch-limit.sh
+
+# Install pinyin input
+sudo apt install -yy ibus-pinyin
