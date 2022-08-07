@@ -12,4 +12,4 @@ VSCODE_CONFIG_DIR=$HOME/.config/Code/User
 mkdir -p $VSCODE_CONFIG_DIR
 cp $SCRIPT_DIR/vscode/settings.json $VSCODE_CONFIG_DIR/settings.json
 cp $SCRIPT_DIR/vscode/keybindings.json $VSCODE_CONFIG_DIR/keybindings.json
-cat $VSCODE_CONFIG_DIR/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
+cat $SCRIPT_DIR/vscode/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
