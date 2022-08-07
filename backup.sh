@@ -6,4 +6,5 @@ cp ~/.zshrc $SCRIPT_DIR/.zshrc
 cp ~/.alacritty.yml $SCRIPT_DIR/.alacritty.yml
 cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
 cp ~/.config/Code/User/settings.json $SCRIPT_DIR/vscode/settings.json
+code --list-extensions >> $SCRIPT_DIR/vscode/vs_code_extensions_list.txt
 cp ~/.gitconfig $SCRIPT_DIR/.gitconfig
