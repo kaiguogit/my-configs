@@ -247,6 +247,6 @@
   },
   "vim.neovimPath": "/home/kguo/app/nvim.appimage",
   "vim.neovimConfigPath": "/home/kguo/.vimrc",
-  "vscode-neovim.neovimExecutablePaths.linux": "/home/kguo/app/nvim.appimage",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   "workbench.activityBar.visible": false
 }
