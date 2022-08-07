@@ -1,0 +1,15 @@
+Alan.stylus
+alefragnani.Bookmarks
+Angular.ng-template
+asvetliakov.vscode-neovim
+bgse.relative-path-and-line
+dbaeumer.vscode-eslint
+eamodio.gitlens
+esbenp.prettier-vscode
+ms-vscode.cpptools
+ms-vscode.vscode-js-profile-flame
+ms-vscode.vscode-typescript-tslint-plugin
+nrwl.angular-console
+partkyle.paste-and-indent
+Rubymaniac.vscode-paste-and-indent
+shardulm94.trailing-spaces
