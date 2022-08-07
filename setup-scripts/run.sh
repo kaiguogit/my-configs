@@ -1,29 +1,32 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
-$SCRIPT_DIR/../sync.sh
 
 sudo apt-get update -qq
 # Install basic utilities
 sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux
+
+# Install gnome shell
+sudo apt-get install -yy chrome-gnome-shell gnome-tweak-tool
 
 # Install zsh and make it default
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
 sudo apt-get install -yy zsh
 chsh -s $(which zsh)
 
-# Setup nfs share
-sudo apt-get install -yy nfs-common
-mkdir -p ~/nfs_share
-
 # Install programming tools
-sudo apt-get install -yy git zsh
+sudo apt-get install -yy git
+
 # Setup vim
 $SCRIPT_DIR/setup-vim.sh
 
-# Install gnome shell
-sudo apt-get install -yy chrome-gnome-shell
+# simple screen recorder
+sudo apt-get install -yy simplescreenrecorder
 
+# ssh server
+sudo apt-get install -yy openssh-server
+sudo systemctl enable ssh
+sudo systemctl start ssh
 # Install google chrome
 $SCRIPT_DIR/install-chrome.sh
 
@@ -32,6 +35,9 @@ $SCRIPT_DIR/install-chrome.sh
 ssh-keygen -t rsa -b 4096 -C "kguo@fortinet.com"
 ssh-keygen -t ed25519 -C "git@kaiguo.ca"
 
+# Setup nfs share
+sudo apt-get install -yy nfs-common
+mkdir -p ~/nfs_share
 # Install alacritty.sh
 # ./install-alacritty.sh
 
