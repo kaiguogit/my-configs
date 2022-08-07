@@ -19,3 +19,6 @@ cp $SCRIPT_DIR/vscode/keybindings.json $VSCODE_CONFIG_DIR/keybindings.json
 cat $SCRIPT_DIR/vscode/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
 # zsh config
 cp $SCRIPT_DIR/zsh/zsh-auto-suggestions-patch.zsh /home/kguo/.oh-my-zsh/custom/
+
+# backup gnome setting
+$SCRIPT_DIR/gnome/import.sh

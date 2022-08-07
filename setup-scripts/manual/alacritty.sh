@@ -1,7 +1,9 @@
 # https://github.com/alacritty/alacritty/blob/master/INSTALL.md#debianubuntu
-cd ~/build
-git clone https://github.com/alacritty/alacritty.git
-cd alacritty
+if [ ! -d "~/build/alacritty" ]; then
+    cd ~/build
+    git clone https://github.com/alacritty/alacritty.git
+    cd alacritty
+fi
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
