@@ -5,7 +5,11 @@ cp $SCRIPT_DIR/.tmux.conf $HOME/
 cp $SCRIPT_DIR/.vimrc $HOME/
 cp $SCRIPT_DIR/.zshrc $HOME/
 cp $SCRIPT_DIR/.bashrc $HOME/
-cp $SCRIPT_DIR/.alacritty.yml $HOME/
+# Alacritty
+cp $SCRIPT_DIR/alacritty/.alacritty.yml $HOME/
+cp $SCRIPT_DIR/Alacritty.desktop ~/build/alacritty/extra/linux/
+sudo desktop-file-install ~/build/alacritty/extra/linux/Alacritty.desktop
+
 cp $SCRIPT_DIR/.gitconfig $HOME/
 
 VSCODE_CONFIG_DIR=$HOME/.config/Code/User

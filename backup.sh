@@ -3,7 +3,16 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 cp ~/.tmux.conf $SCRIPT_DIR/.tmux.conf
 cp ~/.vimrc $SCRIPT_DIR/.vimrc
 cp ~/.zshrc $SCRIPT_DIR/.zshrc
+# backup alacritty setting
 cp ~/.alacritty.yml $SCRIPT_DIR/.alacritty.yml
+cp ~/build/alacritty/extra/linux/Alacritty.desktop $SCRIPT_DIR/
+
+# Setup nvim config
+NVIM_DIR=~/.config/nvim
+cp $NVIM_DIR/init.vim SCRIPT_DIR/nvim/init.vim
+
+
+# VSCODE
 cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
 cp ~/.config/Code/User/settings.json $SCRIPT_DIR/vscode/settings.json
 code --list-extensions > $SCRIPT_DIR/vscode/vs_code_extensions_list.txt

@@ -10,3 +10,8 @@ fi
 # Install plugins
 # https://github.com/junegunn/vim-plug/issues/675
 vim +'PlugInstall --sync' +qa
+
+# Setup nvim config
+NVIM_DIR=~/.config/nvim
+mkdir -p $NVIM_DIR
+cp $SCRIPT_DIR/nvim/init.vim $NVIM_DIR/init.vim

@@ -21,7 +21,8 @@ import:
     # - /home/kguo/build/iTerm2-Color-Schemes/alacritty/Cobalt Neon.yml
     # - /home/kguo/build/iTerm2-Color-Schemes/alacritty/Desert.yml
     # - /home/kguo/build/iTerm2-Color-Schemes/alacritty/Duotone Dark.yml
-    - /home/kguo/build/iTerm2-Color-Schemes/alacritty/DimmedMonokai.yml
+    # wget https://github.com/mbadolato/iTerm2-Color-Schemes/raw/master/alacritty/DimmedMonokai.yml
+    - /home/kguo/build/my-configs/alacritty/DimmedMonokai.yml
     # - /home/kguo/build/iTerm2-Color-Schemes/alacritty/Monokai Remastered.yml
     # - /home/kguo/build/iTerm2-Color-Schemes/alacritty/Monokai Soda.yml
     # - /home/kguo/build/iTerm2-Color-Schemes/alacritty/Monokai Vivid.yml
