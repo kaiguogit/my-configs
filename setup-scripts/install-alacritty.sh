@@ -1,4 +1,5 @@
 # https://github.com/alacritty/alacritty/blob/master/INSTALL.md#debianubuntu
+cd ~/build
 git clone https://github.com/alacritty/alacritty.git
 cd alacritty
 

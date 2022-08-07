@@ -39,7 +39,7 @@ ssh-keygen -t ed25519 -C "git@kaiguo.ca"
 sudo apt-get install -yy nfs-common
 mkdir -p ~/nfs_share
 # Install alacritty.sh
-# ./install-alacritty.sh
+# $SCRIPT_DIR/install-alacritty.sh
 
 
 # copy nvim config to reuse .vimrc
