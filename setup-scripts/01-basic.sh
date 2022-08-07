@@ -41,5 +41,4 @@ $SCRIPT_DIR/automated/easyeffect.sh
 $SCRIPT_DIR/../sync.sh
 
 # Set file watch limit
-echo fs.inotify.max_user_watches=16384 | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
+$SCRIPT_DIR/automated/change-file-watch-limit.sh
