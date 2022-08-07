@@ -96,6 +96,34 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias g="git"
+alias fos="cd ~/build/fos/worktree"
+alias fgtip='fgtdev conf set fortigate'
+#alias gw='grunt watch'
+#alias yw='fos-yarn run watch-upload'
+alias nw='fos-npm run watch'
+alias conf100d='./Configure -m FGT_100D -d y'
+alias confvm='./Configure -m FGT_VM64_KVM -d y -x'
+alias makevm='confvm && mi12'
+alias conf101e='./Configure -m FGT_101E -d y'
+alias make101e='conf101e && mi12'
+alias conf100f='./Configure -m FGT_100F -d y'
+alias make100f='conf100f && mi12'
+alias makehttpsd='make init -j12 && fos-dev dae httpsd'
+alias mi='make CONFIG_OPT=no -sj$(nproc) image'
+alias mi8='make CONFIG_OPT=no -sj8 image'
+alias mi12='make CONFIG_OPT=no -sj12 image'
+alias mcmdb='fgtdev df && make -sj4 init && fgtdev dae cmdbsvr'
+alias mhttp='fgtdev df && make -sj4 init && fgtdev dae httpsd'
+alias gti='git'
+alias vpn='sudo /home/kguo/Downloads/forticlientsslvpn/64bit/forticlientsslvpn'
+alias ifconfig='ip -c a'
+alias dirs="dirs -v"
+alias gs="git status"
+alias r="source ranger"
+alias vim="nvim"
+alias fd="fdfind"
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

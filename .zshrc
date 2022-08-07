@@ -98,13 +98,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias g="git"
-alias fos="cd ~/build/fos/worktree"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+alias g="git"
+alias fos="cd ~/build/fos/worktree"
 alias fgtip='fgtdev conf set fortigate'
 #alias gw='grunt watch'
 #alias yw='fos-yarn run watch-upload'
@@ -128,7 +128,7 @@ alias ifconfig='ip -c a'
 alias dirs="dirs -v"
 alias gs="git status"
 alias r="source ranger"
-alias vim="/home/kguo/app/nvim.appimage"
+alias vim="nvim"
 alias fd="fdfind"
 
 source ~/build/devtools/fos/fos_node_env
