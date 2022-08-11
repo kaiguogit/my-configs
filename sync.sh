@@ -22,3 +22,6 @@ cp $SCRIPT_DIR/zsh/zsh-auto-suggestions-patch.zsh /home/kguo/.oh-my-zsh/custom/
 
 # backup gnome setting
 $SCRIPT_DIR/gnome/import.sh
+
+# restore autostart
+cp $SCRIPT_DIR/autostart/* ~/.config/autostart/
