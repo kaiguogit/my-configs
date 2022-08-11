@@ -21,6 +21,9 @@ $SCRIPT_DIR/automated/zsh.sh
 sudo apt-get install -yy git git-lfs subversion
 $SCRIPT_DIR/automated/vim.sh
 
+# Install kvm
+$SCRIPT_DIR/automated/kvm.sh
+
 # simple screen recorder
 sudo apt-get install -yy simplescreenrecorder
 
