@@ -9,7 +9,7 @@ sudo apt-get update -qq
 sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux vlc pigz
 
 # Install gnome shell
-sudo apt-get install -yy chrome-gnome-shell gnome-tweaks
+sudo apt-get install -yy chrome-gnome-shell gnome-tweaks gnome-startup-applications
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -29,6 +29,9 @@ sudo apt-get install -yy simplescreenrecorder
 
 # ssh server
 $SCRIPT_DIR/automated/ssh.sh
+
+# install copyq
+sudo apt-get install -yy copyq
 
 # Install google chrome
 $SCRIPT_DIR/automated/chrome.sh
