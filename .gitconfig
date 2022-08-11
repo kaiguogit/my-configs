@@ -28,6 +28,7 @@
 	email = kguo@fortinet.com
 [core]
 	editor = vim
+	commitGraph = true
 [merge]
 	tool = meld
 [mergetool "meld"]
@@ -68,3 +69,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[gc]
+	writeCommitGraph = true
