@@ -6,7 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 
 sudo apt-get update -qq
 # Install basic utilities
-sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux vlc pigz
+sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux vlc pigz unzip
 
 # Install gnome shell
 sudo apt-get install -yy chrome-gnome-shell gnome-tweaks gnome-startup-applications
