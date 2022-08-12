@@ -33,6 +33,12 @@ $SCRIPT_DIR/automated/ssh.sh
 # install copyq
 sudo apt-get install -yy copyq
 
+# install ftp
+$SCRIPT_DIR/automated/vsftpd.sh
+
+# install tftp
+$SCRIPT_DIR/automated/tftp.sh
+
 # Install google chrome
 $SCRIPT_DIR/automated/chrome.sh
 
