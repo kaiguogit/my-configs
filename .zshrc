@@ -68,10 +68,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zoxide zsh-autosuggestions web-search copypath copyfile copybuffer dirhistory)
+plugins=(git zoxide zsh-autosuggestions web-search copypath copyfile copybuffer dirhistory zsh-syntax-highlighting zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
-
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+#
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
