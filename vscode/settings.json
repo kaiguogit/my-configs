@@ -165,7 +165,7 @@
   "window.menuBarVisibility": "toggle",
   "terminal.integrated.rendererType": "dom",
   "editor.tabCompletion": "on",
-  "editor.fontSize": 12,
+  "editor.fontSize": 13,
   "gitlens.hovers.annotations.changes": false,
   "editor.scrollbar.verticalScrollbarSize": 7,
   "workbench.editor.highlightModifiedTabs": true,
