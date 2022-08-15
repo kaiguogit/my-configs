@@ -187,5 +187,9 @@
         "key": "ctrl+[",
         "command": "-vscode-neovim.escape",
         "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
     }
 ]

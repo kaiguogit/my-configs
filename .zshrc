@@ -132,6 +132,7 @@ alias gs="git status"
 alias r="source ranger"
 alias vim="nvim"
 alias fd="fdfind"
+alias mount_nfs="sudo mount 10.50.50.200:/mnt/Volume1/Share/backup ~/nfs_share"
 
 source ~/build/devtools/fos/fos_node_env
 export USESUDO=$(which sudo)
