@@ -142,6 +142,11 @@
         "command": "-workbench.action.showCommands"
     },
     {
+        "command":"vscode-neovim.escape",
+        "key": "`",
+        "when": "neovim.mode == insert && editorTextFocus",
+    },
+    {
         "command": "vscode-neovim.compositeEscape1",
         "key": "w",
         "when": "neovim.mode == insert && editorTextFocus",
