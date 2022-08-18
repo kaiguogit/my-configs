@@ -8,6 +8,7 @@ call plug#begin('~/.vim/vim-plug-plugins')
 	Plug 'preservim/tagbar'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-surround'
  	Plug 'flazz/vim-colorschemes'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
