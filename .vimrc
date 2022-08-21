@@ -10,6 +10,7 @@ call plug#begin('~/.vim/vim-plug-plugins')
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
  	Plug 'flazz/vim-colorschemes'
+	Plug 'tpope/vim-repeat'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	" {{{
@@ -227,6 +228,7 @@ endfunction
 vmap J <Esc>:call MoveVisualSelection("Down")<cr>
 vmap K <Esc>:call MoveVisualSelection("Up")<cr>
 
+set virtualedit=block
 "inoremap ww <Esc>
 "inoremap jj <Esc>
 "inoremap bb <Esc>

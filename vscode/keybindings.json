@@ -1,14 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "ctrl+.",
-        "command": "relative-path-and-line.copyRelativePath"
-    },
-    {
-        "key": "ctrl+shift+.",
-        "command": "relative-path-and-line.copyRelativePathAndLine"
-    },
-    {
         "key": "ctrl+shift+n",
         "command": "explorer.newFile"
     },
@@ -196,5 +188,9 @@
     {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+shift+.",
+        "command": "relative-path-and-line.copyRelativePath"
     }
 ]
