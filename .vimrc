@@ -225,6 +225,7 @@ function! MoveVisualSelection(direction)
 endfunction
 
 ":        ┌───────────────────────────────────── " Exit visual mode otherwise our :call will be '<,'>call
+
 vmap J <Esc>:call MoveVisualSelection("Down")<cr>
 vmap K <Esc>:call MoveVisualSelection("Up")<cr>
 
