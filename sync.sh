@@ -7,7 +7,7 @@ cp $SCRIPT_DIR/.zshrc $HOME/
 cp $SCRIPT_DIR/.bashrc $HOME/
 # Alacritty
 cp $SCRIPT_DIR/alacritty/.alacritty.yml $HOME/
-cp $SCRIPT_DIR/Alacritty.desktop ~/build/alacritty/extra/linux/
+cp $SCRIPT_DIR/alacritty/Alacritty.desktop ~/build/alacritty/extra/linux/
 sudo desktop-file-install ~/build/alacritty/extra/linux/Alacritty.desktop
 
 cp $SCRIPT_DIR/.gitconfig $HOME/
