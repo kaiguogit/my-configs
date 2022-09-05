@@ -131,7 +131,7 @@
     },
     {
         "command":"vscode-neovim.escape",
-        "key": "`",
+        "key": "ctrl+space",
         "when": "neovim.mode == insert && editorTextFocus",
     },
     {
@@ -167,6 +167,11 @@
         "command": "editor.action.moveLinesUpAction",
         "key": "shift+k",
         "when": "neovim.mode == 'normal' && editorTextFocus",
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
     },
     {
         "key": "ctrl+d",
