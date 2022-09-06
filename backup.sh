@@ -23,5 +23,9 @@ cp /home/kguo/.oh-my-zsh/custom/zsh-auto-suggestions-patch.zsh $SCRIPT_DIR/zsh/
 # backup gnome setting
 $SCRIPT_DIR/gnome/export.sh
 
+# backup sxhkd settings
+mkdir -p ~/.config/sxhkd
+cp ~/.config/sxhkd/sxhkdrc $SCRIPT_DIR/setup-scripts/automated/sxhkd/sxhkdrc
+
 # backup autostart
 cp ~/.config/autostart/* $SCRIPT_DIR/autostart/
