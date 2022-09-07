@@ -241,7 +241,7 @@ if exists('g:vscode')
     " VSCode extension
 else
     " ordinary neovim
-inoremap ` <Esc>
+inoremap <C+space> <Esc>
 inoremap hh <Esc>
 inoremap ll <Esc>
 inoremap jh <Esc>

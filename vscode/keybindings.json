@@ -249,4 +249,9 @@
         "command": "selectNextCodeAction",
         "when": "codeActionMenuVisible"
     },
+    {
+        "key": "ctrl+space",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
 ]
