@@ -248,6 +248,5 @@
   "vim.neovimPath": "/home/kguo/app/nvim.appimage",
   "vim.neovimConfigPath": "/home/kguo/.vimrc",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "git.mergeEditor": false,
   "editor.stickyScroll.enabled": true
 }
