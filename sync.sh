@@ -28,4 +28,5 @@ mkdir -p ~/.config/sxhkd
 cp $SCRIPT_DIR/setup-scripts/automated/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc
 
 # restore autostart
+mkdir -p ~/.config/autostart
 cp $SCRIPT_DIR/autostart/* ~/.config/autostart/

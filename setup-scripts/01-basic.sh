@@ -24,6 +24,12 @@ $SCRIPT_DIR/automated/zsh.sh
 sudo apt-get install -yy git git-lfs subversion
 $SCRIPT_DIR/automated/vim.sh
 
+# Install xclip
+sudo apt-get install -yy xclip
+
+# install java runtime
+sudo apt-get install default-jre
+
 # Install kvm
 $SCRIPT_DIR/automated/kvm.sh
 

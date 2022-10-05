@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 sudo apt-get install -yy vim neovim
 # install vim plug
 VIM_PLUG=/home/kguo/.vim/autoload/plug.vim
@@ -14,4 +15,4 @@ vim +'PlugInstall --sync' +qa
 # Setup nvim config
 NVIM_DIR=~/.config/nvim
 mkdir -p $NVIM_DIR
-cp $SCRIPT_DIR/nvim/init.vim $NVIM_DIR/init.vim
+cp $SCRIPT_DIR/../../nvim/init.vim $NVIM_DIR/init.vim
