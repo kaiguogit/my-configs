@@ -455,12 +455,15 @@ shell:
   program: /bin/zsh
 #  args:
 #    - --login
-
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-#working_directory: None
+working_directory: "/home/kguo/build/fos/fos"
 
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
