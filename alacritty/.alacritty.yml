@@ -458,7 +458,7 @@ shell:
   args:
     - -l
     - -c
-    - "tmux attach || tmux"
+    - "/home/kguo/build/my-configs/tmux.sh"
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
