@@ -263,4 +263,9 @@
         "key": "ctrl+shift+s",
         "command": "-workbench.action.files.saveAs"
     },
+    {
+        "key": "ctrl+d",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.mode == 'insert'"
+    },
 ]
