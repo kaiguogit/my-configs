@@ -30,3 +30,6 @@ cp $SCRIPT_DIR/setup-scripts/automated/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc
 # restore autostart
 mkdir -p ~/.config/autostart
 cp $SCRIPT_DIR/autostart/* ~/.config/autostart/
+
+mkdir -p ~/.themes
+cp -r $SCRIPT_DIR/themes/* ~/.themes
