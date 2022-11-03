@@ -159,6 +159,11 @@
         "args": "k"
     },
     {
+        "command": "workbench.action.files.save",
+        "key": "t",
+        "when": "neovim.mode == 'normal' && editorTextFocus",
+    },
+    {
         "command": "editor.action.moveLinesDownAction",
         "key": "shift+j",
         "when": "neovim.mode == 'normal' && editorTextFocus",
@@ -267,5 +272,5 @@
         "key": "ctrl+d",
         "command": "-vscode-neovim.send",
         "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.mode == 'insert'"
-    },
+    }
 ]

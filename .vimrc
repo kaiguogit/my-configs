@@ -254,4 +254,8 @@ endif
 :vnoremap <Leader>a "ay
 " past from register a
 :noremap <Leader>s "ap
-
+" https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register
+" don't override clipboard when pasting. gv will select previous selection and
+" copy again
+xnoremap p pgvy
+xnoremap P Pgvy
