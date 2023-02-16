@@ -112,7 +112,7 @@ alias fgtip='fgtdev conf set fortigate'
 #alias yw='fos-yarn run watch-upload'
 alias nw='fos-npm run watch'
 alias conf100d='./Configure -m FGT_100D -d y'
-alias confvm='./Configure -m FGT_VM64_KVM -d y -x -v $(git rev-parse --abbrev-ref HEAD)'
+alias confvm='./Configure -m FGT_VM64_KVM -d y -v $(git rev-parse --abbrev-ref HEAD)'
 alias makevm='confvm && mi12'
 alias conf101e='./Configure -m FGT_101E -d y'
 alias make101e='conf101e && mi12'
@@ -152,3 +152,4 @@ export CHROMIUM_BIN=/usr/bin/google-chrome
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+export TMOUT=0

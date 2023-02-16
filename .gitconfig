@@ -4,6 +4,7 @@
 	rb = !git pull --rebase
 	ri = rebase -i --autosquash
 	reste = reset
+	shwo = show
 	rh = reset HEAD^ --hard
 	rs = reset HEAD^
 	rscan =!git rs && git can
