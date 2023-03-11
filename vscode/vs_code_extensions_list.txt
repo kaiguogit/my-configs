@@ -14,4 +14,5 @@ ms-vscode.cpptools-extension-pack
 ms-vscode.cpptools-themes
 Rubymaniac.vscode-paste-and-indent
 shardulm94.trailing-spaces
+slhsxcmy.vscode-double-line-numbers
 twxs.cmake

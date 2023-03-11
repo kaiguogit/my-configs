@@ -248,5 +248,7 @@
   "vim.neovimPath": "/home/kguo/app/nvim.appimage",
   "vim.neovimConfigPath": "/home/kguo/.vimrc",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.glyphMargin": true
 }
