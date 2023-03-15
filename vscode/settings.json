@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "Cobalt2",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorError.border": "#FF0000",
@@ -12,7 +12,7 @@
     "editor.wordHighlightStrongBackground": "#a76750",
     "editorRuler.foreground": "#ff333388"
   },
-  "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'Monaco', 'Courier New', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'Cascadia Code', 'Ubuntu Mono', 'Droid Sans Mono', 'Monaco'",
   "editor.renderWhitespace": "boundary",
   // "workbench.iconTheme": "vscode-great-icons",
   "eslint.workingDirectories": [
@@ -250,5 +250,6 @@
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   "editor.stickyScroll.enabled": true,
   "editor.lineNumbers": "relative",
-  "editor.glyphMargin": true
+  "editor.glyphMargin": true,
+  "editor.fontLigatures": true
 }
