@@ -42,6 +42,21 @@
         "command": "-workbench.files.action.compareWithSaved"
     },
     {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "neovim.init && neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.previousEditor",
+        "when": "neovim.init && neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+m",
+        "command": "workbench.action.nextEditor",
+        "when": "neovim.init && neovim.mode == normal && editorTextFocus",
+    },
+    {
         "key": "ctrl+shift+d",
         "command": "-workbench.view.debug"
     },

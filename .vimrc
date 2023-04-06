@@ -259,3 +259,5 @@ endif
 " copy again
 xnoremap p pgvy
 xnoremap P Pgvy
+:set relativenumber
+
