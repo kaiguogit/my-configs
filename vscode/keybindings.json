@@ -42,7 +42,7 @@
         "command": "-workbench.files.action.compareWithSaved"
     },
     {
-        "key": "ctrl+w",
+        "key": "ctrl+q",
         "command": "workbench.action.closeActiveEditor",
         "when": "neovim.init && neovim.mode == normal && editorTextFocus",
     },
