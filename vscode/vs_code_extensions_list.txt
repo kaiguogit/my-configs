@@ -16,4 +16,3 @@ Rubymaniac.vscode-paste-and-indent
 shardulm94.trailing-spaces
 slhsxcmy.vscode-double-line-numbers
 twxs.cmake
-wesbos.theme-cobalt2

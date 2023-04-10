@@ -12,8 +12,7 @@
     "editor.wordHighlightStrongBackground": "#a76750",
     "editorRuler.foreground": "#ff333388"
   },
-  // "editor.fontFamily": "'Fira Code, Light', 'Cascadia Code', 'Ubuntu Mono', 'Fira Code', 'Droid Sans Mono', 'Monaco'",
-  "editor.fontFamily": "'Fira Code', 'Ubuntu Mono'",
+  "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'Monaco', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.renderWhitespace": "boundary",
   // "workbench.iconTheme": "vscode-great-icons",
   "eslint.workingDirectories": [
@@ -166,7 +165,7 @@
   "window.menuBarVisibility": "toggle",
   "terminal.integrated.rendererType": "dom",
   "editor.tabCompletion": "on",
-  "editor.fontSize": 12.5,
+  "editor.fontSize": 13,
   "gitlens.hovers.annotations.changes": false,
   "editor.scrollbar.verticalScrollbarSize": 7,
   "workbench.editor.highlightModifiedTabs": true,
@@ -252,5 +251,5 @@
   "editor.stickyScroll.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.glyphMargin": true,
-  "editor.fontLigatures": true
+  "editor.accessibilitySupport": "off"
 }
