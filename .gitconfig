@@ -3,6 +3,7 @@
 	g = !git grep --break --heading --line-number
 	rb = !git pull --rebase
 	ri = rebase -i --autosquash
+	rbi = rebase -i --autosquash
 	reste = reset
 	shwo = show
 	rh = reset HEAD^ --hard

@@ -106,7 +106,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias g="git"
-alias gri="git-rebase"
 alias fos="cd ~/build/fos/worktree"
 alias fgtip='fgtdev conf set fortigate'
 #alias gw='grunt watch'
@@ -114,7 +113,7 @@ alias fgtip='fgtdev conf set fortigate'
 alias nw='fos-npm run watch'
 alias conf100d='./Configure -m FGT_100D -d y'
 alias confvm='./Configure -m FGT_VM64_KVM -d y -v $(git rev-parse --abbrev-ref HEAD)'
-alias makevm='confvm && mi12'
+alias makevm='confvm && mi8'
 alias conf101e='./Configure -m FGT_101E -d y'
 alias make101e='conf101e && mi12'
 alias conf100f='./Configure -m FGT_100F -d y'

@@ -1,18 +1,18 @@
 call plug#begin('~/.vim/vim-plug-plugins')
-	Plug 'preservim/nerdtree'
-	Plug 'ntpeters/vim-better-whitespace'
-	Plug 'qpkorr/vim-bufkill'
-	Plug 'ap/vim-buftabline'
-	Plug 'pangloss/vim-javascript'
-	Plug 'leafgarland/typescript-vim'
-	Plug 'preservim/tagbar'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'tpope/vim-fugitive'
+	" Plug 'preservim/nerdtree'
+	" Plug 'ntpeters/vim-better-whitespace'
+	" Plug 'qpkorr/vim-bufkill'
+	" Plug 'ap/vim-buftabline'
+	" Plug 'pangloss/vim-javascript'
+	" Plug 'leafgarland/typescript-vim'
+	" Plug 'preservim/tagbar'
+	" Plug 'airblade/vim-gitgutter'
+	" Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
- 	Plug 'flazz/vim-colorschemes'
-	Plug 'tpope/vim-repeat'
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+	" Plug 'flazz/vim-colorschemes'
+	" Plug 'tpope/vim-repeat'
+	" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	" Plug 'junegunn/fzf.vim'
 	" {{{
 		" This is the default extra key bindings
 		let g:fzf_action = {
@@ -98,7 +98,7 @@ endif
 
 syntax on
 set termguicolors
-colorscheme Monokai
+" colorscheme Monokai
 
 "let c='a'
 "while c <= 'z'
