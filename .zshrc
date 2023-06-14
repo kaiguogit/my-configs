@@ -133,8 +133,12 @@ alias r="source ranger"
 alias vim="nvim"
 alias fd="fdfind"
 alias mount_nfs="sudo mount 10.50.50.200:/mnt/Volume1/Share/backup ~/nfs_share"
+alias vpn_con="/opt/forticlient/forticlient-cli vpn connect \"SSLVPN Vancouver\" --user=kguo --password --save-password"
+alias vpn_dis="/opt/forticlient/forticlient-cli vpn disconnect \"SSLVPN Vancouver\""
+alias vpn_status="/opt/forticlient/forticlient-cli vpn status"
 
 source ~/build/devtools/fos/fos_node_env
+
 export USESUDO=$(which sudo)
 export FORTIPKG=$HOME/fortipkg
 export PATH="$HOME/bin/:$PATH"
@@ -144,6 +148,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
+
 
 
 # Generated for envman. Do not edit.
