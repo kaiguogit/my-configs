@@ -9,7 +9,7 @@ call plug#begin('~/.vim/vim-plug-plugins')
 	" Plug 'airblade/vim-gitgutter'
 	" Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
-	" Plug 'flazz/vim-colorschemes'
+	Plug 'flazz/vim-colorschemes'
 	" Plug 'tpope/vim-repeat'
 	" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	" Plug 'junegunn/fzf.vim'
@@ -98,7 +98,7 @@ endif
 
 syntax on
 set termguicolors
-" colorscheme Monokai
+colorscheme Monokai
 
 "let c='a'
 "while c <= 'z'

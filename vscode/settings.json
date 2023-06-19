@@ -172,7 +172,6 @@
   "gitlens.views.fileHistory.enabled": true,
   "gitlens.views.lineHistory.enabled": true,
   "zenMode.restore": true,
-  "zenMode.fullScreen": false,
   "window.titleBarStyle": "custom",
   "window.nativeTabs": false,
   "workbench.panel.defaultLocation": "right",
@@ -251,5 +250,6 @@
   "editor.stickyScroll.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.glyphMargin": true,
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "window.restoreFullscreen": true
 }
