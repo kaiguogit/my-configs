@@ -251,5 +251,6 @@
   "editor.lineNumbers": "relative",
   "editor.glyphMargin": true,
   "editor.accessibilitySupport": "off",
-  "window.restoreFullscreen": true
+  "window.restoreFullscreen": true,
+  "workbench.activityBar.visible": false
 }

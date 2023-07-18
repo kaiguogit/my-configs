@@ -126,6 +126,7 @@ alias mi12='make CONFIG_OPT=no -sj12 image'
 alias mcmdb='fgtdev df && make -sj4 init && fgtdev dae cmdbsvr'
 alias mhttp='fgtdev df && make -sj4 init && fgtdev dae httpsd'
 alias gti='git'
+alias fix_image='make migadmin-json-schema -sj12 && cd migadmin/pkg/fos-schema-types && fos-npm run build && cd ../fos-common && fos-npm run build && fos-npm run increase-build-version'
 alias vpn='sudo /home/kguo/Downloads/forticlientsslvpn/64bit/forticlientsslvpn'
 alias ifconfig='ip -c a'
 alias dirs="dirs -v"
