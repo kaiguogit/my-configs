@@ -1,4 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=xcape
-Exec=setxkbmap -option ctrl:nocaps && xcape -e 'Control_L=Escape'
+Exec=/usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'
+X-GNOME-Autostart-enabled=true
