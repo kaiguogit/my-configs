@@ -145,6 +145,17 @@
         "command": "-workbench.action.showCommands"
     },
     {
+        "command": "runCommands",
+        "key": "ctrl+s",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": {
+          "commands": [
+            "workbench.action.files.save",
+            "vscode-neovim.escape"
+          ]
+        }
+    },
+    {
         "command": "vscode-neovim.compositeEscape1",
         "key": "w",
         "when": "neovim.mode == insert && editorTextFocus",
@@ -167,11 +178,6 @@
         "key": "k",
         "when": "neovim.mode == insert && editorTextFocus",
         "args": "k"
-    },
-    {
-        "command": "workbench.action.files.save",
-        "key": "t",
-        "when": "neovim.mode == 'normal' && editorTextFocus",
     },
     {
         "command": "editor.action.moveLinesDownAction",
@@ -205,11 +211,6 @@
         "key": "ctrl+]",
         "command": "-vscode-neovim.send",
         "when": "editorTextFocus && neovim.ctrlKeysNormal && neovim.init && neovim.mode != 'insert'"
-    },
-    {
-        "key": "t",
-        "command": "workbench.action.files.save",
-        "when": "editorTextFocus && neovim.init && neovim.mode == 'normal'"
     },
     {
         "key": "ctrl+[",
