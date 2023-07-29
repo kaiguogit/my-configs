@@ -75,7 +75,7 @@
         "when": "editorFocus"
     },
     {
-        "key": "ctrl+shift+e",
+        "key": "ctrl+i",
         "command": "workbench.view.explorer"
     },
     {
