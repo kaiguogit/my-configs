@@ -73,3 +73,5 @@
 	required = true
 [gc]
 	writeCommitGraph = true
+[sequence]
+#	editor = interactive-rebase-tool
