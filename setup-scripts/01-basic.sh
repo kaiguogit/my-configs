@@ -66,3 +66,5 @@ $SCRIPT_DIR/automated/change-file-watch-limit.sh
 
 # Install pinyin input
 sudo apt install -yy ibus-pinyin
+
+# Install xcape for swapping caplock
