@@ -76,7 +76,8 @@
     },
     {
         "key": "ctrl+i",
-        "command": "workbench.view.explorer"
+        "command": "workbench.view.explorer",
+        "when": "!sideBarVisible"
     },
     {
         "key": "ctrl+shift+e",
@@ -301,5 +302,10 @@
     {
         "key": "ctrl+k z",
         "command": "-workbench.action.toggleZenMode"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.closeSidebar",
+        "when": "sideBarVisible"
     }
 ]
