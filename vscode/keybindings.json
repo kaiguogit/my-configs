@@ -146,6 +146,16 @@
     },
     {
         "command": "runCommands",
+        "key": "escape",
+        "args": {
+          "commands": [
+            "workbench.action.files.save",
+            "vscode-neovim.escape"
+          ]
+        }
+    },
+    {
+        "command": "runCommands",
         "key": "ctrl+s",
         "when": "neovim.mode == insert && editorTextFocus",
         "args": {

@@ -1,5 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=xcape
-Exec=/usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'
+Exec=/bin/bash -c "sleep 8 && /usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'"
 X-GNOME-Autostart-enabled=true
+Comment=Map caplock to ctrl and tap caplock means escape
+

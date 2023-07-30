@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=sxhkd
-Comment=Simple X hotkey daemon
+Comment=Simple X hotkey daemon map F1 to open alacritty
 Exec=/usr/bin/sxhkd
 Terminal=false
 Type=Application
