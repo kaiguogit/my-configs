@@ -45,6 +45,9 @@ sudo apt-get install -yy copyq
 # install ftp
 $SCRIPT_DIR/automated/vsftpd.sh
 
+# install tmux plugin manager
+$SCRIPT_DIR/automated/tmux.sh
+
 # install tftp
 $SCRIPT_DIR/automated/tftp.sh
 
