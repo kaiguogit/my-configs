@@ -150,6 +150,7 @@ export PATH="$HOME/bin/:$PATH"
 export PATH="$PATH:/usr/java/jre1.8.0_261/bin"
 export PATH="$PATH:/home/kguo/bin/mongodb-linux-x86_64-ubuntu2004-4.4.3/bin"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/home/kguo/build/devtools/git/contrib"
 
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
