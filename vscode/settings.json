@@ -1,16 +1,17 @@
 {
-  "workbench.colorTheme": "Monokai",
+  // "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "Material Theme",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorError.border": "#FF0000",
-    "editorWarning.foreground": "#ffd51d", // https://stackoverflow.com/questions/40697223/how-to-change-error-styles-in-vs-code
+    "editorWarning.foreground": "#ffd51d",
     "editorWarning.border": "#ffd51d",
     "editorWhitespace.foreground": "#A5A1AE",
     "editor.selectionBackground": "#ff3d02",
     "editor.wordHighlightBackground": "#b96750",
     "editor.findMatchBackground": "#0228ff",
     "editor.wordHighlightStrongBackground": "#a76750",
-    "editorRuler.foreground": "#ff333388"
+    "editorRuler.foreground": "#ff333388",
   },
   "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'Monaco', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.renderWhitespace": "boundary",
@@ -252,5 +253,7 @@
   "editor.glyphMargin": true,
   "editor.accessibilitySupport": "off",
   "window.restoreFullscreen": true,
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": false,
+  "terminal.explorerKind": "external",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
 }

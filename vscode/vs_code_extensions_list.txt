@@ -1,11 +1,16 @@
+aaron-bond.better-comments
 Alan.stylus
 alefragnani.Bookmarks
 Angular.ng-template
 asvetliakov.vscode-neovim
 bgse.relative-path-and-line
 Cardinal90.multi-cursor-case-preserve
+Centuplex.quokka
 dbaeumer.vscode-eslint
 eamodio.gitlens
+Equinusocio.vsc-community-material-theme
+Equinusocio.vsc-material-theme
+equinusocio.vsc-material-theme-icons
 esbenp.prettier-vscode
 mrmlnc.vscode-scss
 ms-vscode.cmake-tools
