@@ -1,5 +1,9 @@
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lg2 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	#https://salferrarello.com/using-vim-view-git-commits/ 
+	#lg = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -
+	lg = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git' -
+	lgl = !git log | vim -R -c 'set filetype=git nowrap' - 
 	g = !git grep --break --heading --line-number
 	rb = !git pull --rebase
 	ri = rebase -i --autosquash
