@@ -136,7 +136,7 @@ alias ifconfig='ip -c a'
 alias dirs="dirs -v"
 alias gs="git status"
 alias r="source ranger"
-alias vim="nvim"
+# alias vim="nvim"
 alias fd="fdfind"
 alias mount_nfs="sudo mount 10.50.50.200:/mnt/Volume1/Share/backup ~/nfs_share"
 alias vpn_con="/opt/forticlient/forticlient-cli vpn connect \"SSLVPN Vancouver\" --user=kguo --password --save-password"

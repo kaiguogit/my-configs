@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/vim-plug-plugins')
 	" Plug 'preservim/nerdtree'
-	" Plug 'ntpeters/vim-better-whitespace'
+	Plug 'ntpeters/vim-better-whitespace'
 	" Plug 'qpkorr/vim-bufkill'
 	" Plug 'ap/vim-buftabline'
 	" Plug 'pangloss/vim-javascript'
@@ -108,7 +108,11 @@ colorscheme Monokai
 "endw
 
 set timeout ttimeoutlen=50
-" set clipboard=unnamed
+set clipboard=unnamedplus
+set clipboard+=unnamed  " use the clipboards of vim and win
+set paste               " Paste from a windows or from vim
+set go+=a               " Visual selection automatically copied to the clipboard
+
 " needed by YouCompleteMe
 set encoding=utf-8
 "colorscheme jellybeans
@@ -260,4 +264,5 @@ endif
 xnoremap p pgvy
 xnoremap P Pgvy
 :set relativenumber
+
 

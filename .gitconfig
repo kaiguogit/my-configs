@@ -1,9 +1,5 @@
 [alias]
-	lg2 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	#https://salferrarello.com/using-vim-view-git-commits/ 
-	#lg = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -
-	lg = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git' -
-	lgl = !git log | vim -R -c 'set filetype=git nowrap' - 
+   	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	g = !git grep --break --heading --line-number
 	rb = !git pull --rebase
 	ri = rebase -i --autosquash
@@ -35,6 +31,8 @@
 [core]
 	editor = vim
 	commitGraph = true
+	#https://salferrarello.com/using-vim-view-git-commits/
+        pager = "vim -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -"
 [merge]
 	tool = meld
 [mergetool "meld"]
