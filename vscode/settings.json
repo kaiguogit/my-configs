@@ -1,6 +1,6 @@
 {
   // "workbench.colorTheme": "Monokai",
-  "workbench.colorTheme": "Material Theme",
+  "workbench.colorTheme": "Monokai",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorError.border": "#FF0000",
@@ -12,6 +12,7 @@
     "editor.findMatchBackground": "#0228ff",
     "editor.wordHighlightStrongBackground": "#a76750",
     "editorRuler.foreground": "#ff333388",
+    "[Material Theme]": {}
   },
   "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'Monaco', 'Courier New', monospace, 'Droid Sans Fallback'",
   "editor.renderWhitespace": "boundary",
@@ -255,5 +256,5 @@
   "window.restoreFullscreen": true,
   "workbench.activityBar.visible": false,
   "terminal.explorerKind": "external",
-  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight"
 }
