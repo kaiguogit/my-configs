@@ -168,27 +168,9 @@
     },
     {
         "command": "vscode-neovim.compositeEscape1",
-        "key": "w",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "w"
-    },
-    {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "b",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "b"
-    },
-    {
-        "command": "vscode-neovim.compositeEscape1",
         "key": "j",
         "when": "neovim.mode == insert && editorTextFocus",
         "args": "j",
-    },
-    {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "k",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "k"
     },
     {
         "command": "editor.action.moveLinesDownAction",
