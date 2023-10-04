@@ -130,6 +130,7 @@ alias mi12='make CONFIG_OPT=no -sj12 image'
 alias mcmdb='fgtdev df && make -sj4 init && fgtdev dae cmdbsvr'
 alias mhttp='fgtdev df && make -sj4 init && fgtdev dae httpsd'
 alias gti='git'
+alias glg='git lg'
 alias fix_image='make migadmin-json-schema -sj$(nproc) && cd migadmin/pkg/fos-schema-types && fos-npm run build && cd ../fos-common && fos-npm run build && fos-npm run increase-build-version && cd ../../..'
 alias vpn='sudo /home/kguo/Downloads/forticlientsslvpn/64bit/forticlientsslvpn'
 alias ifconfig='ip -c a'
@@ -143,6 +144,8 @@ alias vpn_con="/opt/forticlient/forticlient-cli vpn connect \"SSLVPN Vancouver\"
 alias vpn_dis="/opt/forticlient/forticlient-cli vpn disconnect \"SSLVPN Vancouver\""
 alias vpn_status="/opt/forticlient/forticlient-cli vpn status"
 alias replace_caplock="/bin/bash -c \"/usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'\""
+alias restore_caplock="/usr/bin/setxkbmap -option"
+
 
 source ~/build/devtools/fos/fos_node_env
 

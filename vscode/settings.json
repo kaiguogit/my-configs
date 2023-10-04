@@ -250,11 +250,11 @@
   "vim.neovimConfigPath": "/home/kguo/.vimrc",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   "editor.stickyScroll.enabled": true,
-  "editor.lineNumbers": "relative",
   "editor.glyphMargin": true,
   "editor.accessibilitySupport": "off",
   "window.restoreFullscreen": true,
   "workbench.activityBar.visible": false,
   "terminal.explorerKind": "external",
-  "workbench.iconTheme": "eq-material-theme-icons-palenight"
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "editor.lineNumbers": "relative"
 }
