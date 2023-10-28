@@ -246,9 +246,9 @@
   "vim.handleKeys": {
     "<C-a>": false,
   },
-  "vim.neovimPath": "/home/kguo/app/nvim.appimage",
+  "vim.neovimPath": "/home/kguo/Documents/nvim-linux64/bin/nvim",
   "vim.neovimConfigPath": "/home/kguo/.vimrc",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/kguo/Documents/nvim-linux64/bin/nvim",
   "editor.stickyScroll.enabled": true,
   "editor.glyphMargin": true,
   "editor.accessibilitySupport": "off",
@@ -256,5 +256,6 @@
   "workbench.activityBar.visible": false,
   "terminal.explorerKind": "external",
   "workbench.iconTheme": "eq-material-theme-icons-palenight",
-  "editor.lineNumbers": "relative"
+  "editor.lineNumbers": "relative",
+  "files.autoSave": "onFocusChange"
 }
