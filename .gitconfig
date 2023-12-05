@@ -3,7 +3,7 @@
    	lg2 = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- | less
 	#lg2 = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | nvim -R -c 'set hidden nowrap keywordprg=:enew | nnoremap q :q!<cr>' -
 	g = !git grep --break --heading --line-number
-	rb = !git pull --rebase
+	rb = !git pull --rebase=merges
 	ri = rebase -i --autosquash
 	rbi = rebase -i --autosquash
 	reste = reset
