@@ -3,7 +3,7 @@ if [ ! -d "~/build/alacritty" ]; then
     cd ~/build
     git clone https://github.com/alacritty/alacritty.git
     cd alacritty
-    git checkout tags/v0.12.3
+    # git checkout tags/v0.12.3
 fi
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

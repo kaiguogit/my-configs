@@ -71,3 +71,7 @@ $SCRIPT_DIR/automated/change-file-watch-limit.sh
 sudo apt install -yy ibus-pinyin
 
 # Install xcape for swapping caplock
+
+# Install keepassxc
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub org.keepassxc.KeePassXC
