@@ -3,6 +3,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 cp ~/.tmux.conf $SCRIPT_DIR/.tmux.conf
 cp ~/.vimrc $SCRIPT_DIR/.vimrc
 cp ~/.zshrc $SCRIPT_DIR/.zshrc
+cp ~/.tigrc $SCRIPT_DIR/.tigrc
 # backup alacritty setting
 cp ~/.alacritty.yml $SCRIPT_DIR/alacritty/.alacritty.yml
 cp ~/build/alacritty/extra/linux/Alacritty.desktop $SCRIPT_DIR/alacritty
