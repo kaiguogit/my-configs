@@ -1,5 +1,5 @@
 [alias]
-   	lg = !git log --color --graph --max-count=1000 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+   	lg = !git log --color --graph --max-count=1000 --pretty=format:'%h -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
    	lg2 = !git log --no-pager --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- | less
 	#lg2 = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | nvim -R -c 'set hidden nowrap keywordprg=:enew | nnoremap q :q!<cr>' -
 	g = !git grep --break --heading --line-number
