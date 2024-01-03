@@ -106,6 +106,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias g="git"
+alias gi="gitui -l"
 alias fos="cd ~/build/fos/worktree"
 alias fgtip='fgtdev conf set fortigate'
 #alias gw='grunt watch'

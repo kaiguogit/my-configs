@@ -78,4 +78,9 @@
 [gc]
 	writeCommitGraph = true
 [sequence]
-#	editor = interactive-rebase-tool
+	editor = interactive-rebase-tool
+[interactive-rebase-tool]
+	inputMoveUp = k
+	inputMoveDown = j
+	inputMoveSelectionDown = J
+	inputMoveSelectionUp = K
