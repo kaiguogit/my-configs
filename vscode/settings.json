@@ -257,5 +257,8 @@
   "terminal.explorerKind": "external",
   "workbench.iconTheme": "eq-material-theme-icons-palenight",
   "editor.lineNumbers": "relative",
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+   }
 }
