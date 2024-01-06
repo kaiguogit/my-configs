@@ -7,3 +7,4 @@ make configure
 ./configure
 make
 make install
+rm -rf git
