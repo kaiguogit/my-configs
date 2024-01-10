@@ -30,3 +30,7 @@ cp ~/.config/sxhkd/sxhkdrc $SCRIPT_DIR/setup-scripts/automated/sxhkd/sxhkdrc
 
 # backup autostart
 cp ~/.config/autostart/* $SCRIPT_DIR/autostart/
+
+# gitui
+GITUI_CONFIG_DIR=$HOME/.config/gitui
+cp $GITUI_CONFIG_DIR/key_bindings.ron $SCRIPT_DIR/gitui/key_bindings.ron
