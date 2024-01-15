@@ -183,16 +183,6 @@
         "when": "neovim.mode == 'normal' && editorTextFocus",
     },
     {
-        "key": "ctrl+d",
-        "command": "editor.action.addSelectionToNextFindMatch",
-        "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
-    },
-    {
-        "key": "ctrl+d",
-        "command": "-editor.action.outdentLines",
-        "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
-    },
-    {
         "key": "ctrl+shift+b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
@@ -273,11 +263,6 @@
         "command": "-workbench.action.files.saveAs"
     },
     {
-        "key": "ctrl+d",
-        "command": "-vscode-neovim.send",
-        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.mode == 'insert'"
-    },
-    {
         "key": "f12",
         "command": "workbench.action.toggleZenMode"
     },
@@ -326,7 +311,53 @@
     },
     {
         "key": "ctrl+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
+    },
+    {
+        "key": "ctrl+d",
         "command": "-vscode-neovim.send",
         "when": "editorTextFocus && neovim.ctrlKeysInsert.d && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-    }
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.outdentLines",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "extension.multiCommand.execute",
+        "when": "editorTextFocus && neovim.init && neovim.mode != 'insert'",
+        "args": {
+            "interval": 30,
+            "sequence": [
+                {
+                    "command": "vscode-neovim.send",
+                    "args": "<C-d>"
+                },
+                {
+                    "command": "vscode-neovim.send",
+                    "args": "zz"
+                }
+            ]
+        }
+    },
+    {
+        "key": "ctrl+u",
+        "command": "extension.multiCommand.execute",
+        "when": "editorTextFocus && neovim.init && neovim.mode != 'insert'",
+        "args": {
+            "interval": 30,
+            "sequence": [
+                {
+                    "command": "vscode-neovim.send",
+                    "args": "<C-u>"
+                },
+                {
+                    "command": "vscode-neovim.send",
+                    "args": "zz"
+                }
+            ]
+        }
+    },
 ]

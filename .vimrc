@@ -233,6 +233,11 @@ endfunction
 vmap J <Esc>:call MoveVisualSelection("Down")<cr>
 vmap K <Esc>:call MoveVisualSelection("Up")<cr>
 
+"function! CtrlDAndFocus()
+"  call feedkeys("\<C-d>")
+"  call feedkeys("zz")
+"endfunction
+
 set virtualedit=block
 "inoremap ww <Esc>
 "inoremap jj <Esc>
@@ -243,6 +248,7 @@ set virtualedit=block
 set clipboard+=unnamedplus
 if exists('g:vscode')
     " VSCode extension
+"nmap <C-d> :call CtrlDAndFocus()<CR>
 else
     " ordinary neovim
 inoremap <C+space> <Esc>
@@ -253,6 +259,13 @@ inoremap jj <Esc>
 inoremap kk <Esc>
 inoremap ww <Esc>
 inoremap bb <Esc>
+
+" add zz to ctrl+d so window stay in middle.
+"nnoremap <C-d> <C-d>zz
+
+" add zz to ctrl+u so window stay in middle.
+"nnoremap <C-u> <C-u>zz
+
 endif
 " copy into register a
 :vnoremap <Leader>a "ay
