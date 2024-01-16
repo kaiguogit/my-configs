@@ -155,8 +155,8 @@ endfunction
 " noremap <M-Down> :call <SID>swap_up()<CR>
 " noremap <M-Up> :call <SID>swap_down()<CR>
 
-noremap <C-n> :call <SID>swap_down()<CR>
-noremap <C-m> :call <SID>swap_up()<CR>
+" noremap <C-n> :call <SID>swap_down()<CR>
+" noremap <C-m> :call <SID>swap_up()<CR>
 " move buffer with ctrl pageup and pagedown
 nmap <C-PageUp> :bp<CR>
 nmap <C-PageDown> :bn<CR>
