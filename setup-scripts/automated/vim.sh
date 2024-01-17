@@ -24,3 +24,7 @@ cp $SCRIPT_DIR/../../nvim/* $NVIM_DIR/
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +'PlugInstall'
+
+
+# cargo install tmux-sessionizer
+# sudo apt install -yy libssl-dev
