@@ -9,8 +9,13 @@ cp $SCRIPT_DIR/.tigrc $HOME/
 # Alacritty
 cp $SCRIPT_DIR/alacritty/.alacritty.yml $HOME/
 cp $SCRIPT_DIR/alacritty/Alacritty.desktop ~/build/alacritty/extra/linux/
+
 sudo desktop-file-install ~/build/alacritty/extra/linux/Alacritty.desktop
 
+# nvim
+cp -r $SCRIPT_DIR/nvim/* $HOME/.config/nvim/
+
+# git
 cp $SCRIPT_DIR/.gitconfig $HOME/
 
 VSCODE_CONFIG_DIR=$HOME/.config/Code/User
