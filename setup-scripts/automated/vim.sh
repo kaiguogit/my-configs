@@ -19,4 +19,8 @@ vim +'so $SCRIPT_DIR/../../nvim/AnsiEsc.vba' +qa
 # Setup nvim config
 NVIM_DIR=~/.config/nvim
 mkdir -p $NVIM_DIR
-cp $SCRIPT_DIR/../../nvim/init.vim $NVIM_DIR/init.vim
+cp $SCRIPT_DIR/../../nvim/* $NVIM_DIR/
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+nvim +'PlugInstall'
