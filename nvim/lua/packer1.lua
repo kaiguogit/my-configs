@@ -4,103 +4,118 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            vim.cmd('colorscheme rose-pine')
+        end
 
-  })
+    })
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'});
-  use('nvim-treesitter/playground');
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
+    use('nvim-treesitter/playground');
 
-  -- harpoon2
-  use "nvim-lua/plenary.nvim" 
-  use {
-	  "ThePrimeagen/harpoon",
-	  branch = "harpoon2",
-	  requires = { {"nvim-lua/plenary.nvim"} }
-  }
+    -- harpoon2
+    use "nvim-lua/plenary.nvim"
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
 
 
-  use('mbbill/undotree')
-  use('tpope/vim-fugitive')
+    use('mbbill/undotree')
+    use('tpope/vim-fugitive')
 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v3.x',
-	  requires = {
-		  --- Uncomment the two plugins below if you want to manage the language servers from neovim
-		  --- and read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        requires = {
+            --- Uncomment the two plugins below if you want to manage the language servers from neovim
+            --- and read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'L3MON4D3/LuaSnip'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lua'},
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
-  use('nvimtools/none-ls.nvim')
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lua' },
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    }
+    use('nvimtools/none-ls.nvim')
 
-  use('flazz/vim-colorschemes')
+    use('flazz/vim-colorschemes')
 
-  use {
-      'smoka7/hop.nvim',
-      tag = '*', -- optional but strongly recommended
-      config = function()
-          -- you can configure Hop the way you like here; see :h hop-config
-          require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      end
-  }
+    use {
+        'smoka7/hop.nvim',
+        tag = '*', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
 
-  use "folke/tokyonight.nvim"
-  use "bluz71/vim-nightfly-colors"
+    use "folke/tokyonight.nvim"
+    use "bluz71/vim-nightfly-colors"
 
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-  use {'nvim-telescope/telescope-ui-select.nvim' }
+    use { 'nvim-telescope/telescope-ui-select.nvim' }
 
-  use {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup()
-      end
-  }
-  use {
-      "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
-  }
-  use "lewis6991/gitsigns.nvim"
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    use "lewis6991/gitsigns.nvim"
 
-  use {
-      '0x00-ketsu/autosave.nvim',
-      config = function()
-          require('autosave').setup {
-              -- your configuration comes here
-              -- or leave it empty to use the default settings
-              -- refer to the configuration section below
-          }
-      end
-  }
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use { "mhartington/oceanic-next"}
-
+    use {
+        '0x00-ketsu/autosave.nvim',
+        config = function()
+            require('autosave').setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "mhartington/oceanic-next" }
+    use { "ntpeters/vim-better-whitespace" }
+    use { "tpope/vim-surround" }
+    -- use {
+    -- "nvim-telescope/telescope-file-browser.nvim",
+    -- requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    -- }
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
+    }
 end)

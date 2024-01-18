@@ -1,5 +1,13 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmdd.Ex)
+vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal_force_cwd<CR>")
+vim.keymap.set("n", "<leader>fb", ":Neotree source=buffers reveal_force_cwd left<CR>")
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<space>pv",
+--   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+--   { noremap = true }
+-- )
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -12,8 +20,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- navigate between buffers
-vim.keymap.set("n", "<C-n", ":bp")
-vim.keymap.set("n", "<C-m", ":bn")
+vim.keymap.set("n", "<C-n>", ":bp<CR>")
+vim.keymap.set("n", "<C-m>", ":bn<CR>")
 
 vim.keymap.set("n", "<leader>vwm", function()
     require("vim-with-me").StartVimWithMe()
@@ -51,10 +59,9 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- replace the word I'm currently on
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", {silent = true})
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>q", ":enew<bar>bd #<CR>")
 
 -- copy file path
 vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
-
