@@ -6,17 +6,17 @@ require("neo-tree").setup({
             ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
             ['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
             ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
-            ["o"] = "system_open",
+            -- ["o"] = "system_open",
         },
         commands = {
-            system_open = function(state)
-                local node = state.tree:get_node()
-                local path = node:get_id()
-                -- macOs: open file in default application in the background.
-                -- - vim.fn.jobstart({ "xdg-open", "-g", path }, { detach = true })
-                --                 -- Linux: open file in default application
-                vim.fn.jobstart({ "xdg-open", path }, { detach = true })
-            end,
+            -- system_open = function(state)
+            --     local node = state.tree:get_node()
+            --     local path = node:get_id()
+            --     -- macOs: open file in default application in the background.
+            --     -- - vim.fn.jobstart({ "xdg-open", "-g", path }, { detach = true })
+            --     --                 -- Linux: open file in default application
+            --     vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+            -- end,
         },
     },
     filesystem = {
@@ -70,6 +70,14 @@ require("neo-tree").setup({
                 -- vimc.cmd("Neotree close")
                 -- OR
                 require("neo-tree.command").execute({ action = "close" })
+            end
+        },
+        {
+            event = "neo_tree_window_after_open",
+            handler = function(args)
+                if args.position == "left" or args.position == "right" then
+                    vim.cmd("wincmd =")
+                end
             end
         },
     }

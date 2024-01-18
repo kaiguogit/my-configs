@@ -5,6 +5,7 @@ mappings = {
     }
 }
 local builtin = require('telescope.builtin')
+local lga_actions = require("telescope-live-grep-args.actions")
 
 require('telescope').setup {
     defaults = {
@@ -66,22 +67,28 @@ require('telescope').setup {
             -- codeactions = false,
             -- }
         },
-        file_browser = {
-            theme = "ivy",
-            previewer = false,
-            hijack_netrw = true,
-        },
+        live_grep_args = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            -- define mappings, e.g.
+            mappings = {         -- extend mappings
+                i = {
+                    ["<C-k>"] = lga_actions.quote_prompt(),
+                    ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                },
+            },
+        }
     }
 }
 
 require("telescope").load_extension("ui-select")
-require("telescope").load_extension "file_browser"
+require("telescope").load_extension("live_grep_args")
 
-
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") });
+-- vim.keymap.set('n', '<leader>ps', function()
+--     builtin.grep_string({ search = vim.fn.input("Grep > ") });
+-- end)
+vim.keymap.set('n', '<leader>gs', function()
+    builtin.grep_string();
 end)
 vim.keymap.set('n', '<leader>cs', function()
     builtin.colorscheme()
@@ -90,7 +97,9 @@ end)
 vim.keymap.set('n', '<C-f>', builtin.current_buffer_fuzzy_find, {})
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+vim.keymap.set("n", "<C-S-F>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 -- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})

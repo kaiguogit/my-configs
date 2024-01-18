@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { { 'nvim-lua/plenary.nvim' }, { "nvim-telescope/telescope-live-grep-args.nvim" } }
     }
     use({
         'rose-pine/neovim',
@@ -90,14 +90,9 @@ return require('packer').startup(function(use)
     }
     use "lewis6991/gitsigns.nvim"
 
-    use {
-        '0x00-ketsu/autosave.nvim',
+    use { '0x00-ketsu/autosave.nvim',
         config = function()
-            require('autosave').setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
+            require('autosave').setup {}
         end
     }
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -118,4 +113,5 @@ return require('packer').startup(function(use)
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
     }
+    use { "lukas-reineke/indent-blankline.nvim" }
 end)

@@ -1,5 +1,9 @@
 -- fat cursor
 vim.opt.guicursor = ""
+vim.opt.guifont = "Ubuntu Mono:h18"
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 -- line number
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -33,56 +37,4 @@ vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 
-vim.opt.clipboard = "unnamedplus"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--vim.opt.clipboard = "unnamedplus"
