@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+  use('nvimtools/none-ls.nvim')
 
   use('flazz/vim-colorschemes')
 
@@ -69,5 +70,37 @@ return require('packer').startup(function(use)
           require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
       end
   }
+
+  use "folke/tokyonight.nvim"
+  use "bluz71/vim-nightfly-colors"
+
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
+  use {'nvim-telescope/telescope-ui-select.nvim' }
+
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+  use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
+  use "lewis6991/gitsigns.nvim"
+
+  use {
+      '0x00-ketsu/autosave.nvim',
+      config = function()
+          require('autosave').setup {
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+          }
+      end
+  }
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use { "mhartington/oceanic-next"}
 
 end)
