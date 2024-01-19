@@ -10,7 +10,7 @@ cp ~/build/alacritty/extra/linux/Alacritty.desktop $SCRIPT_DIR/alacritty
 
 # Setup nvim config
 NVIM_DIR=~/.config/nvim
-cp -r $NVIM_DIR/* $SCRIPT_DIR/nvim/
+rsync -av $NVIM_DIR ~/build/my-configs --exclude nvim/plugin 
 
 # VSCODE
 cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
