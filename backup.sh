@@ -33,4 +33,6 @@ cp ~/.config/autostart/* $SCRIPT_DIR/autostart/
 
 # gitui
 GITUI_CONFIG_DIR=$HOME/.config/gitui
-cp $GITUI_CONFIG_DIR/key_bindings.ron $SCRIPT_DIR/gitui/key_bindings.ron
+if [ -f "$GITUI_CONFIG_DIR/key_bindings.ron" ]; then
+    cp $GITUI_CONFIG_DIR/key_bindings.ron $SCRIPT_DIR/gitui/key_bindings.ron
+fi
