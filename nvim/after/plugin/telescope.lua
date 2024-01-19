@@ -4,10 +4,11 @@ mappings = {
         ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
     }
 }
+local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local lga_actions = require("telescope-live-grep-args.actions")
 
-require('telescope').setup {
+telescope.setup {
     defaults = {
         -- Default configuration for telescope goes here:
         -- config_key = value,
@@ -80,12 +81,12 @@ require('telescope').setup {
     }
 }
 
-require("telescope").load_extension("ui-select")
-require("telescope").load_extension("live_grep_args")
+telescope.load_extension("ui-select")
+telescope.load_extension("live_grep_args")
 
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 -- vim.keymap.set('n', '<leader>ps', function()
---     builtin.grep_string({ search = vim.fn.input("Grep > ") });
+--   builtin.grep_string({ search = vim.fn.input("Grep > ") });
 -- end)
 vim.keymap.set('n', '<leader>gs', function()
     builtin.grep_string();
@@ -94,12 +95,44 @@ vim.keymap.set('n', '<leader>cs', function()
     builtin.colorscheme()
 end)
 
-vim.keymap.set('n', '<C-f>', builtin.current_buffer_fuzzy_find, {})
+local function getCurrentFolderPath()
+    return vim.fn.substitute(vim.fn.expand("%:p"), vim.fn.expand("%:t"), "", "")
+end
 
+-- Fuzzy search in current file
+vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
+
+-- Find all files
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-vim.keymap.set("n", "<C-S-F>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+
+-- Find files in current folder
+vim.keymap.set('n', '<leader>ffd', function()
+    builtin.find_files(
+        {
+            search_dirs = { getCurrentFolderPath() }
+        }
+    )
+end)
+
+
+-- live grep for all files
+vim.keymap.set("n", "<leader>fg", function()
+    telescope.extensions.live_grep_args.live_grep_args()
+end)
+
+-- live grep for current folder
+vim.keymap.set("n", "<leader>fgd", function()
+    telescope.extensions.live_grep_args.live_grep_args(
+        {
+            search_dirs = { getCurrentFolderPath() }
+        }
+    )
+end)
+
+-- live grep for current file
+vim.keymap.set('n', '<C-f>', function()
+    builtin.live_grep({ search_dirs = { vim.fn.expand("%:p") } })
+end)
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})

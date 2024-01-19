@@ -1,7 +1,9 @@
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>pv", vim.cmdd.Ex)
 vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal_force_cwd left<CR>")
-vim.keymap.set("n", "<leader>fb", ":Neotree source=buffers reveal_force_cwd left<CR>")
+--vim.keymap.set("n", "<leader>fb", ":Neotree source=buffers reveal_force_cwd left<CR>")
+-- Search what's in register and apply last command. It can be used to trigger rename on next occurance
+vim.keymap.set("n", "<leader>rp", "/<C-r>\"<CR>.", { noremap = false })
 -- vim.api.nvim_set_keymap(
 --   "n",
 --   "<space>pv",
@@ -24,8 +26,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- navigate between buffers
-vim.keymap.set("n", "<C-n>", ":bp<CR>")
-vim.keymap.set("n", "<C-m>", ":bn<CR>")
+vim.keymap.set("n", "<C-t>", ":bp <CR>")
+vim.keymap.set("n", "<C-y>", ":bn <CR>")
 
 vim.keymap.set("n", "<leader>vwm", function()
     require("vim-with-me").StartVimWithMe()
