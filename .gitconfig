@@ -82,6 +82,6 @@
 [interactive-rebase-tool]
 	inputMoveUp = k
 	inputMoveDown = j
-	inputMoveSelectionDown = J
-	inputMoveSelectionUp = K
+    inputMoveSelectionDown = Control+j
+	inputMoveSelectionUp = Control+k
 

@@ -92,7 +92,9 @@ return require('packer').startup(function(use)
 
     use { '0x00-ketsu/autosave.nvim',
         config = function()
-            require('autosave').setup {}
+            require('autosave').setup {
+                debounce_delay = 2000
+            }
         end
     }
     use { "catppuccin/nvim", as = "catppuccin" }
