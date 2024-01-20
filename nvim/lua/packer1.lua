@@ -9,8 +9,16 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' }, { "nvim-telescope/telescope-live-grep-args.nvim" } }
+        requires = { 
+            { 'nvim-lua/plenary.nvim' },
+            { "nvim-telescope/telescope-live-grep-args.nvim" },
+            -- Use telescope for nvim core selection such as lsp code action list.
+            { 'nvim-telescope/telescope-ui-select.nvim' } ,
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+            {'nvim-telescope/telescope-hop.nvim'},
+        }
     }
+
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -22,7 +30,6 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
     use('nvim-treesitter/playground');
-
     -- harpoon2
     use "nvim-lua/plenary.nvim"
     use {
@@ -74,10 +81,6 @@ return require('packer').startup(function(use)
     use "folke/tokyonight.nvim"
     use "bluz71/vim-nightfly-colors"
 
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-
-    use { 'nvim-telescope/telescope-ui-select.nvim' }
-
     use {
         'numToStr/Comment.nvim',
         config = function()
@@ -116,4 +119,17 @@ return require('packer').startup(function(use)
         }
     }
     use { "lukas-reineke/indent-blankline.nvim" }
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+    use {
+        's1n7ax/nvim-window-picker',
+        tag = 'v2.*',
+        config = function()
+            require'window-picker'.setup()
+        end,
+    }
+
 end)

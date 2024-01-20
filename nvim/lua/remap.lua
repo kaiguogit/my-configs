@@ -50,7 +50,7 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
@@ -67,6 +67,11 @@ vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 
 -- set executable permission
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- %bd – Deletes all open buffers (bd is short for bdelete)
+-- e# – Opens the last buffer (e is short for edit)
+-- bd# – Deletes the [No Name] buffer that gets created
+vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#|bd#<CR>", { silent = true})
 
 -- quit without closing the window
 vim.keymap.set("n", "<leader>q", ":enew<bar>bd #<CR>")

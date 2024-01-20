@@ -9,7 +9,8 @@ vim.keymap.set('n', '<C-_>', function()
 end, { expr = true })
 
 -- Toggle in Op-pending mode
-vim.keymap.set('n', '<C-_>', '<Plug>(comment_toggle_linewise)')
-
--- -- Toggle in VISUAL mode
+-- vim.keymap.set('n', '<C-_>', '<Plug>(comment_toggle_linewise)')
+--vim.keymap.set('n')
+--
+-- Toggle in VISUAL mode
 vim.keymap.set('x', '<C-_>', '<Plug>(comment_toggle_linewise_visual)')
