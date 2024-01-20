@@ -10,13 +10,15 @@ cp ~/build/alacritty/extra/linux/Alacritty.desktop $SCRIPT_DIR/alacritty
 
 # Setup nvim config
 NVIM_DIR=~/.config/nvim
-rsync -av $NVIM_DIR ~/build/my-configs --exclude nvim/plugin 
+rsync -av $NVIM_DIR ~/build/my-configs --exclude nvim/plugin
 
 # VSCODE
-cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
-cp ~/.config/Code/User/settings.json $SCRIPT_DIR/vscode/settings.json
-code --list-extensions > $SCRIPT_DIR/vscode/vs_code_extensions_list.txt
+# cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
+# cp ~/.config/Code/User/settings.json $SCRIPT_DIR/vscode/settings.json
+# code --list-extensions > $SCRIPT_DIR/vscode/vs_code_extensions_list.txt
+
 cp ~/.gitconfig $SCRIPT_DIR/.gitconfig
+
 # backup zsh settings
 mkdir -p $SCRIPT_DIR/zsh
 cp /home/kguo/.oh-my-zsh/custom/zsh-auto-suggestions-patch.zsh $SCRIPT_DIR/zsh/
