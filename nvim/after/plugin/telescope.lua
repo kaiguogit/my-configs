@@ -46,6 +46,16 @@ telescope.setup {
                 ["<M-p>"] = action_layout.toggle_preview,
                 ["<C-h>"] = telescope.extensions.hop.hop,  -- hop.hop_toggle_selection
             },
+        },
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--trim" -- add this value
         }
     },
     pickers = {
@@ -207,3 +217,4 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+
