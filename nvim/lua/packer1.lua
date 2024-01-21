@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
             { 'nvim-telescope/telescope-ui-select.nvim' },
             { 'nvim-telescope/telescope-fzf-native.nvim',    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
             { 'nvim-telescope/telescope-hop.nvim' },
+            { "nvim-telescope/telescope-frecency.nvim" },
+            { "nvim-telescope/telescope-project.nvim" }
         }
     }
 

@@ -3,6 +3,7 @@ local telescope = require('telescope')
 local action_layout = require("telescope.actions.layout")
 local builtin = require('telescope.builtin')
 local lga_actions = require("telescope-live-grep-args.actions")
+local project_actions = require("telescope._extensions.project.actions")
 
 telescope.setup {
     defaults = {
@@ -55,7 +56,7 @@ telescope.setup {
             "--line-number",
             "--column",
             "--smart-case",
-            "--trim" -- add this value
+            "--trim"
         }
     },
     pickers = {
@@ -137,12 +138,36 @@ telescope.setup {
             -- jump to entry where hoop loop was started from
             reset_selection = true,
         },
+        project = {
+            base_dirs = {
+                { path = '~/build/fos-ci/worktree',   max_depth = 1, },
+                { '~/build/tapestry-gitlab/tapestry', max_depth = 1 },
+                { '~/build/neutrino-gitlab/neutrino', max_depth = 1 },
+                -- { '~/dev/src2' },
+                -- { '~/dev/src3',        max_depth = 4 },
+                -- { path = '~/dev/src4' },
+                -- { path = '~/dev/src5', max_depth = 2 },
+            },
+            hidden_files = true, -- default: false
+            theme = "dropdown",
+            order_by = "asc",
+            search_by = "title",
+            -- sync_with_nvim_tree = true, -- default false
+            -- default for on_project_selected = find project files
+            on_project_selected = function(prompt_bufnr)
+                -- Do anything you want in here. For example:
+                project_actions.change_working_directory(prompt_bufnr, false)
+                -- require("harpoon.ui").nav_file(1)
+            end
+        }
     }
 }
 
 telescope.load_extension("ui-select")
 telescope.load_extension("live_grep_args")
 telescope.load_extension('hop')
+telescope.load_extension("frecency")
+telescope.load_extension('project')
 
 -- falllback to find_files if it's not a git folder
 -- We cache the results of "git rev-parse"
@@ -186,26 +211,27 @@ vim.keymap.set('n', '<C-M-p>', function()
     )
 end)
 
--- vim.keymap.set('n', '<leader>ps', function()
---   builtin.grep_string({ search = vim.fn.input("Grep > ") });
--- end)
-
 -- Fuzzy search in current file
 -- vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
 
 
 -- live grep for current file
 vim.keymap.set('n', '<C-f>', function()
-    builtin.live_grep({ search_dirs = { vim.fn.expand("%:p") } })
+    builtin.grep_string({
+        default_text = vim.fn.expand("<cword>"),
+        search_dirs = { vim.fn.expand("%:p") }
+    })
 end)
+
 -- live grep for all files
 vim.keymap.set("n", "<C-M-f>", function()
-    telescope.extensions.live_grep_args.live_grep_args()
+    telescope.extensions.live_grep_args.live_grep_args({ default_text = vim.fn.expand("<cword>") })
 end)
 -- live grep for current folder
 vim.keymap.set("n", "<M-S-f>", function()
     telescope.extensions.live_grep_args.live_grep_args(
         {
+            default_text = vim.fn.expand("<cword>"),
             search_dirs = { getCurrentFolderPath() }
         }
     )
@@ -216,3 +242,5 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
 
+vim.keymap.set('n', '<leader>fp', telescope.extensions.project.project, {})
+vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
