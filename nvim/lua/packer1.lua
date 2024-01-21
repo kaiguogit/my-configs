@@ -9,13 +9,13 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
-        requires = { 
+        requires = {
             { 'nvim-lua/plenary.nvim' },
             { "nvim-telescope/telescope-live-grep-args.nvim" },
             -- Use telescope for nvim core selection such as lsp code action list.
-            { 'nvim-telescope/telescope-ui-select.nvim' } ,
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-            {'nvim-telescope/telescope-hop.nvim'},
+            { 'nvim-telescope/telescope-ui-select.nvim' },
+            { 'nvim-telescope/telescope-fzf-native.nvim',    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+            { 'nvim-telescope/telescope-hop.nvim' },
         }
     }
 
@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
         tag = '*', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
-            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            require 'hop'.setup { keys = 'asdfghjkl;qwertyuiop' }
         end
     }
 
@@ -128,8 +128,7 @@ return require('packer').startup(function(use)
         's1n7ax/nvim-window-picker',
         tag = 'v2.*',
         config = function()
-            require'window-picker'.setup()
+            require 'window-picker'.setup()
         end,
     }
-
 end)

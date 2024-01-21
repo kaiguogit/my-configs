@@ -4,7 +4,7 @@ local action_layout = require("telescope.actions.layout")
 local builtin = require('telescope.builtin')
 local lga_actions = require("telescope-live-grep-args.actions")
 
-telescope.setup { 
+telescope.setup {
     defaults = {
         -- Default configuration for telescope goes here:
         -- config_key = value,
@@ -33,7 +33,7 @@ telescope.setup {
 
                     return action_set.edit(prompt_bufnr, 'edit')
                 end,
-                ["<C-h>"] = telescope.extensions.hop.hop,  -- hop.hop_toggle_selection
+                ["<C-h>"] = telescope.extensions.hop.hop, -- hop.hop_toggle_selection
             },
             n = {
                 ["cd"] = function(prompt_bufnr)
@@ -44,7 +44,7 @@ telescope.setup {
                     vim.cmd(string.format("silent lcd %s", dir))
                 end,
                 ["<M-p>"] = action_layout.toggle_preview,
-                ["<C-h>"] = telescope.extensions.hop.hop,  -- hop.hop_toggle_selection
+                ["<C-h>"] = telescope.extensions.hop.hop, -- hop.hop_toggle_selection
             },
         },
         vimgrep_arguments = {
@@ -121,10 +121,8 @@ telescope.setup {
         },
         hop = {
             -- the shown `keys` are the defaults, no need to set `keys` if defaults work for you ;)
-            keys = {"a", "s", "d", "f", "g", "h", "j", "k", "l", ";",
-            "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
-            "A", "S", "D", "F", "G", "H", "J", "K", "L", ":",
-            "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", },
+            keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";",
+                "q", "w", "e", "r", "t", "y", "u", "i", "o", "p" },
             -- Highlight groups to link to signs and lines; the below configuration refers to demo
             -- sign_hl typically only defines foreground to possibly be combined with line_hl
             sign_hl = { "WarningMsg", "Title" },
@@ -152,21 +150,21 @@ telescope.load_extension('hop')
 local is_inside_work_tree = {}
 
 local project_files = function()
-  local opts = {
-      -- entry_maker = require"my_make_entry".gen_from_buffer_like_leaderf(),
-  } -- define here if you want to define something
+    local opts = {
+        -- entry_maker = require"my_make_entry".gen_from_buffer_like_leaderf(),
+    } -- define here if you want to define something
 
-  local cwd = vim.fn.getcwd()
-  if is_inside_work_tree[cwd] == nil then
-    vim.fn.system("git rev-parse --is-inside-work-tree")
-    is_inside_work_tree[cwd] = vim.v.shell_error == 0
-  end
+    local cwd = vim.fn.getcwd()
+    if is_inside_work_tree[cwd] == nil then
+        vim.fn.system("git rev-parse --is-inside-work-tree")
+        is_inside_work_tree[cwd] = vim.v.shell_error == 0
+    end
 
-  if is_inside_work_tree[cwd] then
-    builtin.git_files(opts)
-  else
-    builtin.find_files(opts)
-  end
+    if is_inside_work_tree[cwd] then
+        builtin.git_files(opts)
+    else
+        builtin.find_files(opts)
+    end
 end
 
 
@@ -182,9 +180,9 @@ end
 -- Find files in current folder
 vim.keymap.set('n', '<C-M-p>', function()
     builtin.find_files(
-    {
-        search_dirs = { getCurrentFolderPath() }
-    }
+        {
+            search_dirs = { getCurrentFolderPath() }
+        }
     )
 end)
 
