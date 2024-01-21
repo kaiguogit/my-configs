@@ -183,7 +183,7 @@ end)
 -- end)
 
 -- Fuzzy search in current file
-vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
+-- vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
 
 
 -- live grep for current file
@@ -206,4 +206,4 @@ end)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>fk', builtin.key_maps, {})
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
