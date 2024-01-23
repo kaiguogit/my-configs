@@ -27,7 +27,18 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'tsserver', 'eslint', 'angularls', 'rust_analyzer' },
+    ensure_installed = {
+        'cssls',
+        'html',
+        'jsonls',
+        'tsserver',
+        'eslint',
+        'angularls',
+        'rust_analyzer',
+        'lua_ls',
+        'clangd',
+        'bashls'
+    },
     handlers = {
         lsp_zero.default_setup,
         lua_ls = function()
@@ -39,7 +50,6 @@ require('mason-lspconfig').setup({
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
 cmp.setup({
     sources = {
         { name = 'path' },

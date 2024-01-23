@@ -133,4 +133,5 @@ return require('packer').startup(function(use)
             require 'window-picker'.setup()
         end,
     }
+    use 'mrded/nvim-lsp-notify'
 end)

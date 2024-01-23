@@ -1,5 +1,5 @@
 -- fat cursor
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.guifont = "Ubuntu Mono:h18"
 
 vim.opt.ignorecase = true

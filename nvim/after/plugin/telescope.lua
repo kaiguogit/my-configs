@@ -194,8 +194,7 @@ end
 
 
 -- Find all files
-vim.keymap.set('n', '<C-p>', project_files, {})
-
+vim.keymap.set('n', '<C-M-p>', project_files, {})
 
 local function getCurrentFolderPath()
     -- return vim.fn.substitute(vim.fn.expand("%:p"), vim.fn.expand("%:t"), "", "")
@@ -203,13 +202,15 @@ local function getCurrentFolderPath()
 end
 
 -- Find files in current folder
-vim.keymap.set('n', '<C-M-p>', function()
+vim.keymap.set('n', '<M-S-p>', function()
     builtin.find_files(
         {
             search_dirs = { getCurrentFolderPath() }
         }
     )
 end)
+
+vim.keymap.set('n', '<C-p>', builtin.buffers, {})
 
 -- Fuzzy search in current file
 -- vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
