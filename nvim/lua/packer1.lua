@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
         config = function()
             vim.cmd('colorscheme rose-pine')
         end
-
     })
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
@@ -133,4 +132,5 @@ return require('packer').startup(function(use)
             require 'window-picker'.setup()
         end,
     }
+    use 'onsails/lspkind.nvim'
 end)

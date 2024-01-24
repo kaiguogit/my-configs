@@ -8,18 +8,32 @@ local function organize_imports()
     }
     vim.lsp.buf.execute_command(params)
 end
+local function lsp_highlight_document(client)
+    -- if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+        augroup lsp_document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+        ]],
+    false)
+    -- end
+end
 
 lsp_zero.on_attach(function(client, bufnr)
+    lsp_highlight_document(client);
     local opts = { buffer = bufnr, remap = false }
 
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "gh", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "ge", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+    -- Used <leader>fr in telescope.lua
     -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("n", "<leader>ph", function() vim.lsp.buf.signature_help() end, opts)
     vim.keymap.set("n", "<leader>oi", organize_imports)
