@@ -140,9 +140,9 @@ telescope.setup {
         },
         project = {
             base_dirs = {
-                { path = '~/build/fos-ci/worktree',   max_depth = 1, },
-                { '~/build/tapestry-gitlab/tapestry', max_depth = 1 },
-                { '~/build/neutrino-gitlab/neutrino', max_depth = 1 },
+                { path = '~/build/fos-ci/worktree', max_depth = 1, },
+                { '~/build/tapestry/tapestry',      max_depth = 1 },
+                { '~/build/neutrino/neutrino',      max_depth = 1 },
                 -- { '~/dev/src2' },
                 -- { '~/dev/src3',        max_depth = 4 },
                 -- { path = '~/dev/src4' },
