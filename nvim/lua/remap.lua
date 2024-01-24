@@ -108,8 +108,40 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- bd# – Deletes the [No Name] buffer that gets created
 vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#|bd#<CR>", { silent = true })
 
+
 -- quit without closing the window
 -- vim.keymap.set("n", "<leader>q", ":enew<bar>bd #<CR>")
+
+local function moveBufferTo(direction)
+    local bufPath = vim.api.nvim_buf_get_name(0)
+
+    -- Go to alternate file. Save as CTRL-6
+    vim.api.nvim_exec('e#', true);
+    -- commented out another way to trigger CTRL-6 but this way doesn't do it synchrounsely.
+    -- local alternate_file_keys = vim.api.nvim_replace_termcodes("<C-^>", true, false, true)
+    -- vim.api.nvim_feedkeys(alternate_file_keys, 'n', true)
+
+
+    -- Move to the new window
+    vim.api.nvim_exec('wincmd ' .. direction, true);
+    local new_win_id = vim.fn.winnr()
+    -- Open the previous buffer
+    vim.api.nvim_exec('edit' .. bufPath, true);
+    -- Commented out for future reference
+    -- Go back to previous window
+    -- Change to alternative file
+    -- local win_id = vim.fn.bufwinnr("%")
+    -- vim.api.nvim_exec('wincmd ' .. win_id .. ' w', true)
+    -- local alternate_file_keys = vim.api.nvim_replace_termcodes("<C-^>", true, false, true)
+    -- vim.api.nvim_feedkeys(alternate_file_keys, 'n', true)
+    -- -- Go back to the new window
+    -- vim.api.nvim_exec('wincmd ' .. new_win_id .. ' w', true)
+end
+-- Move current buffer to existing window
+vim.keymap.set("n", "<C-w>L", function() moveBufferTo('l') end, { silent = true })
+vim.keymap.set("n", "<C-w>H", function() moveBufferTo('h') end, { silent = true })
+vim.keymap.set("n", "<C-w>J", function() moveBufferTo('j') end, { silent = true })
+vim.keymap.set("n", "<C-w>K", function() moveBufferTo('k') end, { silent = true })
 
 -- copy file path
 vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
