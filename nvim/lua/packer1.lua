@@ -133,4 +133,11 @@ return require('packer').startup(function(use)
         end,
     }
     use 'onsails/lspkind.nvim'
+
+    use {
+        "AckslD/nvim-neoclip.lua",
+        config = function()
+            require('neoclip').setup()
+        end,
+    }
 end)

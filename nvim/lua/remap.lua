@@ -137,6 +137,17 @@ local function moveBufferTo(direction)
     -- -- Go back to the new window
     -- vim.api.nvim_exec('wincmd ' .. new_win_id .. ' w', true)
 end
+
+local function moveBufferTo(direction)
+    local bufPath = vim.api.nvim_buf_get_name(0)
+    -- Go to alternate file. Save as CTRL-6
+    vim.api.nvim_exec('e#', true);
+    -- Move to the new window
+    vim.api.nvim_exec('wincmd ' .. direction, true);
+    -- Open the previous buffer
+    vim.api.nvim_exec('edit' .. bufPath, true);
+end
+
 -- Move current buffer to existing window
 vim.keymap.set("n", "<C-w>L", function() moveBufferTo('l') end, { silent = true })
 vim.keymap.set("n", "<C-w>H", function() moveBufferTo('h') end, { silent = true })
