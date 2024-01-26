@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>ra", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left
 -- rename replace
 vim.keymap.set("n", "<leader>rr", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>", silentopts)
 -- Search what's in register and apply last command. It can be used to trigger rename on next occurance
-vim.keymap.set("n", "<leader>rp", "/<C-r>\"<CR>.", { noremap = false })
+vim.keymap.set("n", "<leader>rs", "/<C-r>\"<CR>.", { noremap = false })
 
 -- tabs
 vim.keymap.set("n", "th", ":tabfirst<CR>", silentopts)
@@ -157,3 +157,4 @@ vim.keymap.set("n", "<C-w>K", function() moveBufferTo('k') end, { silent = true 
 -- copy file path
 vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
 vim.keymap.set("n", "<leader>cn", ":let @+ = expand(\"%:t\")<CR>")
+

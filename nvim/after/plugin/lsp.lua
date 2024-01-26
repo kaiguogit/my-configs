@@ -46,8 +46,6 @@ require('mason-lspconfig').setup({
         'html',
         'jsonls',
         'tsserver',
-        'eslint_d',
-        'prettierd',
         'angularls',
         'rust_analyzer',
         'lua_ls',

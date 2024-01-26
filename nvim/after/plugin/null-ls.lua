@@ -47,7 +47,13 @@ require("null-ls").setup({
                 callback = function()
                     -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                     -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-                    vim.lsp.buf.format({ async = false, })
+                    vim.lsp.buf.format({
+                        async = false,
+                        filter = function(client)
+                            -- apply whatever logic you want (in this example, we'll only use null-ls)
+                            return client.name == "null-ls"
+                        end,
+                    })
                 end,
             })
         end
