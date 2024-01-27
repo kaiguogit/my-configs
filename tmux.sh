@@ -3,12 +3,13 @@
 tmux setenv -ug TMOUT
 
 start_session() {
-    tmux new-session -d -s "$1" -c "$2" "/usr/bin/nvim ."
+    tmux new-session -d -s "$1" -c "$2"
     tmux new-window -c "$2"
     tmux split-window -h -c "$2$3"
     tmux split-window -v -c "$2$4"
     tmux select-pane -t 0
     tmux select-window -p
+    tmux send-keys "vim ." Enter
 }
 
 start_session fos ~/build/fos-ci/fortios-ci /migadmin/pkg/angular /migadmin/pkg/angular
