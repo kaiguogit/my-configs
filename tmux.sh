@@ -18,4 +18,3 @@ start_session lint ~/build/fos-ci/worktree/1 /migadmin/pkg/angular /migadmin/pkg
 
 
 tmux attach-session -d -t fos
-
