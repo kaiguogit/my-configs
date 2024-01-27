@@ -115,7 +115,7 @@ alias nw='fos-npm run watch'
 alias ns='fos-npm run serve'
 alias nl='fos-npm run lint-fix'
 alias nb='fos-npm run build'
-alias note='code ~/worklog/notes'
+alias note='vim ~/worklog/notes'
 alias conf100d='./Configure -m FGT_100D -d y'
 alias confvm='./Configure -m FGT_VM64_KVM -d y -v $(git rev-parse --abbrev-ref HEAD)'
 alias makevm='confvm && mi8'
@@ -170,3 +170,33 @@ export CHROMIUM_BIN=/usr/bin/google-chrome
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export TMOUT=0
+# Install npm dev dependencie
+ANGULAR_VERSION=14
+
+function install-npm-dev-deps() {
+  npm_install_pkgs=(
+      # Required for https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
+      typescript
+      typescript-language-server
+      # Required for https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint and
+      # https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls and
+      # https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
+      vscode-langservers-extracted
+      # Required for CLI utility and https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls
+      @angular/cli@$ANGULAR_VERSION
+      @angular/language-server@$ANGULAR_VERSION
+  )
+  npm install -g "${npm_install_pkgs[@]}"
+}
+
+# Node/NPM
+if [ -f "$HOME/.nvm/nvm.sh" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    source $NVM_DIR/nvm.sh
+    if [ -f "$NVM_DIR/bash_completion" ]; then
+        source $NVM_DIR/bash_completion
+    fi
+    if [ -f ".nvmrc" ]; then
+        nvm use --silent
+    fi
+fi

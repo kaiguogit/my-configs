@@ -39,27 +39,49 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>oi", organize_imports)
 end)
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-    ensure_installed = {
-        'cssls',
-        'html',
-        'jsonls',
-        'tsserver',
-        'angularls',
-        'rust_analyzer',
-        'lua_ls',
-        'clangd',
-        'bashls'
+local servers = {
+  'tsserver',
+  'eslint',
+  'cssls',
+  'html',
+  'angularls',
+  'lua_ls',
+  'clangd',
+  'bashls'
+}
+
+lsp_zero.default_setup()
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup{
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
     },
-    handlers = {
-        lsp_zero.default_setup,
-        lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-        end,
-    }
-})
+    capabilities = capabilities
+  }
+end
+
+-- require('mason').setup({})
+-- require('mason-lspconfig').setup({
+--     ensure_installed = {
+--         'cssls',
+--         'html',
+--         'jsonls',
+--         'tsserver',
+--         'angularls',
+--         'rust_analyzer',
+--         'lua_ls',
+--         'clangd',
+--         'bashls'
+--     },
+--     handlers = {
+--         lsp_zero.default_setup,
+--         lua_ls = function()
+--             local lua_opts = lsp_zero.nvim_lua_ls()
+--             require('lspconfig').lua_ls.setup(lua_opts)
+--         end,
+--     }
+-- })
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
