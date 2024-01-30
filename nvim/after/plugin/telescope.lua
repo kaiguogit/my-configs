@@ -143,7 +143,6 @@ telescope.setup {
 telescope.load_extension("ui-select")
 telescope.load_extension("live_grep_args")
 telescope.load_extension('hop')
-telescope.load_extension("frecency")
 
 -- falllback to find_files if it's not a git folder
 -- We cache the results of "git rev-parse"
