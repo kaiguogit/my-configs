@@ -9,7 +9,8 @@ start_session() {
     tmux split-window -v -c "$2$4"
     tmux select-pane -t 0
     tmux select-window -p
-    tmux send-keys "vim ." Enter
+    tmux send-keys "vim ."
+    # tmux send-keys "vim ." Enter
 }
 
 start_session fos ~/build/fos-ci/fortios-ci /migadmin/pkg/angular /migadmin/pkg/angular
