@@ -77,15 +77,14 @@ return require('packer').startup(function(use)
         end
     }
 
-    use "folke/tokyonight.nvim"
-    use "bluz71/vim-nightfly-colors"
-
+    -- auto comment lines with ctrl-/
     use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
     }
+
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
@@ -99,9 +98,15 @@ return require('packer').startup(function(use)
             }
         end
     }
+    -- Themes
+    use "folke/tokyonight.nvim"
+    use "bluz71/vim-nightfly-colors"
     use { "catppuccin/nvim", as = "catppuccin" }
     use { "mhartington/oceanic-next" }
+
     use { "ntpeters/vim-better-whitespace" }
+
+    -- shift+s to wrap selected text with quote or ()
     use { "tpope/vim-surround" }
     -- use {
     -- "nvim-telescope/telescope-file-browser.nvim",
@@ -134,9 +139,57 @@ return require('packer').startup(function(use)
 
     use {
         "AckslD/nvim-neoclip.lua",
-        config = function()
-            require('neoclip').setup()
-        end,
+        requires = {
+            {'kkharji/sqlite.lua', module = 'sqlite'},
+            {'nvim-telescope/telescope.nvim'},
+        }
     }
+
     use 'nvim-pack/nvim-spectre'
+
+    -- key hint
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
+    use {
+        'rcarriga/nvim-notify',
+        config = function()
+            require('notify').setup({
+                background_colour = "#282A36"
+            })
+        end
+    }
+
+    use {
+        'mrded/nvim-lsp-notify',
+        config = function()
+            require('lsp-notify').setup({
+                notify = require('notify')
+            })
+        end
+    }
+    use {
+        'romgrk/barbar.nvim',
+        requires = {
+            { 'lewis6991/gitsigns.nvim' },
+            { 'nvim-tree/nvim-web-devicons' }
+        },
+        config = function()
+            require('barbar').setup({
+                icons = {
+                    pinned = {button = '', filename = true},
+                }
+            })
+        end
+    }
 end)

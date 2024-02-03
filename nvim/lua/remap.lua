@@ -11,12 +11,45 @@ vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal_force_cwd l
 
 local silentopts = { noremap = true, silent = true }
 -- Buffer navigation
-vim.keymap.set("n", "zh", ":bf<CR>", silentopts)
-vim.keymap.set("n", "zk", ":bn<CR>", silentopts)
-vim.keymap.set("n", "zj", ":bp<CR>", silentopts)
-vim.keymap.set("n", "zl", ":bl<CR>", silentopts)
-vim.keymap.set("n", "z;", ":bp<bar>sp<bar>bn<bar>bd<CR>", silentopts)
-vim.keymap.set("n", "zd", ":%bd<CR>", silentopts)
+-- Navigate to buffer
+vim.keymap.set("n", "<A-,>", "<cmd>BufferPrevious<CR>", silentopts)
+vim.keymap.set("n", "<A-.>", "<cmd>BufferNext<CR>", silentopts)
+-- Move buffer
+vim.keymap.set("n", "<A-<>", "<cmd>BufferMovePrevious<CR>", silentopts)
+vim.keymap.set("n", "<A->>", "<cmd>BufferMoveNext<CR>", silentopts)
+-- Go to buffer position
+vim.keymap.set("n", "<A-1>", "<cmd>BufferGoto 1<CR>", silentopts)
+vim.keymap.set("n", "<A-2>", "<cmd>BufferGoto 2<CR>", silentopts)
+vim.keymap.set("n", "<A-3>", "<cmd>BufferGoto 3<CR>", silentopts)
+vim.keymap.set("n", "<A-4>", "<cmd>BufferGoto 4<CR>", silentopts)
+vim.keymap.set("n", "<A-5>", "<cmd>BufferGoto 5<CR>", silentopts)
+vim.keymap.set("n", "<A-6>", "<cmd>BufferGoto 6<CR>", silentopts)
+vim.keymap.set("n", "<A-7>", "<cmd>BufferGoto 7<CR>", silentopts)
+vim.keymap.set("n", "<A-8>", "<cmd>BufferGoto 8<CR>", silentopts)
+vim.keymap.set("n", "<A-9>", "<cmd>BufferGoto 9<CR>", silentopts)
+vim.keymap.set("n", "<A-0>", "<cmd>BufferGoto 0<CR>", silentopts)
+-- Pin/unpin buffer
+vim.keymap.set("n", "<A-p>", "<cmd>BufferPin<CR>", silentopts)
+-- Close buffer
+vim.keymap.set("n", "<A-c>", "<cmd>BufferClose<CR>", silentopts)
+-- vim.keymap.set("n", "z;", ":bp<bar>sp<bar>bn<bar>bd<CR>", silentopts)
+-- Restore buffer
+vim.keymap.set("n", "<A-s-c>", "<cmd>BufferRestore<CR>", silentopts)
+
+-- Wipeout buffer
+--                          :BufferWipeout
+-- Close commands
+--                          :BufferCloseAllButCurrent
+--                          :BufferCloseAllButVisible
+--                          :BufferCloseAllButPinned
+--                          :BufferCloseAllButCurrentOrPinned
+--                          :BufferCloseBuffersLeft
+--                          :BufferCloseBuffersRight
+
+-- close this file
+-- close all
+-- vim.keymap.set("n", "zd", ":%bd<CR>", silentopts)
+vim.keymap.set("n", "zd", "<cmd>BufferCloseAllButCurrentOrPinned<CR>", silentopts)
 
 -- Quickfix shortcuts
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", silentopts)

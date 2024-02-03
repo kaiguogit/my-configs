@@ -143,6 +143,20 @@ telescope.setup {
 telescope.load_extension("ui-select")
 telescope.load_extension("live_grep_args")
 telescope.load_extension('hop')
+telescope.load_extension("neoclip")
+
+require('neoclip').setup({
+      default_register = {'"', '+', '*'},
+      enable_persistent_history = true,
+      keys = {
+        telescope = {
+            i = {
+                paste = '<M-p>',
+                paste_behind = '<C-k>',
+            }
+         }
+    }
+})
 
 -- falllback to find_files if it's not a git folder
 -- We cache the results of "git rev-parse"
@@ -217,6 +231,10 @@ end)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+vim.keymap.set('n', '<leader>pl', function()
+    telescope.extensions.neoclip.default();
+end)
 
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+
