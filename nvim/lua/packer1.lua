@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
         end
     })
 
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
     -- harpoon2
     use "nvim-lua/plenary.nvim"
     use {
@@ -62,7 +63,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
-    use('nvimtools/none-ls.nvim')
+    -- use('nvimtools/none-ls.nvim')
 
     use('flazz/vim-colorschemes')
 
@@ -138,8 +139,8 @@ return require('packer').startup(function(use)
     use {
         "AckslD/nvim-neoclip.lua",
         requires = {
-            {'kkharji/sqlite.lua', module = 'sqlite'},
-            {'nvim-telescope/telescope.nvim'},
+            { 'kkharji/sqlite.lua',           module = 'sqlite' },
+            { 'nvim-telescope/telescope.nvim' },
         }
     }
 
@@ -185,9 +186,10 @@ return require('packer').startup(function(use)
         config = function()
             require('barbar').setup({
                 icons = {
-                    pinned = {button = '', filename = true},
+                    pinned = { button = '', filename = true },
                 }
             })
         end
     }
+    use { 'mhartington/formatter.nvim' }
 end)

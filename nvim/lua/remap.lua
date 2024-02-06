@@ -135,9 +135,10 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
-end)
+vim.keymap.set("n", "<leader>f", "<cmd>FormatWriteLock<CR>")
+-- vim.keymap.set("n", "<leader>f", function()
+--     -- vim.lsp.buf.format()
+-- end)
 
 -- quick fix navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -199,4 +200,3 @@ vim.keymap.set("n", "<C-w>K", function() moveBufferTo('k') end, { silent = true 
 -- copy file path
 vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
 vim.keymap.set("n", "<leader>cn", ":let @+ = expand(\"%:t\")<CR>")
-
