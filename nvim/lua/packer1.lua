@@ -27,8 +27,6 @@ return require('packer').startup(function(use)
         end
     })
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
-    use('nvim-treesitter/playground');
     -- harpoon2
     use "nvim-lua/plenary.nvim"
     use {

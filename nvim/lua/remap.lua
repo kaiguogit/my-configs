@@ -50,6 +50,11 @@ vim.keymap.set("n", "<A-s-c>", "<cmd>BufferRestore<CR>", silentopts)
 -- close all
 -- vim.keymap.set("n", "zd", ":%bd<CR>", silentopts)
 vim.keymap.set("n", "zd", "<cmd>BufferCloseAllButCurrentOrPinned<CR>", silentopts)
+-- %bd – Deletes all open buffers (bd is short for bdelete)
+-- e# – Opens the last buffer (e is short for edit)
+-- bd# – Deletes the [No Name] buffer that gets created
+-- vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#|bd#<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bd", "<cmd>BufferCloseAllButCurrentOrPinned<CR>", { silent = true })
 
 -- Quickfix shortcuts
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", silentopts)
@@ -88,8 +93,16 @@ vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-j>", ":m .+1<CR>==")
 vim.keymap.set("n", "<C-k>", ":m .-2<CR>==")
-vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi")
-vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi")
+-- vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi")
+-- vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi")
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-l>", "<Right>")
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("c", "<C-j>", "<Down>")
+vim.keymap.set("c", "<C-k>", "<Up>")
+vim.keymap.set("c", "<C-l>", "<Right>")
+vim.keymap.set("c", "<C-h>", "<Left>")
 
 vim.keymap.set("n", "J", "mzJ`z")
 
@@ -136,10 +149,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- set executable permission
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- %bd – Deletes all open buffers (bd is short for bdelete)
--- e# – Opens the last buffer (e is short for edit)
--- bd# – Deletes the [No Name] buffer that gets created
-vim.keymap.set("n", "<leader>bd", "<cmd>%bd|e#|bd#<CR>", { silent = true })
 
 
 -- quit without closing the window

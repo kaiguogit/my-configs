@@ -206,6 +206,18 @@ vim.keymap.set('n', '<C-p>', builtin.buffers, {})
 -- vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
 
 
+local function get_visual_selection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
 -- live grep for current file
 vim.keymap.set('n', '<C-f>', function()
     telescope.extensions.live_grep_args.live_grep_args({
@@ -214,9 +226,19 @@ vim.keymap.set('n', '<C-f>', function()
     })
 end)
 
+vim.keymap.set('v', '<C-f>', function()
+    telescope.extensions.live_grep_args.live_grep_args({
+        default_text = get_visual_selection(),
+        search_dirs = { vim.fn.expand("%:p") }
+    })
+end)
+
 -- live grep for all files
 vim.keymap.set("n", "<C-M-f>", function()
     telescope.extensions.live_grep_args.live_grep_args({ default_text = vim.fn.expand("<cword>") })
+end)
+vim.keymap.set("v", "<C-M-f>", function()
+    telescope.extensions.live_grep_args.live_grep_args({ default_text = get_visual_selection() })
 end)
 -- live grep for current folder
 vim.keymap.set("n", "<M-S-f>", function()
@@ -228,10 +250,23 @@ vim.keymap.set("n", "<M-S-f>", function()
     )
 end)
 
+-- live grep for current folder
+vim.keymap.set("v", "<M-S-f>", function()
+    telescope.extensions.live_grep_args.live_grep_args(
+        {
+            default_text = get_visual_selection(),
+            search_dirs = { getCurrentFolderPath() }
+        }
+    )
+end)
+
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>pl', function()
+    telescope.extensions.neoclip.default();
+end)
+vim.keymap.set('v', '<leader>pl', function()
     telescope.extensions.neoclip.default();
 end)
 
