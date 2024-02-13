@@ -161,7 +161,7 @@ export PATH="$PATH:/home/kguo/build/devtools/git/contrib"
 
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
-
+export CLICKUP_TOKEN=pk_54677030_HFWHP1FJKBMF6E28AL7X4LKAA2QKZNUW
 
 
 # Generated for envman. Do not edit.
@@ -201,3 +201,4 @@ if [ -f "$HOME/.nvm/nvm.sh" ]; then
         nvm use --silent
     fi
 fi
+
