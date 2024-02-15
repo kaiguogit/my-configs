@@ -111,6 +111,7 @@ alias fos="cd ~/build/fos/worktree"
 alias fgtip='fgtdev conf set fortigate'
 #alias gw='grunt watch'
 #alias yw='fos-yarn run watch-upload'
+alias lg='lazygit'
 alias nw='fos-npm run watch'
 alias ns='fos-npm run serve'
 alias nl='fos-npm run lint-fix'

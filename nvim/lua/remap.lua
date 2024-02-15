@@ -62,12 +62,14 @@ vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", silentopts)
 vim.keymap.set("n", "qc", "<cmd>cclose<CR>", silentopts)
 vim.keymap.set("n", "qo", "<cmd>copen<CR>", silentopts)
 
+-- Lazy git
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
 -- rename append
 vim.keymap.set("n", "<leader>ra", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", silentopts)
 -- rename replace
 vim.keymap.set("n", "<leader>rr", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>", silentopts)
 -- Search what's in register and apply last command. It can be used to trigger rename on next occurance
-vim.keymap.set("n", "<leader>rs", "/<C-r>\"<CR>.", { noremap = false })
+vim.keymap.set("n", "<leader>rs", '/<C-r>"<CR>.', { noremap = false })
 
 -- tabs
 vim.keymap.set("n", "th", ":tabfirst<CR>", silentopts)
@@ -87,7 +89,6 @@ vim.keymap.set("n", "<leader>q", ":x<CR>", silentopts)
 -- vim shortcuts
 -- vim.keymap.set("n", "<leader>gfh", ":G log --follow -p -5 -- %<CR>", silentopts)
 -- vim.keymap.set("n", "<leader>gs", ":0G<CR>", silentopts)
-
 
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
@@ -113,23 +114,23 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*zz")
 
 vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
+	require("vim-with-me").StartVimWithMe()
 end)
 vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
+	require("vim-with-me").StopVimWithMe()
 end)
 
 -- paste without changing the buffer
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- copy into system clipboard (+)
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
 
 -- Delete to void register
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d')
 
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -146,57 +147,61 @@ vim.keymap.set("n", "<leader>f", "<cmd>FormatWriteLock<CR>")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-
 -- set executable permission
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-
 
 -- quit without closing the window
 -- vim.keymap.set("n", "<leader>q", ":enew<bar>bd #<CR>")
 
 local function moveBufferTo(direction)
-    local bufPath = vim.api.nvim_buf_get_name(0)
+	local bufPath = vim.api.nvim_buf_get_name(0)
 
-    -- Go to alternate file. Save as CTRL-6
-    vim.api.nvim_exec('e#', true);
-    -- commented out another way to trigger CTRL-6 but this way doesn't do it synchrounsely.
-    -- local alternate_file_keys = vim.api.nvim_replace_termcodes("<C-^>", true, false, true)
-    -- vim.api.nvim_feedkeys(alternate_file_keys, 'n', true)
+	-- Go to alternate file. Save as CTRL-6
+	vim.api.nvim_exec("e#", true)
+	-- commented out another way to trigger CTRL-6 but this way doesn't do it synchrounsely.
+	-- local alternate_file_keys = vim.api.nvim_replace_termcodes("<C-^>", true, false, true)
+	-- vim.api.nvim_feedkeys(alternate_file_keys, 'n', true)
 
-
-    -- Move to the new window
-    vim.api.nvim_exec('wincmd ' .. direction, true);
-    local new_win_id = vim.fn.winnr()
-    -- Open the previous buffer
-    vim.api.nvim_exec('edit' .. bufPath, true);
-    -- Commented out for future reference
-    -- Go back to previous window
-    -- Change to alternative file
-    -- local win_id = vim.fn.bufwinnr("%")
-    -- vim.api.nvim_exec('wincmd ' .. win_id .. ' w', true)
-    -- local alternate_file_keys = vim.api.nvim_replace_termcodes("<C-^>", true, false, true)
-    -- vim.api.nvim_feedkeys(alternate_file_keys, 'n', true)
-    -- -- Go back to the new window
-    -- vim.api.nvim_exec('wincmd ' .. new_win_id .. ' w', true)
+	-- Move to the new window
+	vim.api.nvim_exec("wincmd " .. direction, true)
+	local new_win_id = vim.fn.winnr()
+	-- Open the previous buffer
+	vim.api.nvim_exec("edit" .. bufPath, true)
+	-- Commented out for future reference
+	-- Go back to previous window
+	-- Change to alternative file
+	-- local win_id = vim.fn.bufwinnr("%")
+	-- vim.api.nvim_exec('wincmd ' .. win_id .. ' w', true)
+	-- local alternate_file_keys = vim.api.nvim_replace_termcodes("<C-^>", true, false, true)
+	-- vim.api.nvim_feedkeys(alternate_file_keys, 'n', true)
+	-- -- Go back to the new window
+	-- vim.api.nvim_exec('wincmd ' .. new_win_id .. ' w', true)
 end
 
 local function moveBufferTo(direction)
-    local bufPath = vim.api.nvim_buf_get_name(0)
-    -- Go to alternate file. Save as CTRL-6
-    vim.api.nvim_exec('e#', true);
-    -- Move to the new window
-    vim.api.nvim_exec('wincmd ' .. direction, true);
-    -- Open the previous buffer
-    vim.api.nvim_exec('edit' .. bufPath, true);
+	local bufPath = vim.api.nvim_buf_get_name(0)
+	-- Go to alternate file. Save as CTRL-6
+	vim.api.nvim_exec("e#", true)
+	-- Move to the new window
+	vim.api.nvim_exec("wincmd " .. direction, true)
+	-- Open the previous buffer
+	vim.api.nvim_exec("edit" .. bufPath, true)
 end
 
 -- Move current buffer to existing window
-vim.keymap.set("n", "<C-w>L", function() moveBufferTo('l') end, { silent = true })
-vim.keymap.set("n", "<C-w>H", function() moveBufferTo('h') end, { silent = true })
-vim.keymap.set("n", "<C-w>J", function() moveBufferTo('j') end, { silent = true })
-vim.keymap.set("n", "<C-w>K", function() moveBufferTo('k') end, { silent = true })
+vim.keymap.set("n", "<C-w>L", function()
+	moveBufferTo("l")
+end, { silent = true })
+vim.keymap.set("n", "<C-w>H", function()
+	moveBufferTo("h")
+end, { silent = true })
+vim.keymap.set("n", "<C-w>J", function()
+	moveBufferTo("j")
+end, { silent = true })
+vim.keymap.set("n", "<C-w>K", function()
+	moveBufferTo("k")
+end, { silent = true })
 
 -- copy file path
 vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
-vim.keymap.set("n", "<leader>cn", ":let @+ = expand(\"%:t\")<CR>")
+vim.keymap.set("n", "<leader>cn", ':let @+ = expand("%:t")<CR>')
