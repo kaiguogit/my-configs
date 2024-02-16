@@ -20,6 +20,9 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 # Install zsh and make it default
 $SCRIPT_DIR/automated/zsh.sh
 
+# Install lazygit
+$SCRIPT_DIR/automated/lazygit.sh
+
 # Install programming tools
 sudo apt-get install -yy git git-lfs subversion
 $SCRIPT_DIR/automated/vim.sh
