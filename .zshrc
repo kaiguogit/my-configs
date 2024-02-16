@@ -163,6 +163,8 @@ export PATH="$PATH:/home/kguo/build/devtools/git/contrib"
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
 export CLICKUP_TOKEN=pk_54677030_HFWHP1FJKBMF6E28AL7X4LKAA2QKZNUW
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 
 # Generated for envman. Do not edit.
