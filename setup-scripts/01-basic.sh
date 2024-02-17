@@ -30,6 +30,12 @@ $SCRIPT_DIR/automated/vim.sh
 # Install git-delta
 $SCRIPT_DIR/automated/git-delta.sh
 
+# Install bat
+$SCRIPT_DIR/automated/bat.sh
+
+# Install Bat theme
+$SCRIPT_DIR/automated/catppucin-bat.sh
+
 # Install xclip
 sudo apt-get install -yy xclip
 

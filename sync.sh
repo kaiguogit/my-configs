@@ -45,3 +45,8 @@ cp -r $SCRIPT_DIR/themes/* ~/.themes
 GITUI_CONFIG_DIR=$HOME/.config/gitui
 mkdir -p $GITUI_CONFIG_DIR
 cp $SCRIPT_DIR/gitui/key_bindings.ron $GITUI_CONFIG_DIR/key_bindings.ron
+
+# bat
+mkdir -p ~/.config/bat
+cp $SCRIPT_DIR/bat/config ~/.config/bat/config/
+

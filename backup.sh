@@ -38,3 +38,8 @@ GITUI_CONFIG_DIR=$HOME/.config/gitui
 if [ -f "$GITUI_CONFIG_DIR/key_bindings.ron" ]; then
     cp $GITUI_CONFIG_DIR/key_bindings.ron $SCRIPT_DIR/gitui/key_bindings.ron
 fi
+
+# bat
+if [ -f ~/.config/bat/config ]; then
+    cp ~/.config/bat/config $SCRIPT_DIR/bat/
+fi
