@@ -27,6 +27,9 @@ $SCRIPT_DIR/automated/lazygit.sh
 sudo apt-get install -yy git git-lfs subversion
 $SCRIPT_DIR/automated/vim.sh
 
+# Install git-delta
+$SCRIPT_DIR/automated/git-delta.sh
+
 # Install xclip
 sudo apt-get install -yy xclip
 
