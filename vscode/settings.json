@@ -1,6 +1,6 @@
 {
   // "workbench.colorTheme": "Monokai",
-  "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorError.border": "#FF0000",
@@ -253,12 +253,13 @@
   "editor.glyphMargin": true,
   "editor.accessibilitySupport": "off",
   "window.restoreFullscreen": true,
-  "workbench.activityBar.visible": false,
   "terminal.explorerKind": "external",
   "workbench.iconTheme": "eq-material-theme-icons-palenight",
   "editor.lineNumbers": "relative",
   "files.autoSave": "onFocusChange",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
-   }
+  },
+  "workbench.activityBar.location": "hidden",
+  "window.zoomLevel": 1
 }

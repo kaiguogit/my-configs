@@ -4,6 +4,7 @@ Angular.ng-template
 asvetliakov.vscode-neovim
 bgse.relative-path-and-line
 Cardinal90.multi-cursor-case-preserve
+Catppuccin.catppuccin-vsc
 Centuplex.quokka
 dbaeumer.vscode-eslint
 eamodio.gitlens

@@ -13,9 +13,9 @@ NVIM_DIR=~/.config/nvim
 rsync -av $NVIM_DIR ~/build/my-configs --exclude nvim/plugin
 
 # VSCODE
-# cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
-# cp ~/.config/Code/User/settings.json $SCRIPT_DIR/vscode/settings.json
-# code --list-extensions > $SCRIPT_DIR/vscode/vs_code_extensions_list.txt
+cp ~/.config/Code/User/keybindings.json $SCRIPT_DIR/vscode/keybindings.json
+cp ~/.config/Code/User/settings.json $SCRIPT_DIR/vscode/settings.json
+code --list-extensions > $SCRIPT_DIR/vscode/vs_code_extensions_list.txt
 
 cp ~/.gitconfig $SCRIPT_DIR/.gitconfig
 
