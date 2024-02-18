@@ -206,4 +206,5 @@ return require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 		},
 	})
+    use {"akinsho/toggleterm.nvim", tag = '*'}
 end)
