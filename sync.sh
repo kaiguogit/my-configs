@@ -48,5 +48,5 @@ cp $SCRIPT_DIR/gitui/key_bindings.ron $GITUI_CONFIG_DIR/key_bindings.ron
 
 # bat
 mkdir -p ~/.config/bat
-cp $SCRIPT_DIR/bat/config ~/.config/bat/config/
+cp $SCRIPT_DIR/bat/config ~/.config/bat/
 
