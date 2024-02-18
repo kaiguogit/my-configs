@@ -140,7 +140,7 @@ alias ifconfig='ip -c a'
 alias dirs="dirs -v"
 alias gs="git status"
 alias r="source ranger"
-alias vim="nvim"
+alias vim="nvim --listen /tmp/nvim-server.pipe"
 alias fd="fdfind"
 alias mount_nfs="sudo mount 10.50.50.200:/mnt/Volume1/Share/backup ~/nfs_share"
 alias vpn_con="/opt/forticlient/forticlient-cli vpn connect \"SSLVPN Vancouver\" --user=kguo --password --save-password"
@@ -163,9 +163,19 @@ export PATH="$PATH:/home/kguo/build/devtools/git/contrib"
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
 export CLICKUP_TOKEN=pk_54677030_HFWHP1FJKBMF6E28AL7X4LKAA2QKZNUW
-export VISUAL="nvim"
-export EDITOR="nvim"
 
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+else
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+fi
+
+# nvim remote
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    alias nvim=nvr -cc split --remote-wait +'set bufhidden=wipe'
+fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

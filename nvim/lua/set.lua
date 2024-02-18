@@ -38,3 +38,8 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
+vim.fn.setenv("GIT_EDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")

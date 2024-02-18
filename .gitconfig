@@ -1,5 +1,5 @@
 [alias]
-   	lg = !git log --color --graph --max-count=1000 --pretty=format:'%h -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+   	lg = !git --no-pager log --color --graph --max-count=1000 --pretty=format:'%h -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- | vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -
    	lg2 = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- | less
 	#lg2 = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | nvim -R -c 'set hidden nowrap keywordprg=:enew | nnoremap q :q!<cr>' -
 	g = !git grep --break --heading --line-number
@@ -31,15 +31,20 @@
 	name = Kai Guo
 	email = kguo@fortinet.com
 [core]
-	editor = vim
+	editor = nvim
 	commitGraph = true
 	#https://salferrarello.com/using-vim-view-git-commits/
-        pager = "vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -"
+    #pager = "vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -"
+    pager = delta
+
 [merge]
-	tool = meld
-[mergetool "meld"]
-	cmd = meld --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\" --label \"MERGE (REMOTE BASE MY)\"
-	trustExitCode = false
+	tool = nvimdiff4
+    prompt = false
+    conflictstyle = diff3
+
+[mergetool "nvimdiff4"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGE -c '$wincmd w' -c 'wincmd J'
+
 [mergetool]
 	# don't ask if we want to skip merge
 	prompt = false
@@ -53,11 +58,13 @@
 	extendRegexp = true
 	lineNumber = true
 [diff]
-	tool = meld
+	tool = nvimdiff
 	algorithm = patience
-[difftool]
-	cmd = meld --auto-merge \"$LOCAL\" \"$REMOTE\" --label \"DIFF (ORIGINAL MY)\" --dir-diff
-        prompt = false
+    colorMoved = default
+
+#[difftool]
+# 	cmd = meld --auto-merge \"$LOCAL\" \"$REMOTE\" --label \"DIFF (ORIGINAL MY)\" --dir-diff
+#         prompt = false
 [difftool "meld"]
     cmd = meld "$LOCAL" "$REMOTE"
 [log]
@@ -84,4 +91,22 @@
 	inputMoveDown = j
     inputMoveSelectionDown = Control+j
 	inputMoveSelectionUp = Control+k
+
+[pull]
+	rebase = true
+
+[interactive]
+        diffFilter = delta --color-only
+
+#[difftool "nvimdiff"]
+#        cmd = nvim -d \"$LCOAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+
+[include]
+    path = /home/kguo/.local/share/catppuccin-delta/themes/mocha.gitconfig
+
+[delta]
+    features = catppuccin-mocha
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    #side-by-side = true
 
