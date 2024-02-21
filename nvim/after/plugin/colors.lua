@@ -1,3 +1,4 @@
+
 function ColorMyPencils(color)
 	color = color or "catppuccin-mocha"
 	vim.cmd.colorscheme(color)
@@ -50,6 +51,7 @@ require('lualine').setup({
     }
 })
 
+vim.cmd.colorscheme("catppuccin-mocha")
 --ColorMyPencils('tokyonight-moon');
 -- ColorMyPencils('nightfly');
-ColorMyPencils();
+-- ColorMyPencils();

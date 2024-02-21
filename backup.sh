@@ -43,3 +43,9 @@ fi
 if [ -f ~/.config/bat/config ]; then
     cp ~/.config/bat/config $SCRIPT_DIR/bat/
 fi
+
+# lazygit
+mkdir -p $SCRIPT_DIR/lazygit
+if [ -f ~/.config/lazygit/config.yml ]; then
+    cp ~/.config/lazygit/config.yml $SCRIPT_DIR/lazygit/
+fi

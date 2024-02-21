@@ -50,3 +50,7 @@ cp $SCRIPT_DIR/gitui/key_bindings.ron $GITUI_CONFIG_DIR/key_bindings.ron
 mkdir -p ~/.config/bat
 cp $SCRIPT_DIR/bat/config ~/.config/bat/
 
+# lazygit
+mkdir -p ~/.config/lazygit
+cp $SCRIPT_DIR/lazygit/config.yml ~/.config/lazygit/
+
