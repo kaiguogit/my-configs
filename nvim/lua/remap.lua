@@ -64,6 +64,7 @@ vim.keymap.set("n", "qo", "<cmd>copen<CR>", silentopts)
 
 -- Lazy git
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
+vim.keymap.set("n", "<C-g>", "<cmd>LazyGit<CR>")
 -- rename append
 vim.keymap.set("n", "<leader>ra", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", silentopts)
 -- rename replace
