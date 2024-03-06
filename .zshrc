@@ -106,6 +106,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Dont let ctrl-d exit shell
+set -o ignoreeof
+
+
 alias g="git"
 alias gl="gitui"
 alias fos="cd ~/build/fos/worktree"
