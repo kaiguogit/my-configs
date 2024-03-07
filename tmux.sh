@@ -14,9 +14,10 @@ start_session() {
 }
 
 start_session fos ~/build/fos-ci/fortios-ci /migadmin/pkg/angular /migadmin/pkg/angular
+start_session fos-1 ~/build/fos-ci/worktree/1 /migadmin/pkg/angular /migadmin/pkg/angular
+start_session fos-3 ~/build/fos-ci/worktree/3 /migadmin/pkg/angular /migadmin/pkg/angular
 start_session neutrino ~/build/neutrino/neutrino
-start_session login_page ~/build/fos-ci/worktree/3 /migadmin/pkg/angular /migadmin/pkg/angular
-start_session lint ~/build/fos-ci/worktree/1 /migadmin/pkg/angular /migadmin/pkg/angular
+start_session tapestry ~/build/tapestry/tapestry
 
 
 tmux attach-session -d -t fos
