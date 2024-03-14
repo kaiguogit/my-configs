@@ -16,7 +16,8 @@ start_session() {
 start_session fos ~/build/fos-ci/fortios-ci /migadmin/pkg/angular /migadmin/pkg/angular
 start_session fos-1 ~/build/fos-ci/worktree/1 /migadmin/pkg/angular /migadmin/pkg/angular
 start_session fos-3 ~/build/fos-ci/worktree/3 /migadmin/pkg/angular /migadmin/pkg/angular
-start_session neutrino ~/build/neutrino/neutrino
+start_session neutrino-stage-omniselect ~/build/neutrino/neutrino
+start_session neutrino-3 ~/build/neutrino/worktree/3
 start_session tapestry ~/build/tapestry/tapestry
 
 
