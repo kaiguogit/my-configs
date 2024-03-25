@@ -43,3 +43,15 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
 vim.fn.setenv("GIT_EDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
+
+vim.opt.list = true
+
+local space = "·"
+vim.opt.listchars:append {
+    tab = "│─",
+    multispace = space,
+    lead = space,
+    trail = space,
+    nbsp = space
+}
+
