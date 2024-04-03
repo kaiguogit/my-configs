@@ -1,8 +1,9 @@
 os:
   open: 'nvim'
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
+  edit: 'nvim {{filename}}'
+  EditAtLine: '{{editor}} --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
 git:
+  autofetch: false
   paging:
     colorArg: always
     pager: delta --dark --paging=never

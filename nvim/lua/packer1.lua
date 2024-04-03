@@ -206,23 +206,22 @@ return require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 		},
 	})
-    use {"akinsho/toggleterm.nvim", tag = '*'}
-    use {
-        "echasnovski/mini.nvim",
-        config = function()
-            -- you can configure Hop the way you like here; see :h hop-config
-            local animate = require('mini.animate')
-            animate.setup({
-                cursor = {
-                    timing = animate.gen_timing.linear({ duration = 50, unit = 'total' })
-                },
-                scroll = {
-                    -- Whether to enable this animation
-                    enable = false,
-                },
-
-            })
-        end,
-    }
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
+	use({
+		"echasnovski/mini.nvim",
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			local animate = require("mini.animate")
+			animate.setup({
+				cursor = {
+					timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+				},
+				scroll = {
+					-- Whether to enable this animation
+					enable = false,
+				},
+			})
+		end,
+	})
+	use("TamaMcGlinn/quickfixdd")
 end)
-
