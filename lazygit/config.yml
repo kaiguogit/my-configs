@@ -1,7 +1,7 @@
 os:
   open: 'nvim'
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
+  edit: 'nvim --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
+  editAtLine: 'nvim --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
 git:
   paging:
     colorArg: always
@@ -9,6 +9,7 @@ git:
   commit:
     signOff: false
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
+  autofetch: false
   theme:
     activeBorderColor:
       - '#89b4fa'

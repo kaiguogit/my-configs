@@ -223,5 +223,6 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+    -- Press dd in quickfix list will delete current file
 	use("TamaMcGlinn/quickfixdd")
 end)

@@ -137,7 +137,20 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-vim.keymap.set("n", "<leader>f", "<cmd>FormatWriteLock<CR>")
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+-- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
+vim.keymap.set("n", "<leader>f", function()
+    organize_imports()
+    vim.cmd('FormatWrite')
+end)
+
 -- vim.keymap.set("n", "<leader>f", function()
 --     -- vim.lsp.buf.format()
 -- end)
