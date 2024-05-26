@@ -149,6 +149,7 @@ end
 vim.keymap.set("n", "<leader>f", function()
     organize_imports()
     vim.cmd('FormatWrite')
+    vim.cmd('EslintFixAll')
 end)
 
 -- vim.keymap.set("n", "<leader>f", function()
