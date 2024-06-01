@@ -66,6 +66,9 @@ telescope.setup {
         -- }
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
+        lsp_references = {
+            show_line = false,
+        },
         find_files = {
             previewer = false,
             -- entry_maker = require"my_make_entry".gen_from_buffer_like_leaderf(),
