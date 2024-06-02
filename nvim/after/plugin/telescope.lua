@@ -147,6 +147,7 @@ telescope.load_extension("ui-select")
 telescope.load_extension("live_grep_args")
 telescope.load_extension('hop')
 telescope.load_extension("neoclip")
+telescope.load_extension("git_file_history")
 
 require('neoclip').setup({
       default_register = {'"', '+', '*'},
@@ -274,5 +275,6 @@ vim.keymap.set('v', '<leader>pl', function()
 end)
 
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
+vim.keymap.set('n', '<leader>gh', telescope.extensions.git_file_history.git_file_history, {})
 vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
 

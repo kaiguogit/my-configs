@@ -55,3 +55,4 @@ vim.opt.listchars:append {
     nbsp = space
 }
 
+vim.opt.foldmethod = 'indent'
