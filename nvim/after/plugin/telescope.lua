@@ -4,6 +4,7 @@ local action_layout = require("telescope.actions.layout")
 local builtin = require('telescope.builtin')
 local lga_actions = require("telescope-live-grep-args.actions")
 
+
 telescope.setup {
     defaults = {
         -- Default configuration for telescope goes here:

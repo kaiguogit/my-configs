@@ -56,3 +56,4 @@ vim.opt.listchars:append {
 }
 
 vim.opt.foldmethod = 'indent'
+

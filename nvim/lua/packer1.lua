@@ -228,4 +228,5 @@ return require("packer").startup(function(use)
 	use("TamaMcGlinn/quickfixdd")
     -- For folding
     use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+    use {'hedyhli/outline.nvim'}
 end)
