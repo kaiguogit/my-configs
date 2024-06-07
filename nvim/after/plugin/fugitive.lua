@@ -1,6 +1,7 @@
 local silentopts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>gb", "<cmd>G blame<CR>")
 vim.keymap.set("n", "<leader>gfh", ":G log --pretty=oneline --follow -p -20 -- %<CR>", silentopts)
+vim.keymap.set("n", "<leader>ggl", ":G log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit<CR>", silentopts)
 
 vim.keymap.set("v", "<leader>gl", function()
 	vim.cmd(
