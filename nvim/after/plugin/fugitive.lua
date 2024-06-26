@@ -5,7 +5,7 @@ vim.keymap.set("n", "<leader>ggl", ":G log --graph --pretty=format:'%Cred%h%Cres
 
 vim.keymap.set("v", "<leader>gl", function()
 	vim.cmd(
-		'G log --pretty="tformat: %Creset%n****************************************************************************************%n%Cred%h%Creset %Cgreen%s%Creset" -L'
+		'G log --pretty="tformat: %Creset%n****************************************************************************************%n%Cred%h%Creset %Cgreen%s%Creset (%cr)" -L'
 			.. vim.fn.line("v")
 			.. ","
 			.. vim.fn.line(".")
@@ -16,7 +16,7 @@ end, {})
 
 vim.keymap.set("n", "<leader>gl", function()
 	vim.cmd(
-		'G log --pretty="tformat: %Creset%n****************************************************************************************%n%Cred%h%Creset %Cgreen%s%Creset" -L'
+		'G log --pretty="tformat: %Creset%n****************************************************************************************%n%Cred%h%Creset %Cgreen%s%Creset (%cr)" -L'
 			.. math.max(1, vim.fn.line(".") - 1)
 			.. ","
 			.. vim.fn.line(".") + 1
