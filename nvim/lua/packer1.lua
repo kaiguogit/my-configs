@@ -20,7 +20,7 @@ return require("packer").startup(function(use)
 				run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
 			{ "nvim-telescope/telescope-hop.nvim" },
-            { "isak102/telescope-git-file-history.nvim" }
+			{ "isak102/telescope-git-file-history.nvim" },
 		},
 	})
 
@@ -224,9 +224,10 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-    -- Press dd in quickfix list will delete current file
+	-- Press dd in quickfix list will delete current file
 	use("TamaMcGlinn/quickfixdd")
-    -- For folding
-    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-    use {'hedyhli/outline.nvim'}
+	-- For folding
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use({ "hedyhli/outline.nvim" })
+	use({ "RRethy/vim-illuminate" })
 end)

@@ -41,7 +41,7 @@ local function lsp_highlight_document(client)
 end
 
 lsp_zero.on_attach(function(client, bufnr)
-	lsp_highlight_document(client)
+	-- lsp_highlight_document(client)
 	-- lsp_format_on_save(bufnr);
 	-- lsp_zero.buffer_autoformat(client, bufnr)
 
