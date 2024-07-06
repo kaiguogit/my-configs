@@ -111,7 +111,6 @@ require("mason-lspconfig").setup({
 		"angularls",
 		"rust_analyzer",
 		"lua_ls",
-		"cpptools",
 		"bashls",
 	},
 	handlers = {

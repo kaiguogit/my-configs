@@ -200,13 +200,6 @@ return require("packer").startup(function(use)
 	})
 	use({ "mhartington/formatter.nvim" })
 
-	use({
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
 	use({
 		"echasnovski/mini.nvim",
@@ -230,4 +223,9 @@ return require("packer").startup(function(use)
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 	use({ "hedyhli/outline.nvim" })
 	use({ "RRethy/vim-illuminate" })
+    use({"folke/noice.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+        },
+    })
 end)
