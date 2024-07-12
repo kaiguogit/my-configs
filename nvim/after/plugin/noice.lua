@@ -3,7 +3,7 @@ views = {
     cmdline_popup = {
         position = {
             row = 25,
-            col = "50%",
+            col = "22%",
         },
         border = {
             style = "none",
@@ -21,7 +21,7 @@ views = {
         relative = "editor",
         position = {
             row = 28,
-            col = "50%",
+            col = "22%",
         },
         size = {
             width = 60,
