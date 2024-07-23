@@ -68,7 +68,10 @@ local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
   cmd = "lazygit",
   dir = "git_dir",
-  direction = "float",
+  direction = "tab",
+  -- size = function(term)
+  --  return vim.o.columns
+  -- end,
   float_opts = {
     border = "single",
   },

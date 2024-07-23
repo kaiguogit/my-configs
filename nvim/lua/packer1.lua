@@ -228,4 +228,9 @@ return require("packer").startup(function(use)
             "MunifTanjim/nui.nvim",
         },
     })
+    use({"m4xshen/hardtime.nvim",
+        requires ={
+            "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim"
+        }
+    })
 end)
