@@ -56,4 +56,5 @@ vim.opt.listchars:append {
 }
 
 vim.opt.foldmethod = 'indent'
+vim.o.backupcopy = 'yes'
 

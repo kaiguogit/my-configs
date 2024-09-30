@@ -98,11 +98,6 @@ return require("packer").startup(function(use)
 
 	use({
 		"0x00-ketsu/autosave.nvim",
-		config = function()
-			require("autosave").setup({
-				debounce_delay = 2000,
-			})
-		end,
 	})
 	-- Themes
 	use("folke/tokyonight.nvim")

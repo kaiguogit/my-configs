@@ -1,6 +1,7 @@
 local autosave = require('autosave')
 autosave.setup(
     {
+        enable = true,
         prompt_style = 'stdout',
         events = {
             'TextChanged'
