@@ -168,6 +168,9 @@ export PATH="$PATH:/home/kguo/build/devtools/git/contrib"
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
 export CLICKUP_TOKEN=pk_54677030_HFWHP1FJKBMF6E28AL7X4LKAA2QKZNUW
+export SASE_CHECKOUT_PATH=/home/kguo/build/sase/fos-gui-light
+export SASE_BIND_PORT=44308
+export FORTISASE_HARBOR_PASSWORD=dBYa2ZueeK2B8wMhUJ6lcPRu6U4zXeQX
 
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
     export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"

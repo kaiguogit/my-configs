@@ -228,4 +228,6 @@ return require("packer").startup(function(use)
             "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim"
         }
     })
+    -- Gdiff to send git lists to quickfix list
+    use({"oguzbilgic/vim-gdiff"})
 end)
