@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/kguo/.zsh/completions:"* ]]; then export FPATH="/home/kguo/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -139,7 +141,7 @@ alias mcmdb='fgtdev df && make -sj4 init && fgtdev dae cmdbsvr'
 alias mhttp='fgtdev df && make -sj4 init && fgtdev dae httpsd'
 alias gti='git'
 alias glg='git lg'
-alias fix_image='make migadmin-json-schema -sj$(nproc) && cd migadmin/pkg/fos-schema-types && fos-npm run build && cd ../fos-common && fos-npm run build && fos-npm run increase-build-version && cd ../report-runner && fos-npm run build && cd ../../..'
+alias fix_image='make migadmin-json-schema -sj$(nproc) && cd migadmin/pkg/fos-schema-types && fos-npm run build && cd ../fos-common && fos-npm run build && cd ../report-runner && fos-npm run build && cd ../../..'
 alias vpn='sudo /home/kguo/Downloads/forticlientsslvpn/64bit/forticlientsslvpn'
 alias ifconfig='ip -c a'
 alias dirs="dirs -v"
@@ -223,3 +225,4 @@ if [ -f "$HOME/.nvm/nvm.sh" ]; then
     fi
 fi
 
+. "/home/kguo/.deno/env"
