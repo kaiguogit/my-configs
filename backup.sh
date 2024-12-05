@@ -49,3 +49,9 @@ mkdir -p $SCRIPT_DIR/lazygit
 if [ -f ~/.config/lazygit/config.yml ]; then
     cp ~/.config/lazygit/config.yml $SCRIPT_DIR/lazygit/
 fi
+
+# wezterm
+mkdir -p $SCRIPT_DIR/wezterm
+if [ -f ~/.wezterm.lua ]; then
+    cp ~/.wezterm.lua $SCRIPT_DIR/wezterm/
+fi

@@ -54,3 +54,5 @@ cp $SCRIPT_DIR/bat/config ~/.config/bat/
 mkdir -p ~/.config/lazygit
 cp $SCRIPT_DIR/lazygit/config.yml ~/.config/lazygit/
 
+mkdir -p $SCRIPT_DIR/wezterm
+cp $SCRIPT_DIR/wezterm/.wezterm.lua ~/.wezterm.lua
