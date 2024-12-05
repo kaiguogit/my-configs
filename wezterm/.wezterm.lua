@@ -13,7 +13,10 @@ config.default_prog = { '/bin/zsh', '-l', '-c', '/home/kguo/build/my-configs/tmu
 config.default_cwd = '/home/kguo/build/fos-ci/fortios-ci'
 config.font = wezterm.font 'Ubuntu Mono Nerd Font Mono'
 config.font_size = 11.0
-config.color_scheme = 'Monokai Pro (Gogh)'
+-- config.color_scheme = 'Monokai Pro (Gogh)'
+config.color_scheme = 'Catppuccin Macchiato'
+-- config.color_scheme = 'Catppuccin Mocha (Gogh)'
+config.warn_about_missing_glyphs = false
 config.window_decorations = 'NONE'
 config.hide_tab_bar_if_only_one_tab = true
 
