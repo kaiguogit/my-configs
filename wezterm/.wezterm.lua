@@ -3,7 +3,6 @@ local wezterm = require 'wezterm'
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
-
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
@@ -11,7 +10,8 @@ local config = wezterm.config_builder()
 
 config.default_prog = { '/bin/zsh', '-l', '-c', '/home/kguo/build/my-configs/tmux.sh' }
 config.default_cwd = '/home/kguo/build/fos-ci/fortios-ci'
-config.font = wezterm.font 'Ubuntu Mono Nerd Font Mono'
+config.font = wezterm.font_with_fallback {'Ubuntu Mono Nerd Font Mono', 'DroidSansFallbackFull'}
+-- config.font = wezterm.font 'Ubuntu Mono Nerd Font Mono'
 config.font_size = 11.0
 -- config.color_scheme = 'Monokai Pro (Gogh)'
 -- config.color_scheme = 'Catppuccin Macchiato'
@@ -48,14 +48,14 @@ config.colors = {
     -- split = '#444444',
 
     ansi = {
-        '#888987',-- 'grey',
-        '#be3f48',-- 'red',
-        '#0f722f',-- 'green',
-        '#c47033',-- 'yellow',
-        '#186de3',-- 'blue',
-        '#fb0067',-- 'magenta',
-        '#2e706d',-- 'cyan',
-        '#fdffb9', -- 'white',
+        '#888987', -- black
+        '#be3f48', -- normal red
+        '#879a3b', -- green
+        '#c5a635', -- yellow
+        '#4f76a1', -- normal blue
+        '#855c8d', -- magenta
+        '#578fa4', -- normal cyan
+        '#b9bcba', -- white
     },
 
     brights = {
