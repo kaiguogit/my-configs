@@ -230,4 +230,12 @@ return require("packer").startup(function(use)
     })
     -- Gdiff to send git lists to quickfix list
     use({"oguzbilgic/vim-gdiff"})
+    use {
+        'rmagatti/auto-session',
+        config = function()
+            require("auto-session").setup {
+                suppressed_dirs = { "/"},
+            }
+        end
+    }
 end)

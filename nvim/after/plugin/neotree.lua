@@ -20,7 +20,7 @@ require("neo-tree").setup({
         },
     },
     filesystem = {
-        hijack_netrw_behavior = "open_current",
+        hijack_netrw_behavior = "disabled",
         -- components = {
         -- harpoon_index = function(config, node, _)
         --     local harpoon_list = require("harpoon"):list()
