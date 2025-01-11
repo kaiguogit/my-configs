@@ -107,7 +107,6 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"html",
 		"jsonls",
-		"tsserver",
 		"angularls",
 		"rust_analyzer",
 		"lua_ls",
