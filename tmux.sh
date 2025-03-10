@@ -21,6 +21,7 @@ start_session fos-3 ~/build/fos-ci/worktree/3 /migadmin/pkg/angular /migadmin/pk
 start_session neutrino-stage-omniselect ~/build/neutrino/neutrino
 start_session neutrino-3 ~/build/neutrino/worktree/3
 start_session tapestry ~/build/tapestry/tapestry
+start_session sase ~/build/sase
 
 
 tmux attach-session -d -t fos
