@@ -146,6 +146,7 @@ alias vpn='sudo /home/kguo/Downloads/forticlientsslvpn/64bit/forticlientsslvpn'
 alias ifconfig='ip -c a'
 alias dirs="dirs -v"
 alias gs="git status"
+alias gd="git diff"
 alias r="source ranger"
 alias vim="nvim --listen /tmp/nvim-server.pipe"
 alias fd="fdfind"
@@ -226,3 +227,8 @@ if [ -f "$HOME/.nvm/nvm.sh" ]; then
 fi
 
 . "/home/kguo/.deno/env"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+

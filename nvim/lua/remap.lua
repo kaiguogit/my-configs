@@ -169,7 +169,7 @@ vim.keymap.set("n", "Q", "<nop>")
 
 local function organize_imports()
 	local params = {
-		command = "_typescript.organizeImports",
+		command = "typescript-tools.organizeImports",
 		arguments = { vim.api.nvim_buf_get_name(0) },
 		title = "",
 	}
@@ -177,7 +177,8 @@ local function organize_imports()
 end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
 vim.keymap.set("n", "<leader>f", function()
-    organize_imports()
+    -- organize_imports()
+    vim.cmd('TSToolsOrganizeImports')
     vim.cmd('FormatWrite')
     vim.cmd('EslintFixAll')
 end)
