@@ -56,5 +56,17 @@ vim.opt.listchars:append {
 }
 
 vim.opt.foldmethod = 'indent'
+-- https://www.jaykim.earth/posts/2023-06-28-gotchas-using-fs-watch-with-vim
 vim.o.backupcopy = 'yes'
 
+-- https://vi.stackexchange.com/a/5318/12823
+vim.g.matchparen_timeout = 2
+vim.g.matchparen_insert_timeout = 2
+
+vim.opt.syntax = "off"
+vim.o.foldenable = false
+vim.o.spell = false
+
+-- turn off log for performance
+-- https://github.com/LazyVim/LazyVim/discussions/326
+vim.lsp.set_log_level("off")
