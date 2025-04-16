@@ -180,7 +180,7 @@ vim.keymap.set("n", "<leader>f", function()
     -- organize_imports()
     vim.cmd('TSToolsOrganizeImports')
     vim.cmd('FormatWrite')
-    vim.cmd('EslintFixAll')
+    -- vim.cmd('EslintFixAll')
 end)
 
 -- vim.keymap.set("n", "<leader>f", function()
