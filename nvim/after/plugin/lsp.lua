@@ -105,6 +105,8 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"cssls",
+        "eslint-lsp",
+        "prettierd",
 		"html",
 		"jsonls",
 		"angularls",
@@ -120,7 +122,6 @@ require("mason-lspconfig").setup({
 		end,
 	},
 })
-
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
@@ -141,6 +142,11 @@ cmp.setup({
 	}),
 })
 
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 local lspconfig = require'lspconfig'
 lspconfig.ccls.setup {
   init_options = {

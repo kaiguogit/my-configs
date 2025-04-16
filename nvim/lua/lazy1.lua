@@ -113,7 +113,13 @@ local plugins = {
 	-- auto comment lines with ctrl-/
 	{"numToStr/Comment.nvim"},
 
-	{"windwp/nvim-autopairs"},
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
+    },
 	{"lewis6991/gitsigns.nvim"},
 	{"0x00-ketsu/autosave.nvim"},
 
@@ -243,6 +249,11 @@ local plugins = {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }
     },
+    {
+        "gregorias/coerce.nvim",
+        tag = 'v4.1.0',
+        config = true,
+    }
 }
 
 -- Setup lazy.nvim
