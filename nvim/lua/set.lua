@@ -63,7 +63,7 @@ vim.o.backupcopy = 'yes'
 vim.g.matchparen_timeout = 2
 vim.g.matchparen_insert_timeout = 2
 
-vim.opt.syntax = "off"
+-- vim.opt.syntax = "off"
 vim.o.foldenable = false
 vim.o.spell = false
 
