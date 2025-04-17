@@ -21,87 +21,76 @@ return {
 			{ "nvim-telescope/telescope-hop.nvim" },
 			{ "isak102/telescope-git-file-history.nvim" },
 		},
-		opts = {
-			defaults = {
-				layout_config = {
-					width = { padding = 0 },
-					height = { padding = 0 },
-					preview_height = 0.8,
-				},
-				layout_strategy = "vertical",
-				mappings = {
-					i = {
-						["<esc>"] = function(prompt_bufnr)
-							require("telescope.actions").close(prompt_bufnr)
-						end,
-						["<C-j>"] = function(prompt_bufnr)
-							require("telescope.actions").move_selection_next(prompt_bufnr)
-						end,
-						["<C-k>"] = function(prompt_bufnr)
-							require("telescope.actions").move_selection_previous(prompt_bufnr)
-						end,
-						-- map actions.which_key to <C-h> (default: <C-/>)
-						-- actions.which_key shows the mappings for your picker,
-						-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-						-- ["<C-h>"] = "which_key"
-						["<M-p>"] = function(prompt_bufnr)
-							require("telescope.actions.layout").toggle_preview(prompt_bufnr)
-						end,
-						["<M-d>"] = function(prompt_bufnr)
-							require("telescope.actions").delete_buffer(prompt_bufnr)
-							require("telescope.actions").move_to_top(prompt_bufnr)
-						end,
-						["<C-s>"] = function(prompt_bufnr)
-							require("telescope.actions").cycle_previewers_next(prompt_bufnr)
-						end,
-						["<C-a>"] = function(prompt_bufnr)
-							require("telescope.actions").cycle_previewers_prev(prompt_bufnr)
-						end,
-						["<C-g>"] = function(prompt_bufnr)
-							-- Use nvim-window-picker to choose the window by dynamically attaching a function
-							local action_set = require("telescope.actions.set")
-							local action_state = require("telescope.actions.state")
+		config = function()
+			local actions = require("telescope.actions")
+			local action_layout = require("telescope.actions.layout")
+			local builtin = require("telescope.builtin")
+			local lga_actions = require("telescope-live-grep-args.actions")
+			local telescope = require("telescope")
+			telescope.setup({
+				defaults = {
+					-- Default configuration for telescope goes here:
+					-- config_key = value,
+					mappings = {
+						i = {
+							["<esc>"] = function(prompt_bufnr)
+								require("telescope.actions").close(prompt_bufnr)
+							end,
+							["<C-j>"] = function(prompt_bufnr)
+								require("telescope.actions").move_selection_next(prompt_bufnr)
+							end,
+							["<C-k>"] = function(prompt_bufnr)
+								require("telescope.actions").move_selection_previous(prompt_bufnr)
+							end,
 
-							local picker = action_state.get_current_picker(prompt_bufnr)
-							picker.get_selection_window = function(picker, entry)
-								local picked_window_id = require("window-picker").pick_window()
-									or vim.api.nvim_get_current_win()
-								-- Unbind after using so next instance of the picker acts normally
-								picker.get_selection_window = nil
-								return picked_window_id
-							end
+							-- map actions.which_key to <C-h> (default: <C-/>)
+							-- actions.which_key shows the mappings for your picker,
+							-- e.g. git_{create, delete, ...}_branch for the git_branches picker
+							-- ["<C-h>"] = "which_key"
+							["<M-p>"] = action_layout.toggle_preview,
+							["<M-d>"] = actions.delete_buffer + actions.move_to_top,
+							["<C-s>"] = actions.cycle_previewers_next,
+							["<C-a>"] = actions.cycle_previewers_prev,
+							["<C-g>"] = function(prompt_bufnr)
+								-- Use nvim-window-picker to choose the window by dynamically attaching a function
+								local action_set = require("telescope.actions.set")
+								local action_state = require("telescope.actions.state")
 
-							return action_set.edit(prompt_bufnr, "edit")
-						end,
-						["<C-h>"] = function(prompt_bufnr)
-							require("telescope").extensions.hop.hop(prompt_bufnr) -- hop.hop_toggle_selection
-						end,
+								local picker = action_state.get_current_picker(prompt_bufnr)
+								picker.get_selection_window = function(picker, entry)
+									local picked_window_id = require("window-picker").pick_window()
+										or vim.api.nvim_get_current_win()
+									-- Unbind after using so next instance of the picker acts normally
+									picker.get_selection_window = nil
+									return picked_window_id
+								end
+
+								return action_set.edit(prompt_bufnr, "edit")
+							end,
+							["<C-h>"] = telescope.extensions.hop.hop, -- hop.hop_toggle_selection
+						},
+						n = {
+							["cd"] = function(prompt_bufnr)
+								local selection = require("telescope.actions.state").get_selected_entry()
+								local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+								require("telescope.actions").close(prompt_bufnr)
+								-- Depending on what you want put `cd`, `lcd`, `tcd`
+								vim.cmd(string.format("silent lcd %s", dir))
+							end,
+							["<M-p>"] = action_layout.toggle_preview,
+							["<C-h>"] = telescope.extensions.hop.hop, -- hop.hop_toggle_selection
+						},
 					},
-					n = {
-						["cd"] = function(prompt_bufnr)
-							local selection = require("telescope.actions.state").get_selected_entry()
-							local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-							require("telescope.actions").close(prompt_bufnr)
-							-- Depending on what you want put `cd`, `lcd`, `tcd`
-							vim.cmd(string.format("silent lcd %s", dir))
-						end,
-						["<M-p>"] = function(prompt_bufnr)
-							require("telescope.actions.layout").toggle_preview(prompt_bufnr)
-						end,
-						["<C-h>"] = function(prompt_bufnr)
-							require("telescope").extensions.hop.hop(prompt_bufnr) -- hop.hop_toggle_selection
-						end,
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--trim",
 					},
-				},
-				vimgrep_arguments = {
-					"rg",
-					"--color=never",
-					"--no-heading",
-					"--with-filename",
-					"--line-number",
-					"--column",
-					"--smart-case",
-					"--trim",
 				},
 				pickers = {
 					-- Default configuration for builtin pickers goes here:
@@ -162,14 +151,8 @@ return {
 						-- define mappings, e.g.
 						mappings = { -- extend mappings
 							i = {
-								["<C-k>"] = function()
-									require("telescope-live-grep-args.actions").quote_prompt()
-								end,
-								["<C-i>"] = function(prompt_bufnr)
-									require("telescope-live-grep-args.actions").quote_prompt({
-										postfix = " --iglob ",
-									})
-								end,
+								["<C-k>"] = lga_actions.quote_prompt(),
+								["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
 							},
 						},
 					},
@@ -212,10 +195,8 @@ return {
 						reset_selection = true,
 					},
 				},
-			},
-		},
-		config = function()
-			local telescope = require("telescope")
+			})
+
 			telescope.load_extension("ui-select")
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("hop")
