@@ -12,6 +12,7 @@ vim.g.mapleader = " "
 -- Delete default lazyvim keymap
 vim.keymap.del({ "n", "t" }, "<c-/>")
 vim.keymap.del({ "n", "t" }, "<c-_>")
+vim.keymap.del("n", "<leader>sj")
 
 -- my key maps
 vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")

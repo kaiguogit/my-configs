@@ -168,12 +168,9 @@ return {
 					opts.ensure_installed = opts.ensure_installed or {}
 					vim.list_extend(opts.ensure_installed, {
 						"js-debug-adapter",
-						"cssls",
 						"eslint-lsp",
 						"prettierd",
-						"html",
-						"jsonls",
-						"angularls",
+						"angular-language-server",
 					})
 				end,
 			},

@@ -105,8 +105,8 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"cssls",
-        "eslint-lsp",
-        "prettierd",
+		"eslint-lsp",
+		"prettierd",
 		"html",
 		"jsonls",
 		"angularls",
@@ -142,20 +142,17 @@ cmp.setup({
 	}),
 })
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
-local lspconfig = require'lspconfig'
-lspconfig.ccls.setup {
-  init_options = {
-    compilationDatabaseDirectory = "build";
-    index = {
-      threads = 0;
-    };
-    clang = {
-      excludeArgs = { "-frounding-math"} ;
-    };
-  }
-}
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+local lspconfig = require("lspconfig")
+lspconfig.ccls.setup({
+	init_options = {
+		compilationDatabaseDirectory = "build",
+		index = {
+			threads = 0,
+		},
+		clang = {
+			excludeArgs = { "-frounding-math" },
+		},
+	},
+})

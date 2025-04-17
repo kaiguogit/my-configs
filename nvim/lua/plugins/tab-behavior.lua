@@ -40,33 +40,45 @@ return {
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
 			local cmp = require("cmp")
-
 			opts.mapping = vim.tbl_extend("force", opts.mapping, {
 				["<Tab>"] = cmp.mapping(function(fallback)
-					local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
-					local current_line = vim.api.nvim_get_current_line()
-					local char_after_cursor = current_line:sub(cur_col + 1, cur_col + 1)
-					local tabout_symbols = {}
-					for _, tabout in ipairs(tabouts) do
-						table.insert(tabout_symbols, tabout.open)
-						table.insert(tabout_symbols, tabout.close)
-					end
-
-					-- local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
-
-					-- copilot completion
-					-- if suggestion.text ~= nil and suggestion.text ~= "" then
-					-- 	local copilot_keys = vim.fn["copilot#Accept"]()
-					-- 	if copilot_keys ~= "" then
-					-- 		vim.api.nvim_feedkeys(copilot_keys, "i", true)
-					-- 	end
-					-- elseif vim.tbl_contains(tabout_symbols, char_after_cursor) then
-					if vim.tbl_contains(tabout_symbols, char_after_cursor) then
-						vim.api.nvim_win_set_cursor(0, { cur_row, cur_col + 1 })
+					if cmp.visible() then
+						cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+					elseif require("luasnip").expand_or_jumpable() then
+						vim.fn.feedkeys(
+							vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+							""
+						)
 					else
 						fallback()
 					end
 				end, { "i", "s" }),
+
+				-- ["<Tab>"] = cmp.mapping(function(fallback)
+				-- 	local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
+				-- 	local current_line = vim.api.nvim_get_current_line()
+				-- 	local char_after_cursor = current_line:sub(cur_col + 1, cur_col + 1)
+				-- 	local tabout_symbols = {}
+				-- 	for _, tabout in ipairs(tabouts) do
+				-- 		table.insert(tabout_symbols, tabout.open)
+				-- 		table.insert(tabout_symbols, tabout.close)
+				-- 	end
+				--
+				-- 	-- local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
+				--
+				-- 	-- copilot completion
+				-- 	-- if suggestion.text ~= nil and suggestion.text ~= "" then
+				-- 	-- 	local copilot_keys = vim.fn["copilot#Accept"]()
+				-- 	-- 	if copilot_keys ~= "" then
+				-- 	-- 		vim.api.nvim_feedkeys(copilot_keys, "i", true)
+				-- 	-- 	end
+				-- 	-- elseif vim.tbl_contains(tabout_symbols, char_after_cursor) then
+				-- 	if vim.tbl_contains(tabout_symbols, char_after_cursor) then
+				-- 		vim.api.nvim_win_set_cursor(0, { cur_row, cur_col + 1 })
+				-- 	else
+				-- 		fallback()
+				-- 	end
+				-- end, { "i", "s" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
 					local current_line = vim.api.nvim_get_current_line()
