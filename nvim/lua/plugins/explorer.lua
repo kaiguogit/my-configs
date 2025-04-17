@@ -239,4 +239,18 @@ return {
 			},
 		},
 	},
+	{
+		"0x00-ketsu/autosave.nvim",
+		config = function()
+			local autosave = require("autosave")
+			autosave.setup({
+				enable = true,
+				prompt_style = "stdout",
+				events = {
+					"TextChanged",
+				},
+				debounce_delay = 3000,
+			})
+		end,
+	},
 }

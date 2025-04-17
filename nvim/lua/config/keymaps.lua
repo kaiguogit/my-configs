@@ -232,7 +232,7 @@ vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
 vim.keymap.set("n", "<leader>cn", ':let @+ = expand("%:t")<CR>')
 
 -- LSP
-local opts = { buffer = bufnr, remap = false }
+local opts = { remap = false }
 
 vim.keymap.set("n", "gh", function()
 	vim.lsp.buf.hover()
