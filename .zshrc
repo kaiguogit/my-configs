@@ -226,9 +226,9 @@ if [ -f "$HOME/.nvm/nvm.sh" ]; then
     fi
 fi
 
-. "/home/kguo/.deno/env"
+# . "/home/kguo/.deno/env"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - bash)"
 

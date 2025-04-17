@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>pv", vim.cmdd.Ex)
-vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal_force_cwd left<CR>")
+-- vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal_force_cwd left<CR>")
 --vim.keymap.set("n", "<leader>fb", ":Neotree source=buffers reveal_force_cwd left<CR>")
 -- vim.keymap.set(
 --   "n",
@@ -8,6 +8,14 @@ vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal_force_cwd l
 --   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
 --   { noremap = true }
 -- )
+
+-- Delete default lazyvim keymap
+vim.keymap.del({ "n", "t" }, "<c-/>")
+vim.keymap.del({ "n", "t" }, "<c-_>")
+
+-- my key maps
+vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")
+vim.keymap.set("t", "<c-_>", "<cmd>close<CR>")
 
 local silentopts = { noremap = true, silent = true }
 -- Buffer navigation
@@ -222,3 +230,37 @@ end, { silent = true })
 -- copy file path
 vim.keymap.set("n", "<leader>cp", ":let @+=@%<CR>")
 vim.keymap.set("n", "<leader>cn", ':let @+ = expand("%:t")<CR>')
+
+-- LSP
+local opts = { buffer = bufnr, remap = false }
+
+vim.keymap.set("n", "gh", function()
+	vim.lsp.buf.hover()
+end, opts)
+vim.keymap.set("n", "<leader>vws", function()
+	vim.lsp.buf.workspace_symbol()
+end, opts)
+vim.keymap.set("n", "ge", function()
+	vim.diagnostic.open_float()
+end, opts)
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.goto_next()
+end, opts)
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.goto_prev()
+end, opts)
+vim.keymap.set("n", "<leader>ca", function()
+	vim.lsp.buf.code_action()
+end, opts)
+-- Used <leader>fr in telescope.lua
+-- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+vim.keymap.set("n", "gd", function()
+	vim.lsp.buf.definition()
+end, opts)
+vim.keymap.set("n", "<leader>vrn", function()
+	vim.lsp.buf.rename()
+end, opts)
+vim.keymap.set("n", "<leader>ph", function()
+	vim.lsp.buf.signature_help()
+end, opts)
+vim.keymap.set("n", "<leader>oi", organize_imports)

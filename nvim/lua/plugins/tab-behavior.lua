@@ -33,9 +33,9 @@ return {
 			return {}
 		end,
 		init = function()
-			vim.g.copilot_no_tab_map = true
-			vim.g.copilot_assume_mapped = true
-			vim.g.copilot_tab_fallback = ""
+			-- vim.g.copilot_no_tab_map = true
+			-- vim.g.copilot_assume_mapped = true
+			-- vim.g.copilot_tab_fallback = ""
 		end,
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
@@ -52,15 +52,16 @@ return {
 						table.insert(tabout_symbols, tabout.close)
 					end
 
-					local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
+					-- local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
 
 					-- copilot completion
-					if suggestion.text ~= nil and suggestion.text ~= "" then
-						local copilot_keys = vim.fn["copilot#Accept"]()
-						if copilot_keys ~= "" then
-							vim.api.nvim_feedkeys(copilot_keys, "i", true)
-						end
-					elseif vim.tbl_contains(tabout_symbols, char_after_cursor) then
+					-- if suggestion.text ~= nil and suggestion.text ~= "" then
+					-- 	local copilot_keys = vim.fn["copilot#Accept"]()
+					-- 	if copilot_keys ~= "" then
+					-- 		vim.api.nvim_feedkeys(copilot_keys, "i", true)
+					-- 	end
+					-- elseif vim.tbl_contains(tabout_symbols, char_after_cursor) then
+					if vim.tbl_contains(tabout_symbols, char_after_cursor) then
 						vim.api.nvim_win_set_cursor(0, { cur_row, cur_col + 1 })
 					else
 						fallback()
