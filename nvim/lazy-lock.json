@@ -8,6 +8,7 @@
   "advanced-git-search.nvim": { "branch": "main", "commit": "69a41a3351d89e8be597fe5682265d8c99b8b12c" },
   "auto-pairs": { "branch": "master", "commit": "f062f6f908ba190a347567ad7794865cb0c2ef85" },
   "auto-session": { "branch": "main", "commit": "095b0b54d40c8cc7fe37f2ae4d948ec3069bb1c2" },
+  "autosave.nvim": { "branch": "main", "commit": "348f72cf0241e3e736e3396c4834def2f8ef8d10" },
   "barbar.nvim": { "branch": "master", "commit": "807bede7ef1d8e2ac5f108e9ac8123b1e2d321e3" },
   "blame.nvim": { "branch": "main", "commit": "b87b8c820e4cec06fbbd2f946b7b35c45906ee0c" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
