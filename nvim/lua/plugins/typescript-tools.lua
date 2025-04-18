@@ -81,7 +81,7 @@ return {
 
 					local lazyvim_cr_rhs = found and found[2] or 'echo "No keymap found"'
 
-					keys[#keys + 1] = {
+					table.insert(keys, {
 						"<leader>cR",
 						function()
 							if vim.tbl_contains(ft_js, vim.bo.filetype) then
@@ -92,13 +92,49 @@ return {
 						end,
 						desc = "Rename File",
 						buffer = true,
-					}
-					keys[#keys + 2] = {
+					})
+					table.insert(keys, {
 						"gh",
 						vim.lsp.buf.hover,
 						desc = "Hover",
 						buffer = true,
-					}
+					})
+					table.insert(keys, {
+						"ge",
+						vim.diagnostic.open_float,
+						desc = "Diagnose",
+						buffer = true,
+					})
+					table.insert(keys, {
+						"<leader>ca",
+						vim.lsp.buf.code_action,
+						desc = "Code Action",
+						buffer = true,
+					})
+					table.insert(keys, {
+						"<leader>vws",
+						vim.lsp.buf.workspace_symbol,
+						desc = "workspace_symbol",
+						buffer = true,
+					})
+					table.insert(keys, {
+						"gd",
+						vim.lsp.buf.definition,
+						desc = "Go to definition",
+						buffer = true,
+					})
+					table.insert(keys, {
+						"<leader>vrn",
+						vim.lsp.buf.rename,
+						desc = "Rename",
+						buffer = true,
+					})
+					table.insert(keys, {
+						"<leader>ph",
+						vim.lsp.buf.signature_help,
+						desc = "Signature help",
+						buffer = true,
+					})
 				end,
 			},
 		},
@@ -138,39 +174,6 @@ return {
 				disable_member_code_lens = true,
 				jsx_close_tag = { enable = false },
 			},
-			on_attach = function(bufnr)
-				local opts = { buffer = bufnr, remap = false }
-
-				vim.keymap.set("n", "gh", function()
-					vim.lsp.buf.hover()
-				end, opts)
-				vim.keymap.set("n", "<leader>vws", function()
-					vim.lsp.buf.workspace_symbol()
-				end, opts)
-				vim.keymap.set("n", "ge", function()
-					vim.diagnostic.open_float()
-				end, opts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.goto_next()
-				end, opts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.goto_prev()
-				end, opts)
-				vim.keymap.set("n", "<leader>ca", function()
-					vim.lsp.buf.code_action()
-				end, opts)
-				-- Used <leader>fr in telescope.lua
-				-- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
-				end, opts)
-				vim.keymap.set("n", "<leader>vrn", function()
-					vim.lsp.buf.rename()
-				end, opts)
-				vim.keymap.set("n", "<leader>ph", function()
-					vim.lsp.buf.signature_help()
-				end, opts)
-			end,
 			root_dir = function()
 				return vim.uv.cwd()
 			end,

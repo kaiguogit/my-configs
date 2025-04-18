@@ -70,3 +70,5 @@ vim.o.spell = false
 -- turn off log for performance
 -- https://github.com/LazyVim/LazyVim/discussions/326
 vim.lsp.set_log_level("off")
+-- set cmd height to 0
+vim.o.cmdheight = 0
