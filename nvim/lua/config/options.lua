@@ -47,17 +47,17 @@ vim.fn.setenv("GIT_EDITOR", "nvr -cc split --remote-wait +'set bufhidden=wipe'")
 vim.opt.list = true
 
 local space = "·"
-vim.opt.listchars:append {
-    tab = "│─",
-    multispace = space,
-    lead = space,
-    trail = space,
-    nbsp = space
-}
+vim.opt.listchars:append({
+	tab = "│─",
+	multispace = space,
+	lead = space,
+	trail = space,
+	nbsp = space,
+})
 
-vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = "indent"
 -- https://www.jaykim.earth/posts/2023-06-28-gotchas-using-fs-watch-with-vim
-vim.o.backupcopy = 'yes'
+vim.o.backupcopy = "yes"
 
 -- https://vi.stackexchange.com/a/5318/12823
 vim.g.matchparen_timeout = 2

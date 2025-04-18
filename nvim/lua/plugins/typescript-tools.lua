@@ -21,33 +21,33 @@ return {
 			})
 		end,
 	},
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "b0o/SchemaStore.nvim" },
-		},
-		opts = {
-			servers = {
-				ts_ls = {
-					enable = false,
-				},
-				-- @deprecated
-				tsserver = {
-					enabled = false,
-				},
-			},
-			setup = {
-				tsserver = function()
-					-- disable tsserver
-					return true
-				end,
-				ts_ls = function()
-					-- disable ts_ls
-					return true
-				end,
-			},
-		},
-	},
+	-- {
+	-- 	"neovim/nvim-lspconfig",
+	-- 	dependencies = {
+	-- 		{ "b0o/SchemaStore.nvim" },
+	-- 	},
+	-- 	opts = {
+	-- 		servers = {
+	-- 			ts_ls = {
+	-- 				enable = false,
+	-- 			},
+	-- 			-- @deprecated
+	-- 			tsserver = {
+	-- 				enabled = false,
+	-- 			},
+	-- 		},
+	-- 		setup = {
+	-- 			tsserver = function()
+	-- 				-- disable tsserver
+	-- 				return true
+	-- 			end,
+	-- 			ts_ls = function()
+	-- 				-- disable ts_ls
+	-- 				return true
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"pmizio/typescript-tools.nvim",
 		lazy = false,
@@ -93,11 +93,20 @@ return {
 						desc = "Rename File",
 						buffer = true,
 					}
+					keys[#keys + 2] = {
+						"gh",
+						vim.lsp.buf.hover,
+						desc = "Hover",
+						buffer = true,
+					}
 				end,
 			},
 		},
 		ft = ft_js,
 		opts = {
+			-- handlers = {
+			-- 	["tsserver"] = function() end, -- handled by `typescript_tools.lua`
+			-- },
 			settings = {
 				code_lens = "off",
 				complete_function_calls = false,
@@ -121,10 +130,47 @@ return {
 					importModuleSpecifierPreference = "project-relative",
 					jsxAttributeCompletionStyle = "braces",
 				},
+				-- styled components
+				tsserver_plugins = {
+					"@vscode/emmet_helper",
+				},
 				tsserver_locale = "en",
 				disable_member_code_lens = true,
 				jsx_close_tag = { enable = false },
 			},
+			on_attach = function(bufnr)
+				local opts = { buffer = bufnr, remap = false }
+
+				vim.keymap.set("n", "gh", function()
+					vim.lsp.buf.hover()
+				end, opts)
+				vim.keymap.set("n", "<leader>vws", function()
+					vim.lsp.buf.workspace_symbol()
+				end, opts)
+				vim.keymap.set("n", "ge", function()
+					vim.diagnostic.open_float()
+				end, opts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.goto_next()
+				end, opts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.goto_prev()
+				end, opts)
+				vim.keymap.set("n", "<leader>ca", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+				-- Used <leader>fr in telescope.lua
+				-- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrn", function()
+					vim.lsp.buf.rename()
+				end, opts)
+				vim.keymap.set("n", "<leader>ph", function()
+					vim.lsp.buf.signature_help()
+				end, opts)
+			end,
 			root_dir = function()
 				return vim.uv.cwd()
 			end,
@@ -167,10 +213,10 @@ return {
 				opts = function(_, opts)
 					opts.ensure_installed = opts.ensure_installed or {}
 					vim.list_extend(opts.ensure_installed, {
-						"js-debug-adapter",
-						"eslint-lsp",
+						-- "js-debug-adapter",
+						"eslint_d",
 						"prettierd",
-						"angular-language-server",
+						-- "angular-language-server",
 					})
 				end,
 			},
