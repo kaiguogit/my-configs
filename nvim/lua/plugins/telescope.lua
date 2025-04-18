@@ -20,6 +20,7 @@ return {
 			},
 			{ "nvim-telescope/telescope-hop.nvim" },
 			{ "isak102/telescope-git-file-history.nvim" },
+			{ "natecraddock/workspaces.nvim" },
 		},
 		config = function()
 			local actions = require("telescope.actions")
@@ -27,10 +28,13 @@ return {
 			local builtin = require("telescope.builtin")
 			local lga_actions = require("telescope-live-grep-args.actions")
 			local telescope = require("telescope")
+			local workspaces = require("workspaces")
 			telescope.setup({
 				defaults = {
-					-- Default configuration for telescope goes here:
-					-- config_key = value,
+					sorting_strategy = "ascending",
+					layout_config = {
+						prompt_position = "top",
+					},
 					mappings = {
 						i = {
 							["<esc>"] = function(prompt_bufnr)
@@ -194,9 +198,16 @@ return {
 						-- jump to entry where hoop loop was started from
 						reset_selection = true,
 					},
+					workspaces = {
+						-- keep insert mode after selection in the picker, default is false
+						keep_insert = true,
+						-- Highlight group used for the path in the picker, default is "String"
+						path_hl = "String",
+					},
 				},
 			})
 
+			telescope.load_extension("workspaces")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("hop")
@@ -227,6 +238,12 @@ return {
 
 			-- Find all files
 			vim.keymap.set("n", "<C-M-p>", project_files, {})
+
+			workspaces.setup({
+				hooks = {
+					open = project_files,
+				},
+			})
 
 			local function getCurrentFolderPath()
 				-- return vim.fn.substitute(vim.fn.expand("%:p"), vim.fn.expand("%:t"), "", "")
@@ -304,6 +321,9 @@ return {
 			end)
 			vim.keymap.set("v", "<leader>pl", function()
 				telescope.extensions.neoclip.default()
+			end)
+			vim.keymap.set("n", "<leader>pj", function()
+				vim.cmd("Telescope workspaces")
 			end)
 
 			vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
