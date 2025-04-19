@@ -31,7 +31,7 @@
 	name = Kai Guo
 	email = kguo@fortinet.com
 [core]
-	editor = nvim
+	editor = vim.basic
 	commitGraph = true
 	#https://salferrarello.com/using-vim-view-git-commits/
     ; pager = "vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -"
