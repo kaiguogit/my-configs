@@ -19,6 +19,7 @@ config.font_size = 11.0
 config.warn_about_missing_glyphs = false
 config.window_decorations = "NONE"
 config.hide_tab_bar_if_only_one_tab = true
+config.adjust_window_size_when_changing_font_size = false
 
 config.window_padding = {
 	bottom = 0,
