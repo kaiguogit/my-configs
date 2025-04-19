@@ -13,6 +13,7 @@ vim.g.mapleader = " "
 vim.keymap.del({ "n", "t" }, "<c-/>")
 vim.keymap.del({ "n", "t" }, "<c-_>")
 vim.keymap.del("n", "<leader>sj")
+vim.keymap.del("n", "s")
 
 -- my key maps
 vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")

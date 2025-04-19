@@ -217,7 +217,6 @@ return {
 					opts.ensure_installed = opts.ensure_installed or {}
 					vim.list_extend(opts.ensure_installed, {
 						-- "js-debug-adapter",
-						"eslint_d",
 						"prettierd",
 						-- "angular-language-server",
 					})

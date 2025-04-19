@@ -294,7 +294,7 @@ return {
 			end)
 
 			-- Find fiels in current buffers
-			vim.keymap.set("n", "<C-p>", builtin.buffers, {})
+			vim.keymap.set("n", "<C-p>", builtin.buffers, { desc = "Open buffer" })
 
 			-- Fuzzy search in current file
 			-- vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})
@@ -349,22 +349,20 @@ return {
 				})
 			end)
 
-			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-			vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
+			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Vim help tags" })
+			vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Open LSP references" })
 			vim.keymap.set("n", "<leader>pl", function()
 				telescope.extensions.neoclip.default()
-			end)
+			end, { desc = "Open clip board" })
 			vim.keymap.set("v", "<leader>pl", function()
 				telescope.extensions.neoclip.default()
-			end)
+			end, { desc = "Open clip board" })
 			vim.keymap.set("n", "<leader>pj", function()
 				vim.cmd("Telescope workspaces")
-			end)
+			end, { desc = "Open workspaces list" })
 
 			vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
-			vim.keymap.set("n", "<leader>gh", telescope.extensions.git_file_history.git_file_history, {})
-			vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
+			vim.keymap.set("n", "<leader>ghh", telescope.extensions.git_file_history.git_file_history, {})
 		end,
 	},
 }
