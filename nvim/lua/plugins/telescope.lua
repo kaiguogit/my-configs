@@ -1,6 +1,8 @@
 return {
 	{
-		"AckslD/nvim-neoclip.lua",
+		-- "AckslD/nvim-neoclip.lua",
+		-- This fork suport visual past
+		"peterfication/nvim-neoclip.lua",
 		dependencies = {
 			{ "kkharji/sqlite.lua" },
 			{ "nvim-telescope/telescope.nvim" },
@@ -18,12 +20,19 @@ return {
 				end
 				return true
 			end
-
+			local function visual_paste(opts)
+				local handlers = require("neoclip.handlers")
+				handlers.set_registers({ "z" }, opts.entry)
+				vim.api.nvim_feedkeys('gv"zp', "n", false)
+			end
+			-- https://github.com/AckslD/nvim-neoclip.lua/issues/128#issuecomment-2210249626
 			require("neoclip").setup({
 				keys = {
 					telescope = {
 						i = {
 							paste = "<cr>",
+							-- paste_behind = "<c-o>",
+							-- past_visual = "<c-s-k>",
 						},
 					},
 				},
