@@ -8,8 +8,9 @@ git:
     pager: delta --dark --paging=never
   commit:
     signOff: false
-  diffContextSize: 3 # how many lines of context are shown around a change in diffs
-  autofetch: false
+  # diffContextSize: 3 # how many lines of context are shown around a change in diffs
+  autoFetch: false
+gui:
   theme:
     activeBorderColor:
       - '#89b4fa'
@@ -20,8 +21,8 @@ git:
       - '#89b4fa'
     selectedLineBgColor:
       - '#313244'
-    selectedRangeBgColor:
-      - '#313244'
+    #selectedRangeBgColor:
+    #  - '#313244'
     cherryPickedCommitBgColor:
       - '#45475a'
     cherryPickedCommitFgColor:
