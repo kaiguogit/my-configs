@@ -15,6 +15,12 @@ vim.keymap.del({ "n", "t" }, "<c-_>")
 vim.keymap.del("n", "<leader>sj")
 vim.keymap.del("n", "s")
 vim.keymap.del("n", "<leader>gl")
+-- key map is annoying since I use <leader>s for saving
+vim.keymap.del("n", "<leader>sk")
+vim.keymap.set("n", "<leader>kp", function()
+	require('snacks').picker.keymaps()
+end
+)
 
 -- my key maps
 vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")
@@ -161,7 +167,7 @@ end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
 vim.keymap.set("n", "<leader>f", function(args)
 	-- organize_imports()
-	vim.cmd("TSToolsOrganizeImports")
+	-- vim.cmd("TSToolsOrganizeImports")
 	-- vim.cmd("FormatWrite")
 	require("conform").format()
 	-- vim.cmd('EslintFixAll')
