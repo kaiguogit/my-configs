@@ -72,3 +72,5 @@ vim.o.spell = false
 vim.lsp.set_log_level("off")
 -- set cmd height to 0
 vim.o.cmdheight = 0
+-- https://www.reddit.com/r/neovim/comments/1arkhtx/how_to_disable_format_on_save_in_lazyvim/
+vim.g.autoformat = false

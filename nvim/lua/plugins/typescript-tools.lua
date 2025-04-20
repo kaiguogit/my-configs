@@ -21,6 +21,14 @@ return {
 			})
 		end,
 	},
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+			},
+		},
+	},
 	-- {
 	-- 	"neovim/nvim-lspconfig",
 	-- 	dependencies = {

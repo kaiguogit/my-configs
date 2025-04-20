@@ -14,6 +14,7 @@ vim.keymap.del({ "n", "t" }, "<c-/>")
 vim.keymap.del({ "n", "t" }, "<c-_>")
 vim.keymap.del("n", "<leader>sj")
 vim.keymap.del("n", "s")
+vim.keymap.del("n", "<leader>gl")
 
 -- my key maps
 vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")
@@ -149,18 +150,20 @@ vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 local function organize_imports()
-	local params = {
-		command = "typescript-tools.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
+	vim.cmd("TSToolsOrganizeImports")
+	-- local params = {
+	-- 	command = "typescript-tools.organizeImports",
+	-- 	arguments = { vim.api.nvim_buf_get_name(0) },
+	-- 	title = "",
+	-- }
+	-- vim.lsp.buf_request_sync(0, "workspace/executeCommand", params, 3000)
 end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set("n", "<leader>f", function(args)
 	-- organize_imports()
-	vim.cmd("TSToolsOrganizeImports")
-	vim.cmd("FormatWrite")
+	-- vim.cmd("TSToolsOrganizeImports")
+	-- vim.cmd("FormatWrite")
+	require("conform").format()
 	-- vim.cmd('EslintFixAll')
 end)
 
