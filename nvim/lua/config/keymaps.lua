@@ -21,6 +21,7 @@ vim.keymap.set("n", "<leader>kp", function()
 	require('snacks').picker.keymaps()
 end
 )
+vim.keymap.del("n", "<leader>gb")
 
 -- my key maps
 vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")
