@@ -78,22 +78,46 @@ return {
 		},
 	},
 	{
-		"nvim-pack/nvim-spectre",
-		config = function()
-			require("spectre").setup()
-
-			vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
-				desc = "Toggle Spectre",
-			})
-			vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-				desc = "Search current word",
-			})
-			vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-				desc = "Search current word",
-			})
-			vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-				desc = "Search on current file",
-			})
-		end,
+		"MagicDuck/grug-far.nvim",
+		keys = {
+			{
+				"<leader>sw",
+				function()
+					require("grug-far").open({ transient = true, prefills = { search = vim.fn.expand("<cword>") } })
+				end,
+				mode = { "n" },
+				desc = "grug-far: Search current word",
+			},
+			{
+				"<leader>sw",
+				function()
+					require("grug-far").with_visual_selection({ transient = true })
+				end,
+				mode = { "v" },
+				desc = "grug-far: Search current word",
+			},
+			{
+				"<leader>sp",
+				function()
+					require("grug-far").open({
+						transient = true,
+						prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") },
+					})
+				end,
+				mode = { "n" },
+				desc = "grug-far: Search on current file",
+			},
+			{
+				"<leader>sp",
+				function()
+					require("grug-far").with_visual_selection({
+						transient = true,
+						prefills = { paths = vim.fn.expand("%") },
+					})
+				end,
+				mode = { "v" },
+				desc = "grug-far: Search on current file",
+			},
+		}
 	},
 }

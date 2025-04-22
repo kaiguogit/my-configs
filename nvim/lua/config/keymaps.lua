@@ -22,6 +22,9 @@ vim.keymap.set("n", "<leader>kp", function()
 end
 )
 vim.keymap.del("n", "<leader>gb")
+-- snack help list
+vim.keymap.del("n", "<leader>sh")
+-- end delete --
 
 -- my key maps
 vim.keymap.set("n", "<c-_>", "<cmd>ToggleTerm<CR>")

@@ -156,6 +156,8 @@ alias vpn_dis="/opt/forticlient/forticlient-cli vpn disconnect \"SSLVPN Vancouve
 alias vpn_status="/opt/forticlient/forticlient-cli vpn status"
 alias replace_caplock="/bin/bash -c \"/usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'\""
 alias restore_caplock="/usr/bin/setxkbmap -option"
+alias build="fos-npx nx run-many --target build --projects"
+alias watch_nx="npx nx watch --all -- echo \$NX_PROJECT_NAME \$NX_FILE_CHANGES"
 
 
 source ~/build/devtools/fos/fos_node_env
