@@ -23,6 +23,19 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				opts = function(_, opts)
+					opts.ensure_installed = opts.ensure_installed or {}
+					vim.list_extend(opts.ensure_installed, {
+						-- "js-debug-adapter",
+						"prettierd",
+						-- "angular-language-server",
+					})
+				end,
+			},
+		},
 		opts = {
 			formatters_by_ft = {
 				typescript = { "prettierd", stop_after_first = true },
@@ -72,77 +85,42 @@ return {
 			"nvim-lua/plenary.nvim",
 			{
 				"neovim/nvim-lspconfig",
-				opts = function(_, opts)
-					local keys = require("lazyvim.plugins.lsp.keymaps").get()
+				config = function()
+					-- local keys = require("lazyvim.plugins.lsp.keymaps").get()
 
-					-- keys is a table of tables, where each table is a keymap, with 1st position being the key
-					-- and the 2nd position being the value
-					-- find me the keymap that has the key "<leader>CR"
-					local found
-					for _, keymap in ipairs(keys) do
-						if keymap[1] == "<leader>cR" then
-							-- print the value of the keymap
-							found = keymap
-							break
-						end
-					end
-
-					local lazyvim_cr_rhs = found and found[2] or 'echo "No keymap found"'
-
-					table.insert(keys, {
-						"<leader>cR",
-						function()
-							if vim.tbl_contains(ft_js, vim.bo.filetype) then
-								vim.cmd("TSToolsRenameFile")
-							else
-								vim.cmd(lazyvim_cr_rhs)
-							end
-						end,
-						desc = "Rename File",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"gh",
-						vim.lsp.buf.hover,
-						desc = "Hover",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"ge",
-						vim.diagnostic.open_float,
-						desc = "Diagnose",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"<leader>ca",
-						vim.lsp.buf.code_action,
-						desc = "Code Action",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"<leader>vws",
-						vim.lsp.buf.workspace_symbol,
-						desc = "workspace_symbol",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"gd",
-						vim.lsp.buf.definition,
-						desc = "Go to definition",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"<leader>vrn",
-						vim.lsp.buf.rename,
-						desc = "Rename",
-						buffer = true,
-					})
-					table.insert(keys, {
-						"<leader>ph",
-						vim.lsp.buf.signature_help,
-						desc = "Signature help",
-						buffer = true,
-					})
+					---- keys is a table of tables, where each table is a keymap, with 1st position being the key
+					---- and the 2nd position being the value
+					---- find me the keymap that has the key "<leader>CR"
+					-- local found
+					-- for _, keymap in ipairs(keys) do
+					-- 	if keymap[1] == "<leader>cR" then
+					-- 		-- print the value of the keymap
+					-- 		found = keymap
+					-- 		break
+					-- 	end
+					-- end
+					--
+					-- local lazyvim_cr_rhs = found and found[2] or 'echo "No keymap found"'
+					--
+					-- table.insert(keys, {
+					-- 	"<leader>cR",
+					-- 	function()
+					-- 		if vim.tbl_contains(ft_js, vim.bo.filetype) then
+					-- 			vim.cmd("TSToolsRenameFile")
+					-- 		else
+					-- 			vim.cmd(lazyvim_cr_rhs)
+					-- 		end
+					-- 	end,
+					-- 	desc = "Rename File",
+					-- 	buffer = true,
+					-- })
+					vim.keymap.set("n",  "gh", vim.lsp.buf.hover, {desc = "Hover"})
+					vim.keymap.set( "n", "ge", vim.diagnostic.open_float, {desc = "Diagnose"})
+					vim.keymap.set( "n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
+					vim.keymap.set( "n", "<leader>vws", vim.lsp.buf.workspace_symbol, {desc = "workspace_symbol"})
+					vim.keymap.set( "n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
+					vim.keymap.set( "n", "<leader>vrn", vim.lsp.buf.rename, {desc = "Rename"})
+					vim.keymap.set( "n", "<leader>ph", vim.lsp.buf.signature_help, {desc = "Signature help"})
 				end,
 			},
 		},
@@ -215,76 +193,75 @@ return {
 			"TSCClose",
 		},
 	},
-	{
-		"mfussenegger/nvim-dap",
-		optional = true,
-		dependencies = {
-			{
-				"williamboman/mason.nvim",
-				opts = function(_, opts)
-					opts.ensure_installed = opts.ensure_installed or {}
-					vim.list_extend(opts.ensure_installed, {
-						-- "js-debug-adapter",
-						"prettierd",
-						-- "angular-language-server",
-					})
-				end,
-			},
-		},
-		opts = function()
-			local dap = require("dap")
-			if not dap.adapters["pwa-node"] then
-				require("dap").adapters["pwa-node"] = {
-					type = "server",
-					host = "localhost",
-					port = "${port}",
-					executable = {
-						command = "node",
-						-- 💀 Make sure to update this path to point to your installation
-						args = {
-							require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-								.. "/js-debug/src/dapDebugServer.js",
-							"${port}",
-						},
-					},
-				}
-			end
-			if not dap.adapters["node"] then
-				dap.adapters["node"] = function(cb, config)
-					if config.type == "node" then
-						config.type = "pwa-node"
-					end
-					local nativeAdapter = dap.adapters["pwa-node"]
-					if type(nativeAdapter) == "function" then
-						nativeAdapter(cb, config)
-					else
-						cb(nativeAdapter)
-					end
-				end
-			end
-
-			for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx" }) do
-				if not dap.configurations[language] then
-					dap.configurations[language] = {
-						{
-							type = "pwa-node",
-							request = "launch",
-							name = "Launch file",
-							program = "${file}",
-							cwd = "${workspaceFolder}",
-						},
-						{
-							type = "pwa-node",
-							request = "attach",
-							name = "Attach",
-							processId = require("dap.utils").pick_process,
-							cwd = "${workspaceFolder}",
-						},
-					}
-				end
-			end
-		end,
-	},
+	-- {
+	-- 	"mfussenegger/nvim-dap",
+	-- 	optional = true,
+	-- 	-- dependencies = {
+	-- 	-- 	{
+	-- 	-- 		"williamboman/mason.nvim",
+	-- 	-- 		opts = function(_, opts)
+	-- 	-- 			opts.ensure_installed = opts.ensure_installed or {}
+	-- 	-- 			vim.list_extend(opts.ensure_installed, {
+	-- 	-- 				-- "js-debug-adapter",
+	-- 	-- 				-- "angular-language-server",
+	-- 	-- 			})
+	-- 	-- 		end,
+	-- 	-- 	},
+	-- 	-- },
+	-- 	opts = function()
+	-- 		local dap = require("dap")
+	-- 		if not dap.adapters["pwa-node"] then
+	-- 			require("dap").adapters["pwa-node"] = {
+	-- 				type = "server",
+	-- 				host = "localhost",
+	-- 				port = "${port}",
+	-- 				executable = {
+	-- 					command = "node",
+	-- 					-- 💀 Make sure to update this path to point to your installation
+	-- 					args = {
+	-- 						require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+	-- 							.. "/js-debug/src/dapDebugServer.js",
+	-- 						"${port}",
+	-- 					},
+	-- 				},
+	-- 			}
+	-- 		end
+	-- 		if not dap.adapters["node"] then
+	-- 			dap.adapters["node"] = function(cb, config)
+	-- 				if config.type == "node" then
+	-- 					config.type = "pwa-node"
+	-- 				end
+	-- 				local nativeAdapter = dap.adapters["pwa-node"]
+	-- 				if type(nativeAdapter) == "function" then
+	-- 					nativeAdapter(cb, config)
+	-- 				else
+	-- 					cb(nativeAdapter)
+	-- 				end
+	-- 			end
+	-- 		end
+	--
+	-- 		for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx" }) do
+	-- 			if not dap.configurations[language] then
+	-- 				dap.configurations[language] = {
+	-- 					{
+	-- 						type = "pwa-node",
+	-- 						request = "launch",
+	-- 						name = "Launch file",
+	-- 						program = "${file}",
+	-- 						cwd = "${workspaceFolder}",
+	-- 					},
+	-- 					{
+	-- 						type = "pwa-node",
+	-- 						request = "attach",
+	-- 						name = "Attach",
+	-- 						processId = require("dap.utils").pick_process,
+	-- 						cwd = "${workspaceFolder}",
+	-- 					},
+	-- 				}
+	-- 			end
+	-- 		end
+	-- 	end,
+	-- },
 	{
 		"echasnovski/mini.icons",
 		opts = {

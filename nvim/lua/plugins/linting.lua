@@ -7,14 +7,14 @@ return {
 			-- })
 		end,
 	},
-	{
-		"mfussenegger/nvim-lint",
-		opts = {
-			linters_by_ft = {
-				-- markdown = { "proselint" },
-				-- python = { "ruff" },
-				-- yaml = { "yamllint" },
-			},
-		},
-	},
+	-- {
+	-- 	"mfussenegger/nvim-lint",
+	-- 	opts = {
+	-- 		linters_by_ft = {
+	-- 			-- markdown = { "proselint" },
+	-- 			-- python = { "ruff" },
+	-- 			-- yaml = { "yamllint" },
+	-- 		},
+	-- 	},
+	-- },
 }

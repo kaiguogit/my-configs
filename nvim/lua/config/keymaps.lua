@@ -10,20 +10,23 @@ vim.g.mapleader = " "
 -- )
 
 -- Delete default lazyvim keymap
-vim.keymap.del({ "n", "t" }, "<c-/>")
-vim.keymap.del({ "n", "t" }, "<c-_>")
-vim.keymap.del("n", "<leader>sj")
-vim.keymap.del("n", "s")
-vim.keymap.del("n", "<leader>gl")
--- key map is annoying since I use <leader>s for saving
-vim.keymap.del("n", "<leader>sk")
-vim.keymap.set("n", "<leader>kp", function()
-	require('snacks').picker.keymaps()
-end
-)
-vim.keymap.del("n", "<leader>gb")
--- snack help list
-vim.keymap.del("n", "<leader>sh")
+-- vim.keymap.del({ "n", "t" }, "<c-/>")
+-- vim.keymap.del({ "n", "t" }, "<c-_>")
+-- vim.keymap.del("n", "<leader>sj")
+-- vim.keymap.del("n", "s")
+-- vim.keymap.del("n", "<leader>gl")
+-- -- key map is annoying since I use <leader>s for saving
+-- vim.keymap.del("n", "<leader>sk")
+-- vim.keymap.set("n", "<leader>kp", function()
+-- 	require('snacks').picker.keymaps()
+-- end
+-- )
+-- vim.keymap.del("n", "<leader>gb")
+-- -- snack help list
+-- vim.keymap.del("n", "<leader>sh")
+-- -- remove picker to not conflict with grug-far
+-- vim.keymap.del("n", "<leader>sw")
+-- vim.keymap.del("v", "<leader>sw")
 -- end delete --
 
 -- my key maps

@@ -1,5 +1,5 @@
 --local selected_colorscheme = "melange"
-local selected_colorscheme = "catppuccin-mocha"
+-- local selected_colorscheme = "catppuccin-mocha"
 
 --local function apply_highlight_overwrites()
 --	if vim.g.colors == "melange" then
@@ -76,5 +76,5 @@ return {
 		end,
 	},
 	-- { "savq/melange-nvim" },
-	{ "LazyVim/LazyVim", opts = { colorscheme = selected_colorscheme } },
+	-- { "LazyVim/LazyVim", opts = { colorscheme = selected_colorscheme } },
 }

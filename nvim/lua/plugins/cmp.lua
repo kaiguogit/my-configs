@@ -19,8 +19,11 @@ return {
     },
     opts = function(_, opts)
       local cmp = require("cmp")
+      opts.sources = opts.sources or {}
       table.insert(opts.sources, { name = "nvim_lsp_signature_help" })
       table.insert(opts.sources, { name = "rg", keyword_length = 3 })
+      opts.sorting = opts.sorting or {}
+      opts.sorting.comparators = opts.sorting.comparators or {}
       table.insert(opts.sorting.comparators, 4, require("cmp-under-comparator").under)
       table.insert(opts.sources, { name = "dotenv" })
       table.insert(opts.sources, { name = "emoji" })

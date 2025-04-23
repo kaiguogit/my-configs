@@ -4,6 +4,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
+			opts.ensure_installed = opts.ensure_installed or {}
 			-- add tsx and treesitter
 			vim.list_extend(opts.ensure_installed, {
 				"html",
@@ -63,18 +64,18 @@ return {
 	-- 		},
 	-- 	},
 	-- },
-	{
-		"mfussenegger/nvim-lint",
-		opts = {
-			linters_by_ft = {
-				-- ["html"] = { "htmlhint" },
-				-- ["css"] = { "stylelint" },
-				-- ["scss"] = { "stylelint" },
-				-- ["less"] = { "stylelint" },
-				-- ["sugarss"] = { "stylelint" },
-				-- ["vue"] = { "stylelint" },
-				-- ["wxss"] = { "stylelint" },
-			},
-		},
-	},
+	-- {
+	-- 	"mfussenegger/nvim-lint",
+	-- 	opts = {
+	-- 		linters_by_ft = {
+	-- 			-- ["html"] = { "htmlhint" },
+	-- 			-- ["css"] = { "stylelint" },
+	-- 			-- ["scss"] = { "stylelint" },
+	-- 			-- ["less"] = { "stylelint" },
+	-- 			-- ["sugarss"] = { "stylelint" },
+	-- 			-- ["vue"] = { "stylelint" },
+	-- 			-- ["wxss"] = { "stylelint" },
+	-- 		},
+	-- 	},
+	-- },
 }

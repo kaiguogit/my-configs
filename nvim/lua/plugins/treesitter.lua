@@ -113,7 +113,8 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
-    event = "LazyFile",
+    lazy = false,
+    -- event = "LazyFile",
     config = function()
       require("nvim-ts-autotag").setup({
         opts = {
@@ -122,44 +123,44 @@ return {
       })
     end,
   },
-  {
-    "echasnovski/mini.ai",
-    dependencies = {
-      { "echasnovski/mini.extra", config = true },
-    },
-    event = "VeryLazy",
-    opts = function(_, opts)
-      local ai = require("mini.ai")
-      local MiniExtra = require("mini.extra")
-      return vim.tbl_deep_extend("force", opts, {
-        custom_textobjects = {
-          C = ai.gen_spec.treesitter({ a = "@comment.outer", i = "@comment.outer" }),
-          D = MiniExtra.gen_ai_spec.diagnostic(),
-          E = MiniExtra.gen_ai_spec.diagnostic({ severity = vim.diagnostic.severity.ERROR }),
-          h = mini_ai_git_signs,
-          j = ai.gen_spec.treesitter({
-            a = { "@jsx_attr" },
-            i = { "@jsx_attr" },
-          }),
-          k = ai.gen_spec.treesitter({
-            i = { "@assignment.lhs", "@key.inner" },
-            a = { "@assignment.outer", "@key.inner" },
-          }),
-          L = MiniExtra.gen_ai_spec.line(),
-          N = MiniExtra.gen_ai_spec.number(),
-          O = ai.gen_spec.treesitter({
-            a = { "@function.outer", "@class.outer" },
-            i = { "@function.inner", "@class.inner" },
-          }),
-          -- mixes up with leap-spooky so not using it
-          -- r = ai.gen_spec.treesitter({ a = "@return.outer", i = "@return.inner" }),
-          v = ai.gen_spec.treesitter({
-            i = { "@assignment.rhs", "@value.inner", "@return.inner" },
-            a = { "@assignment.outer", "@value.inner", "@return.outer" },
-          }),
-          ["$"] = ai.gen_spec.pair("$", "$", { type = "balanced" }),
-        },
-      })
-    end,
-  },
+  -- {
+  --   "echasnovski/mini.ai",
+  --   dependencies = {
+  --     { "echasnovski/mini.extra", config = true },
+  --   },
+  --   event = "VeryLazy",
+  --   opts = function(_, opts)
+  --     local ai = require("mini.ai")
+  --     local MiniExtra = require("mini.extra")
+  --     return vim.tbl_deep_extend("force", opts, {
+  --       custom_textobjects = {
+  --         C = ai.gen_spec.treesitter({ a = "@comment.outer", i = "@comment.outer" }),
+  --         D = MiniExtra.gen_ai_spec.diagnostic(),
+  --         E = MiniExtra.gen_ai_spec.diagnostic({ severity = vim.diagnostic.severity.ERROR }),
+  --         h = mini_ai_git_signs,
+  --         j = ai.gen_spec.treesitter({
+  --           a = { "@jsx_attr" },
+  --           i = { "@jsx_attr" },
+  --         }),
+  --         k = ai.gen_spec.treesitter({
+  --           i = { "@assignment.lhs", "@key.inner" },
+  --           a = { "@assignment.outer", "@key.inner" },
+  --         }),
+  --         L = MiniExtra.gen_ai_spec.line(),
+  --         N = MiniExtra.gen_ai_spec.number(),
+  --         O = ai.gen_spec.treesitter({
+  --           a = { "@function.outer", "@class.outer" },
+  --           i = { "@function.inner", "@class.inner" },
+  --         }),
+  --         -- mixes up with leap-spooky so not using it
+  --         -- r = ai.gen_spec.treesitter({ a = "@return.outer", i = "@return.inner" }),
+  --         v = ai.gen_spec.treesitter({
+  --           i = { "@assignment.rhs", "@value.inner", "@return.inner" },
+  --           a = { "@assignment.outer", "@value.inner", "@return.outer" },
+  --         }),
+  --         ["$"] = ai.gen_spec.pair("$", "$", { type = "balanced" }),
+  --       },
+  --     })
+  --   end,
+  -- },
 }
