@@ -55,27 +55,27 @@ return {
 	-- 		setup = {},
 	-- 	},
 	-- },
-	-- {
-	-- 	"stevearc/conform.nvim",
-	-- 	opts = {
-	-- 		formatters_by_ft = {
-	-- 			css = { "stylelint", { "prettier" } },
-	-- 			scss = { "stylelint", { "prettier" } },
-	-- 		},
-	-- 	},
-	-- },
-	-- {
-	-- 	"mfussenegger/nvim-lint",
-	-- 	opts = {
-	-- 		linters_by_ft = {
-	-- 			-- ["html"] = { "htmlhint" },
-	-- 			-- ["css"] = { "stylelint" },
-	-- 			-- ["scss"] = { "stylelint" },
-	-- 			-- ["less"] = { "stylelint" },
-	-- 			-- ["sugarss"] = { "stylelint" },
-	-- 			-- ["vue"] = { "stylelint" },
-	-- 			-- ["wxss"] = { "stylelint" },
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				css = { "stylelint", { "prettier" } },
+				scss = { "stylelint", { "prettier" } },
+			},
+		},
+	},
+	{
+		"mfussenegger/nvim-lint",
+		opts = {
+			linters_by_ft = {
+				-- ["html"] = { "htmlhint" },
+				-- ["css"] = { "stylelint" },
+				-- ["scss"] = { "stylelint" },
+				-- ["less"] = { "stylelint" },
+				-- ["sugarss"] = { "stylelint" },
+				-- ["vue"] = { "stylelint" },
+				-- ["wxss"] = { "stylelint" },
+			},
+		},
+	},
 }

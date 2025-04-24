@@ -145,30 +145,30 @@ return {
   },
   -- end copy from https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/treesitter.lua
 
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   dependencies = {
-  --     "RRethy/nvim-treesitter-endwise",
-  --     "chrisgrieser/nvim-puppeteer",
-  --   },
-  --   opts = {
-  --     endwise = {
-  --       enable = true,
-  --     },
-  --     tree_setter = {
-  --       enable = true,
-  --     },
-  --     textobjects = {
-  --       move = {
-  --         enable = true,
-  --         goto_next_start = { ["]r"] = "@return.outer" },
-  --         goto_next_end = { ["]R"] = "@return.outer" },
-  --         goto_previous_start = { ["[r"] = "@return.outer" },
-  --         goto_previous_end = { ["[R"] = "@return.outer" },
-  --       },
-  --     },
-  --   },
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "RRethy/nvim-treesitter-endwise",
+      "chrisgrieser/nvim-puppeteer",
+    },
+    opts = {
+      endwise = {
+        enable = true,
+      },
+      tree_setter = {
+        enable = true,
+      },
+      textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = { ["]r"] = "@return.outer" },
+          goto_next_end = { ["]R"] = "@return.outer" },
+          goto_previous_start = { ["[r"] = "@return.outer" },
+          goto_previous_end = { ["[R"] = "@return.outer" },
+        },
+      },
+    },
+  },
   {
     "wellle/visual-split.vim",
   },

@@ -13,19 +13,39 @@ vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
 	return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
 end
 
-local LazyVimDiagnostics = {
+local LazyVimDiagnosticsIcons = {
 	Error = " ",
 	Warn  = " ",
 	Hint  = " ",
 	Info  = " ",
 }
+---@class lazyvim.util.lsp
+local M = {}
+---@type table<string, table<vim.lsp.Client, table<number, boolean>>>
+M._supports_method = {}
+---@param method string
+---@param fn fun(client:vim.lsp.Client, buffer)
+function M.on_supports_method(method, fn)
+  M._supports_method[method] = M._supports_method[method] or setmetatable({}, { __mode = "k" })
+  return vim.api.nvim_create_autocmd("User", {
+    pattern = "LspSupportsMethod",
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      local buffer = args.data.buffer ---@type number
+      if client and method == args.data.method then
+        return fn(client, buffer)
+      end
+    end,
+  })
+end
 
 return {
 	-- start copy from https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/lsp/init.lua
 	-- lspconfig
 	{
 		"neovim/nvim-lspconfig",
-		event = "LazyFile",
+		lazy = false,
+		-- event = "LazyFile",
 		dependencies = {
 			"mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", config = function() end },
@@ -49,10 +69,10 @@ return {
 					severity_sort = true,
 					signs = {
 						text = {
-							[vim.diagnostic.severity.ERROR] = LazyVimDiagnostics.Error,
-							[vim.diagnostic.severity.WARN] = LazyVimDiagnostics.Warn,
-							[vim.diagnostic.severity.HINT] = LazyVimDiagnostics.Hint,
-							[vim.diagnostic.severity.INFO] = LazyVimDiagnostics.Info,
+							[vim.diagnostic.severity.ERROR] = LazyVimDiagnosticsIcons.Error,
+							[vim.diagnostic.severity.WARN] = LazyVimDiagnosticsIcons.Warn,
+							[vim.diagnostic.severity.HINT] = LazyVimDiagnosticsIcons.Hint,
+							[vim.diagnostic.severity.INFO] = LazyVimDiagnosticsIcons.Info,
 						},
 					},
 				},
@@ -159,44 +179,46 @@ return {
 				end
 			end
 
+			vim.lsp.inlay_hint.enable(true)
+
 			if vim.fn.has("nvim-0.10") == 1 then
 				-- inlay hints
 				if opts.inlay_hints.enabled then
-					-- LazyVim.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
-					-- 	if
-					-- 		vim.api.nvim_buf_is_valid(buffer)
-					-- 		and vim.bo[buffer].buftype == ""
-					-- 		and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
-					-- 	then
-					-- 		vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
-					-- 	end
-					-- end)
+					M.on_supports_method("textDocument/inlayHint", function(client, buffer)
+						if
+							vim.api.nvim_buf_is_valid(buffer)
+							and vim.bo[buffer].buftype == ""
+							and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
+						then
+							vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+						end
+					end)
 				end
 
 				-- code lens
 				if opts.codelens.enabled and vim.lsp.codelens then
-					-- LazyVim.lsp.on_supports_method("textDocument/codeLens", function(client, buffer)
-					-- 	vim.lsp.codelens.refresh()
-					-- 	vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-					-- 		buffer = buffer,
-					-- 		callback = vim.lsp.codelens.refresh,
-					-- 	})
-					-- end)
+					M.on_supports_method("textDocument/codeLens", function(client, buffer)
+						vim.lsp.codelens.refresh()
+						vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+							buffer = buffer,
+							callback = vim.lsp.codelens.refresh,
+						})
+					end)
 				end
 			end
 
-			-- if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-			-- 	opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-			-- 	or function(diagnostic)
-			-- 		local icons = LazyVim.config.icons.diagnostics
-			-- 		for d, icon in pairs(icons) do
-			-- 			if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-			-- 				return icon
-			-- 			end
-			-- 		end
-			-- 	end
-			-- end
-
+			-- This is for inline linting message
+			if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
+				opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
+				or function(diagnostic)
+					local icons = LazyVimDiagnosticsIcons
+					for d, icon in pairs(icons) do
+						if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+							return icon
+						end
+					end
+				end
+			end
 			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
 			local servers = opts.servers
@@ -330,11 +352,11 @@ return {
 		dependencies = {
 			{
 				"neovim/nvim-lspconfig",
-				opts = function()
+				-- opts = function()
 					-- local keys = require("lazyvim.plugins.lsp.keymaps").get()
 					--
 					-- keys[#keys + 1] = { "<leader>ca", false }
-				end,
+				-- end,
 			},
 		},
 		opts = {

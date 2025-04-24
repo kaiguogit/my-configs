@@ -2,7 +2,7 @@ local nvim_runtime_file = vim.api.nvim_get_runtime_file("", true)
 
 table.insert(nvim_runtime_file, vim.env.VIMRUNTIME)
 
-return {
+return {{
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
@@ -33,4 +33,5 @@ return {
       },
     },
   },
+}
 }

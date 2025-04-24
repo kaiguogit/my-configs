@@ -22,13 +22,13 @@ return {
       vim.list_extend(opts.ensure_installed, { "shellcheck" })
     end,
   },
-  -- {
-  --   "mfussenegger/nvim-lint",
-  --   opts = function(_, opts)
-  --     opts.linters_by_ft = opts.linter_by_ft or {}
-  --     opts.linters_by_ft.bash = opts.linters_by_ft.bash or {}
-  --     table.insert(opts.linters_by_ft.bash, "shellcheck")
-  --     return opts
-  --   end,
-  -- },
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      opts.linters_by_ft = opts.linter_by_ft or {}
+      opts.linters_by_ft.bash = opts.linters_by_ft.bash or {}
+      table.insert(opts.linters_by_ft.bash, "shellcheck")
+      return opts
+    end,
+  },
 }

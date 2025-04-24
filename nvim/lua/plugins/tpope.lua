@@ -27,9 +27,17 @@ return {
 				vim.cmd("vert G --paginate show " .. get_visual_selection())
 			end, {})
 
+			-- without remerge-diff
 			vim.keymap.set(
 				"n",
 				"<leader>gfh",
+				":vert G --paginate log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --follow -p -20 -- %<CR>",
+				silentopts
+			)
+			-- with remerge-diff
+			vim.keymap.set(
+				"n",
+				"<leader>gfm",
 				":vert G --paginate log --remerge-diff --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --follow -p -20 -- %<CR>",
 				silentopts
 			)

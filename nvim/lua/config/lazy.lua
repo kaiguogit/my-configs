@@ -87,7 +87,7 @@ lazy.setup({
 		{ import = "plugins.leap" },
 		{ import = "plugins.linting" },
 		{ import = "plugins.log" },
-		-- { import = "plugins.lsp" },
+		{ import = "plugins.lsp" },
 		{ import = "plugins.lua" },
 		{ import = "plugins.lualine" },
 		{ import = "plugins.markdown" },
