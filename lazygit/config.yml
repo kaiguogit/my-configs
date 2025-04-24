@@ -1,6 +1,6 @@
 os:
   open: 'nvim'
-  editPreset: 'nvim-remote'
+  edit: 'nvim --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
   editAtLine: 'nvim --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
 git:
   paging:

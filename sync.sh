@@ -10,7 +10,7 @@ cp $SCRIPT_DIR/.tigrc $HOME/
 cp $SCRIPT_DIR/alacritty/.alacritty.yml $HOME/
 cp $SCRIPT_DIR/alacritty/Alacritty.desktop ~/build/alacritty/extra/linux/
 
-sudo desktop-file-install ~/build/alacritty/extra/linux/Alacritty.desktop
+# sudo desktop-file-install ~/build/alacritty/extra/linux/Alacritty.desktop
 
 # nvim
 cp -r $SCRIPT_DIR/nvim/* $HOME/.config/nvim/
