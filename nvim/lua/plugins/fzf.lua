@@ -511,4 +511,57 @@ return {
 	-- 		}
 	-- 	end,
 	-- },
+	-- {
+	-- 	-- "AckslD/nvim-neoclip.lua",
+	-- 	-- This fork suport visual past
+	-- 	"peterfication/nvim-neoclip.lua",
+	-- 	dependencies = {
+	-- 		{ "kkharji/sqlite.lua", module="sqlite" },
+	--      {"ibhagwan/fzf-lua"}
+	-- 	},
+	--    keys = {
+	--      {
+	--        "<leader>pl", function()
+	--          require("neoclip.fzf")()
+	--        end,
+	--        mode = { "n", "v"},
+	--        desc = "Clipboard manager",
+	--      },
+	--    },
+	--
+	-- 	config = function()
+	-- 		local function is_whitespace(line)
+	-- 			return vim.fn.match(line, [[^\s*$]]) ~= -1
+	-- 		end
+	--
+	-- 		local function all(tbl, check)
+	-- 			for _, entry in ipairs(tbl) do
+	-- 				if not check(entry) then
+	-- 					return false
+	-- 				end
+	-- 			end
+	-- 			return true
+	-- 		end
+	-- 		local function visual_paste(opts)
+	-- 			local handlers = require("neoclip.handlers")
+	-- 			handlers.set_registers({ "z" }, opts.entry)
+	-- 			vim.api.nvim_feedkeys('gv"zp', "n", false)
+	-- 		end
+	-- 		-- https://github.com/AckslD/nvim-neoclip.lua/issues/128#issuecomment-2210249626
+	-- 		require("neoclip").setup({
+	-- 			keys = {
+	-- 				fzf = {
+	-- 					i = {
+	-- 						paste = "<cr>",
+	-- 						-- paste_behind = "<c-o>",
+	-- 						past_visual = "<c-s-k>",
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 			filter = function(data)
+	-- 				return not all(data.event.regcontents, is_whitespace)
+	-- 			end,
+	-- 		})
+	-- 	end,
+	-- },
 }

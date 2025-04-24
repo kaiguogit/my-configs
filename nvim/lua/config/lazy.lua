@@ -71,7 +71,7 @@ lazy.setup({
 		{ import = "plugins.eslint" },
 		{ import = "plugins.explorer" },
 		-- { import = "plugins.fish" },
-		{ import = "plugins.fzf" },
+		-- { import = "plugins.fzf" },
 		{ import = "plugins.git" },
 		-- { import = "plugins.github" },
 		{ import = "plugins.gx" },
@@ -95,7 +95,7 @@ lazy.setup({
 		{ import = "plugins.multi-cursors" },
 		{ import = "plugins.noice" },
 		{ import = "plugins.numb" },
-		{ import = "plugins.nvim-notify" },
+		-- { import = "plugins.nvim-notify" },
 		{ import = "plugins.osv" },
 		{ import = "plugins.owner-code-search" },
 		{ import = "plugins.parinfer" },
@@ -106,7 +106,7 @@ lazy.setup({
 		{ import = "plugins.search-and-replace" },
 		{ import = "plugins.session" },
 		{ import = "plugins.show-file-owner" },
-		-- { import = "plugins.snacks" },
+		{ import = "plugins.snacks" },
 		{ import = "plugins.summarize-code" },
 		{ import = "plugins.summarize-commit" },
 		{ import = "plugins.switch-src-test" },
@@ -136,7 +136,7 @@ lazy.setup({
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
-	checker = { enabled = true }, -- automatically check for plugin updates
+	checker = { enabled = true, notify = false }, -- automatically check for plugin updates
 	performance = {
 		rtp = {
 			-- disable some rtp plugins

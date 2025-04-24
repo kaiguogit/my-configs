@@ -1,19 +1,30 @@
+local function getCurrentFolderPath()
+	-- return vim.fn.substitute(vim.fn.expand("%:p"), vim.fn.expand("%:t"), "", "")
+	return vim.fn.expand("%:p:h")
+end
 return {
 	{
 		"folke/snacks.nvim",
 		opts = {
+			picker = { enabled = true },
+			notifier = { enabled = true },
 			bigfile = { enabled = false },
 			dashboard = { enabled = false },
 			explorer = { enabled = false },
 			quickfile = { enabled = false },
 			indent = { enabled = false },
 			input = { enabled = false },
-			notifier = { enabled = true },
 			scope = { enabled = false },
-			scroll = { enabled = false },
+			scroll = { enabled = true },
 			statuscolumn = { enabled = false }, -- lazyvim handles that
 			toggle = { enabled = false },
 			words = { enabled = false },
+			lazygit = {
+				configure = true,
+				win = {
+					style = "lazygit",
+				},
+			}
 		},
 		keys = {
 			{
@@ -24,6 +35,31 @@ return {
 				"<leader>un",
 				false,
 			},
+			-- lazygit
+			{ "<C-g>", function() Snacks.lazygit() end, desc = "Lazygit" },
+			-- Files
+			{ "<C-M-p>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+			{ "<M-S-p>", function() Snacks.picker.files({dirs = {getCurrentFolderPath()}}) end, desc = "Smart Find Files" },
+			{ "<C-p>", function() Snacks.picker.buffers() end, desc = "Buffers" },
+			-- grep
+			{ "<C-M-l>", function() Snacks.picker.grep() end, desc = "Grep" },
+			{ "<M-S-l>", function() Snacks.picker.grep({dirs = {getCurrentFolderPath()}}) end, desc = "Grep" },
+			{ "<C-M-f>", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+			{ "<M-S-f>", function() Snacks.picker.grep_word({dirs = {getCurrentFolderPath()}}) end, desc = "Visual selection or word", mode = { "n", "x" } },
+			{ "<C-f>", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+			-- search
+			{ "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+			{ "<leader>kp", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+			-- explorer
+			{ "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+			--lsp
+			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
+			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+			{ "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+			{ "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
+			{ "<leader>fs", function() Snacks.picker.lsp_symbols({layout={ preset = "sidebar", preview="main" }, main = {current = true}}) end, desc = "LSP Symbols" },
+
 			{
 				"<leader>nh",
 				function()
