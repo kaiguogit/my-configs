@@ -7,14 +7,14 @@ return {
       end
     end,
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        bashls = {},
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       bashls = {},
+  --     },
+  --   },
+  -- },
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
