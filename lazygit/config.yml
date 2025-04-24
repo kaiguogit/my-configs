@@ -1,7 +1,7 @@
 os:
   open: 'nvim'
-  edit: 'nvim --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
-  editAtLine: 'nvim --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
+  edit: 'nvim --server /tmp/nvim-server.pipe --remote "$(pwd)/{{filename}}"'
+  editAtLine: 'nvim --server /tmp/nvim-server.pipe --remote "$(pwd)/{{filename}}"'
 git:
   paging:
     colorArg: always
