@@ -123,25 +123,25 @@ return {
 				desc = "Resume Picker List",
 			},
 			{
-				"<leader>sw",
+				"<m-s-f>",
 				function()
 					live_grep_with_patterns(vim.fn.expand("<cword>"), {
 						cwd = vim.uv.cwd(),
 					})
 				end,
-				desc = "Live Grep CWord",
+				desc = "Live Grep CWord current folder",
 			},
+			-- {
+			-- 	"<leader>sW",
+			-- 	function()
+			-- 		live_grep_with_patterns(vim.fn.expand("<cword>"), {
+			-- 			cwd = vim.uv.cwd(),
+			-- 		})
+			-- 	end,
+			-- 	desc = "Live Grep CWord (+ ignored)",
+			-- },
 			{
-				"<leader>sW",
-				function()
-					live_grep_with_patterns(vim.fn.expand("<cword>"), {
-						cwd = vim.uv.cwd(),
-					})
-				end,
-				desc = "Live Grep CWord (+ ignored)",
-			},
-			{
-				"<leader>sw",
+				"<m-s-f>",
 				function()
 					live_grep_with_patterns(vim.trim(require("fzf-lua").utils.get_visual_selection()), {
 						no_esc = false,
@@ -149,19 +149,19 @@ return {
 					})
 				end,
 				mode = "v",
-				desc = "Live Grep Selection",
+				desc = "Live Grep Selection current folder",
 			},
-			{
-				"<leader>sW",
-				function()
-					live_grep_with_patterns(vim.trim(require("fzf-lua").utils.get_visual_selection()), {
-						no_esc = false,
-						cwd = vim.uv.cwd(),
-					})
-				end,
-				mode = "v",
-				desc = "Live Grep Selection (+ignored)",
-			},
+			-- {
+			-- 	"<leader>sW",
+			-- 	function()
+			-- 		live_grep_with_patterns(vim.trim(require("fzf-lua").utils.get_visual_selection()), {
+			-- 			no_esc = false,
+			-- 			cwd = vim.uv.cwd(),
+			-- 		})
+			-- 	end,
+			-- 	mode = "v",
+			-- 	desc = "Live Grep Selection (+ignored)",
+			-- },
 		},
 		opts = function()
 			local actions = require("fzf-lua").actions
@@ -205,11 +205,11 @@ return {
 					["--preview"] = "bat --style=numbers --line-range :300 --color always {}",
 				},
 				previewers = {
-					bat = {
-						cmd = "bat-preview",
-						-- set a bat theme, `bat --list-themes`
-						theme = "Catppuccin-mocha",
-					},
+					-- bat = {
+					-- 	cmd = "bat-preview",
+					-- 	-- set a bat theme, `bat --list-themes`
+					-- 	theme = "Catppuccin-mocha",
+					-- },
 				},
 				files = {
 					previewer = "bat",

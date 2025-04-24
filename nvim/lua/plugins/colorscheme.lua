@@ -33,44 +33,48 @@ return {
 		lazy = false,
 		name = "catppuccin",
 		priority = 1000,
-		opts = {
-			flavour = "mocha",
-			integrations = {
-				cmp = true,
-				gitsigns = true,
-				nvimtree = true,
-				treesitter = true,
-				neotree = true,
-				notify = true,
-				barbar = true,
-				harpoon = true,
-				hop = true,
-				mason = true,
-				native_lsp = {
-					enabled = true,
-					virtual_text = {
-						errors = { "italic" },
-						hints = { "italic" },
-						warnings = { "italic" },
-						information = { "italic" },
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+				integrations = {
+					cmp = true,
+					blink_cmp = true,
+					gitsigns = true,
+					nvimtree = true,
+					treesitter = true,
+					neotree = true,
+					notify = true,
+					barbar = true,
+					harpoon = true,
+					hop = true,
+					mason = true,
+					native_lsp = {
+						enabled = true,
+						virtual_text = {
+							errors = { "italic" },
+							hints = { "italic" },
+							warnings = { "italic" },
+							information = { "italic" },
+						},
+						underlines = {
+							errors = { "underline" },
+							hints = { "underline" },
+							warnings = { "underline" },
+							information = { "underline" },
+						},
+						inlay_hints = {
+							background = true,
+						},
 					},
-					underlines = {
-						errors = { "underline" },
-						hints = { "underline" },
-						warnings = { "underline" },
-						information = { "underline" },
+					telescope = {
+						enabled = true,
+						-- style = "nvchad"
 					},
-					inlay_hints = {
-						background = true,
-					},
+					which_key = true,
 				},
-				telescope = {
-					enabled = true,
-					-- style = "nvchad"
-				},
-				which_key = true,
-			},
-		}
+			})
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
 	},
 	-- { "savq/melange-nvim" },
 	-- { "LazyVim/LazyVim", opts = { colorscheme = selected_colorscheme } },

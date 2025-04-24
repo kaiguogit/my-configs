@@ -18,13 +18,13 @@ return {
     },
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      {
-        "hrsh7th/nvim-cmp",
-        dependencies = {},
-        opts = function(_, opts)
-          table.insert(opts.sources, { name = "py-requirements" })
-        end,
-      },
+      -- {
+      --   "hrsh7th/nvim-cmp",
+      --   dependencies = {},
+      --   opts = function(_, opts)
+      --     table.insert(opts.sources, { name = "py-requirements" })
+      --   end,
+      -- },
     },
     opts = {},
     -- stylua: ignore start

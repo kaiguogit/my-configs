@@ -22,9 +22,14 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+local lazy = require("lazy")
+-- Add support for the LazyFile event
+local Event = require("lazy.core.handler.event")
+Event.mappings.LazyFile = { id = "LazyFile", event = { "BufReadPost", "BufNewFile", "BufWritePre" } }
+Event.mappings["User LazyFile"] = Event.mappings.LazyFile
 
 -- Setup lazy.nvim
-require("lazy").setup({
+lazy.setup({
 	rocks = { hererocks = true },
 	spec = {
 		-- -- add LazyVim and import its plugins
@@ -57,7 +62,7 @@ require("lazy").setup({
 		-- { import = "plugins.bufferline" },
 		{ import = "plugins.chezmoi" },
 		{ import = "plugins.cmp" },
-		{ import = "plugins.code-movement" },
+		-- { import = "plugins.code-movement" },
 		{ import = "plugins.copy-to-qf" },
 		{ import = "plugins.colorscheme" },
 		-- { import = "plugins.dashboard" },
@@ -66,7 +71,7 @@ require("lazy").setup({
 		{ import = "plugins.eslint" },
 		{ import = "plugins.explorer" },
 		-- { import = "plugins.fish" },
-		-- { import = "plugins.fzf" },
+		{ import = "plugins.fzf" },
 		{ import = "plugins.git" },
 		-- { import = "plugins.github" },
 		{ import = "plugins.gx" },
@@ -107,7 +112,7 @@ require("lazy").setup({
 		{ import = "plugins.switch-src-test" },
 		{ import = "plugins.tab" },
 		-- { import = "plugins.tab-behavior" },
-		{ import = "plugins.telescope" },
+		-- { import = "plugins.telescope" },
 		{ import = "plugins.tmux" },
 		{ import = "plugins.toggle-term" },
 		{ import = "plugins.tpope" },
@@ -148,3 +153,4 @@ require("lazy").setup({
 		},
 	},
 })
+

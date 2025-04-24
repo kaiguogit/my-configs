@@ -252,13 +252,13 @@ return {
 				},
 				debounce_delay = 3000,
 			})
-			local augroup = vim.api.nvim_create_augroup('ConformFormatting', {})
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = augroup,
-				callback = function()
-					require("conform").format()
-				end,
-			})
+			-- local augroup = vim.api.nvim_create_augroup('ConformFormatting', {})
+			-- vim.api.nvim_create_autocmd('BufWritePre', {
+			-- 	group = augroup,
+			-- 	callback = function()
+			-- 		require("conform").format()
+			-- 	end,
+			-- })
 		end,
 	},
 }

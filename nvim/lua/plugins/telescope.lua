@@ -294,7 +294,7 @@ return {
 			end)
 
 			-- Find fiels in current buffers
-			vim.keymap.set("n", "<C-p>", builtin.buffers, { desc = "Open buffer" })
+			-- vim.keymap.set("n", "<C-p>", builtin.buffers, { desc = "Open buffer" })
 
 			-- Fuzzy search in current file
 			-- vim.keymap.set('n', '<leader>fgg', builtin.current_buffer_fuzzy_find, {})

@@ -34,13 +34,13 @@ return {
 		"numToStr/Comment.nvim",
 		config = function() end,
 	},
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-		-- use opts = {} for passing setup options
-		-- this is equivalent to setup({}) function
-	},
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	event = "InsertEnter",
+	-- 	config = true,
+	-- 	-- use opts = {} for passing setup options
+	-- 	-- this is equivalent to setup({}) function
+	-- },
 	{ "ntpeters/vim-better-whitespace" },
 	{
 		"kevinhwang91/nvim-ufo",

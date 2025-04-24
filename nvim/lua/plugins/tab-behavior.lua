@@ -26,111 +26,111 @@ local has_words_before = function()
 end
 
 return {
-	{
-		"hrsh7th/nvim-cmp",
-		-- overriding lazyvim native snippets tab behavior
-		keys = function()
-			return {}
-		end,
-		init = function()
-			-- vim.g.copilot_no_tab_map = true
-			-- vim.g.copilot_assume_mapped = true
-			-- vim.g.copilot_tab_fallback = ""
-		end,
-		---@param opts cmp.ConfigSchema
-		opts = function(_, opts)
-			local cmp = require("cmp")
-			opts.mapping = vim.tbl_extend("force", opts.mapping, {
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-					elseif require("luasnip").expand_or_jumpable() then
-						vim.fn.feedkeys(
-							vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-							""
-						)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-
-				-- ["<Tab>"] = cmp.mapping(function(fallback)
-				-- 	local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
-				-- 	local current_line = vim.api.nvim_get_current_line()
-				-- 	local char_after_cursor = current_line:sub(cur_col + 1, cur_col + 1)
-				-- 	local tabout_symbols = {}
-				-- 	for _, tabout in ipairs(tabouts) do
-				-- 		table.insert(tabout_symbols, tabout.open)
-				-- 		table.insert(tabout_symbols, tabout.close)
-				-- 	end
-				--
-				-- 	-- local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
-				--
-				-- 	-- copilot completion
-				-- 	-- if suggestion.text ~= nil and suggestion.text ~= "" then
-				-- 	-- 	local copilot_keys = vim.fn["copilot#Accept"]()
-				-- 	-- 	if copilot_keys ~= "" then
-				-- 	-- 		vim.api.nvim_feedkeys(copilot_keys, "i", true)
-				-- 	-- 	end
-				-- 	-- elseif vim.tbl_contains(tabout_symbols, char_after_cursor) then
-				-- 	if vim.tbl_contains(tabout_symbols, char_after_cursor) then
-				-- 		vim.api.nvim_win_set_cursor(0, { cur_row, cur_col + 1 })
-				-- 	else
-				-- 		fallback()
-				-- 	end
-				-- end, { "i", "s" }),
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
-					local current_line = vim.api.nvim_get_current_line()
-					local char_before_cursor = current_line:sub(cur_col, cur_col)
-					local tabout_symbols = {}
-					for _, tabout in ipairs(tabouts) do
-						table.insert(tabout_symbols, tabout.open)
-						table.insert(tabout_symbols, tabout.close)
-					end
-
-					if vim.tbl_contains(tabout_symbols, char_before_cursor) then
-						vim.api.nvim_win_set_cursor(0, { cur_row, cur_col - 1 })
-					else
-						vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, true, true), "n", {})
-					end
-				end, { "i", "s" }),
-				["<C-n>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-					-- this way you will only jump inside the snippet region
-					elseif vim.snippet.active({ direction = 1 }) then
-						vim.schedule(function()
-							vim.snippet.jump(1)
-						end)
-					elseif has_words_before() then
-						cmp.complete()
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-				["<C-p>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif vim.snippet.active({ direction = -1 }) then
-						vim.schedule(function()
-							vim.snippet.jump(-1)
-						end)
-					else
-						vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, true, true), "n", {})
-					end
-				end, { "i", "s" }),
-				-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
-			})
-
-			-- works in conjunction with <CR> mapping.confirm({select = false})
-			opts.completion.completeopt = "menu,menuone,noinsert,noselect"
-			opts.preselect = cmp.PreselectMode.None
-			opts.experimental = {
-				ghost_text = false,
-			}
-		end,
-	},
+	-- {
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	-- overriding lazyvim native snippets tab behavior
+	-- 	keys = function()
+	-- 		return {}
+	-- 	end,
+	-- 	init = function()
+	-- 		-- vim.g.copilot_no_tab_map = true
+	-- 		-- vim.g.copilot_assume_mapped = true
+	-- 		-- vim.g.copilot_tab_fallback = ""
+	-- 	end,
+	-- 	---@param opts cmp.ConfigSchema
+	-- 	opts = function(_, opts)
+	-- 		local cmp = require("cmp")
+	-- 		opts.mapping = vim.tbl_extend("force", opts.mapping, {
+	-- 			["<Tab>"] = cmp.mapping(function(fallback)
+	-- 				if cmp.visible() then
+	-- 					cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+	-- 				elseif require("luasnip").expand_or_jumpable() then
+	-- 					vim.fn.feedkeys(
+	-- 						vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+	-- 						""
+	-- 					)
+	-- 				else
+	-- 					fallback()
+	-- 				end
+	-- 			end, { "i", "s" }),
+	--
+	-- 			-- ["<Tab>"] = cmp.mapping(function(fallback)
+	-- 			-- 	local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
+	-- 			-- 	local current_line = vim.api.nvim_get_current_line()
+	-- 			-- 	local char_after_cursor = current_line:sub(cur_col + 1, cur_col + 1)
+	-- 			-- 	local tabout_symbols = {}
+	-- 			-- 	for _, tabout in ipairs(tabouts) do
+	-- 			-- 		table.insert(tabout_symbols, tabout.open)
+	-- 			-- 		table.insert(tabout_symbols, tabout.close)
+	-- 			-- 	end
+	-- 			--
+	-- 			-- 	-- local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
+	-- 			--
+	-- 			-- 	-- copilot completion
+	-- 			-- 	-- if suggestion.text ~= nil and suggestion.text ~= "" then
+	-- 			-- 	-- 	local copilot_keys = vim.fn["copilot#Accept"]()
+	-- 			-- 	-- 	if copilot_keys ~= "" then
+	-- 			-- 	-- 		vim.api.nvim_feedkeys(copilot_keys, "i", true)
+	-- 			-- 	-- 	end
+	-- 			-- 	-- elseif vim.tbl_contains(tabout_symbols, char_after_cursor) then
+	-- 			-- 	if vim.tbl_contains(tabout_symbols, char_after_cursor) then
+	-- 			-- 		vim.api.nvim_win_set_cursor(0, { cur_row, cur_col + 1 })
+	-- 			-- 	else
+	-- 			-- 		fallback()
+	-- 			-- 	end
+	-- 			-- end, { "i", "s" }),
+	-- 			["<S-Tab>"] = cmp.mapping(function(fallback)
+	-- 				local cur_row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
+	-- 				local current_line = vim.api.nvim_get_current_line()
+	-- 				local char_before_cursor = current_line:sub(cur_col, cur_col)
+	-- 				local tabout_symbols = {}
+	-- 				for _, tabout in ipairs(tabouts) do
+	-- 					table.insert(tabout_symbols, tabout.open)
+	-- 					table.insert(tabout_symbols, tabout.close)
+	-- 				end
+	--
+	-- 				if vim.tbl_contains(tabout_symbols, char_before_cursor) then
+	-- 					vim.api.nvim_win_set_cursor(0, { cur_row, cur_col - 1 })
+	-- 				else
+	-- 					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, true, true), "n", {})
+	-- 				end
+	-- 			end, { "i", "s" }),
+	-- 			["<C-n>"] = cmp.mapping(function(fallback)
+	-- 				if cmp.visible() then
+	-- 					cmp.select_next_item()
+	-- 				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+	-- 				-- this way you will only jump inside the snippet region
+	-- 				elseif vim.snippet.active({ direction = 1 }) then
+	-- 					vim.schedule(function()
+	-- 						vim.snippet.jump(1)
+	-- 					end)
+	-- 				elseif has_words_before() then
+	-- 					cmp.complete()
+	-- 				else
+	-- 					fallback()
+	-- 				end
+	-- 			end, { "i", "s" }),
+	-- 			-- ["<C-p>"] = cmp.mapping(function(fallback)
+	-- 			-- 	if cmp.visible() then
+	-- 			-- 		cmp.select_prev_item()
+	-- 			-- 	elseif vim.snippet.active({ direction = -1 }) then
+	-- 			-- 		vim.schedule(function()
+	-- 			-- 			vim.snippet.jump(-1)
+	-- 			-- 		end)
+	-- 			-- 	else
+	-- 			-- 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, true, true), "n", {})
+	-- 			-- 	end
+	-- 			-- end, { "i", "s" }),
+	-- 			-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
+	-- 			-- ["<CR>"] = cmp.mapping.confirm({ select = false }),
+	-- 		})
+	--
+	-- 		-- works in conjunction with <CR> mapping.confirm({select = false})
+	-- 		opts.completion.completeopt = "menu,menuone,noinsert,noselect"
+	-- 		opts.preselect = cmp.PreselectMode.None
+	-- 		opts.experimental = {
+	-- 			ghost_text = false,
+	-- 		}
+	-- 	end,
+	-- },
 }
