@@ -74,140 +74,149 @@ local function snippet_forward()
 end
 
 return {
-  {
-    "saghen/blink.cmp",
-    dependencies = {
-        "rafamadriz/friendly-snippets",
-        "onsails/lspkind.nvim",
-    },
-    version = "*",
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-
-        appearance = {
-            use_nvim_cmp_as_default = false,
-            nerd_font_variant = "mono",
-        },
-
-        completion = {
-            accept = { auto_brackets = { enabled = true } },
-
-            documentation = {
-                auto_show = true,
-                auto_show_delay_ms = 250,
-                treesitter_highlighting = true,
-                window = { border = "rounded" },
-            },
-
-            list = {
-              selection = {
-                preselect = function(ctx)
-                  return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-                end,
-              }
-            },
-
-            menu = {
-                border = "rounded",
-
-                cmdline_position = function()
-                    if vim.g.ui_cmdline_pos ~= nil then
-                        local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
-                        return { pos[1] - 1, pos[2] }
-                    end
-                    local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-                    return { vim.o.lines - height, 0 }
-                end,
-
-                draw = {
-                    columns = {
-                        { "kind_icon", "label", gap = 1 },
-                        { "kind" },
-                    },
-                    components = {
-                        kind_icon = {
-                            text = function(item)
-                                local kind = require("lspkind").symbol_map[item.kind] or ""
-                                return kind .. " "
-                            end,
-                            highlight = "CmpItemKind",
-                        },
-                        label = {
-                            text = function(item)
-                                return item.label
-                            end,
-                            highlight = "CmpItemAbbr",
-                        },
-                        kind = {
-                            text = function(item)
-                                return item.kind
-                            end,
-                            highlight = "CmpItemKind",
-                        },
-                    },
-                },
-            },
-        },
-
-        -- My super-TAB configuration
-        keymap = {
-            ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<C-e>"] = { "hide", "fallback" },
-            ["<CR>"] = { "accept", "fallback" },
-
-            ["<Tab>"] = {
-                function(cmp)
-                    return cmp.select_next()
-                end,
-                "snippet_forward",
-                "fallback",
-            },
-            ["<S-Tab>"] = {
-                function(cmp)
-                    return cmp.select_prev()
-                end,
-                "snippet_backward",
-                "fallback",
-            },
-
-            ["<Up>"] = { "select_prev", "fallback" },
-            ["<Down>"] = { "select_next", "fallback" },
-            ["<C-p>"] = { "select_prev", "fallback" },
-            ["<C-n>"] = { "select_next", "fallback" },
-            ["<C-up>"] = { "scroll_documentation_up", "fallback" },
-            ["<C-down>"] = { "scroll_documentation_down", "fallback" },
-        },
-
-        -- Experimental signature help support
-        signature = {
-            enabled = true,
-            window = { border = "rounded" },
-        },
-
-        sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
-            -- cmdline = {}, -- Disable sources for command-line mode
-            -- providers = {
-            --     lsp = {
-            --         -- min_keyword_length = 2, -- Number of characters to trigger porvider
-            --         score_offset = 0, -- Boost/penalize the score of the items
-            --     },
-            --     path = {
-            --         min_keyword_length = 0,
-            --     },
-            --     snippets = {
-            --         min_keyword_length = 2,
-            --     },
-            --     buffer = {
-            --         min_keyword_length = 5,
-            --         max_items = 5,
-            --     },
-            -- },
-        },
-    },
-  },
+  -- {
+  --   "saghen/blink.cmp",
+  --   dependencies = {
+  --       "rafamadriz/friendly-snippets",
+  --       "onsails/lspkind.nvim",
+  --   },
+  --   version = "*",
+  --
+  --   ---@module 'blink.cmp'
+  --   ---@type blink.cmp.Config
+  --   opts = {
+  --
+  --       appearance = {
+  --           use_nvim_cmp_as_default = false,
+  --           nerd_font_variant = "mono",
+  --       },
+  --
+  --       completion = {
+  --           accept = { auto_brackets = { enabled = true } },
+  --
+  --           documentation = {
+  --               auto_show = true,
+  --               auto_show_delay_ms = 250,
+  --               treesitter_highlighting = true,
+  --               window = { border = "rounded" },
+  --           },
+  --
+  --           list = {
+  --             selection = {
+  --               preselect = function(ctx)
+  --                 return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+  --               end,
+  --             }
+  --           },
+  --
+  --           menu = {
+  --               border = "rounded",
+  --
+  --               cmdline_position = function()
+  --                   if vim.g.ui_cmdline_pos ~= nil then
+  --                       local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+  --                       return { pos[1] - 1, pos[2] }
+  --                   end
+  --                   local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+  --                   return { vim.o.lines - height, 0 }
+  --               end,
+  --
+  --               draw = {
+  --                   columns = {
+  --                       { "kind_icon", "label", gap = 1 },
+  --                       { "kind" },
+  --                   },
+  --                   components = {
+  --                       kind_icon = {
+  --                           text = function(item)
+  --                               local kind = require("lspkind").symbol_map[item.kind] or ""
+  --                               return kind .. " "
+  --                           end,
+  --                           highlight = "CmpItemKind",
+  --                       },
+  --                       label = {
+  --                           text = function(item)
+  --                               return item.label
+  --                           end,
+  --                           highlight = "CmpItemAbbr",
+  --                       },
+  --                       kind = {
+  --                           text = function(item)
+  --                               return item.kind
+  --                           end,
+  --                           highlight = "CmpItemKind",
+  --                       },
+  --                   },
+  --               },
+  --           },
+  --       },
+  --
+  --       -- My super-TAB configuration
+  --       keymap = {
+  --           ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+  --           ["<C-e>"] = { "hide", "fallback" },
+  --           ["<CR>"] = { "accept", "fallback" },
+  --
+  --           ["<Tab>"] = {
+  --               function(cmp)
+  --                   return cmp.select_next()
+  --               end,
+  --               "snippet_forward",
+  --               "fallback",
+  --           },
+  --           ["<S-Tab>"] = {
+  --               function(cmp)
+  --                   return cmp.select_prev()
+  --               end,
+  --               "snippet_backward",
+  --               "fallback",
+  --           },
+  --
+  --           ["<Up>"] = { "select_prev", "fallback" },
+  --           ["<Down>"] = { "select_next", "fallback" },
+  --           ["<C-p>"] = { "select_prev", "fallback" },
+  --           ["<C-n>"] = { "select_next", "fallback" },
+  --           ["<C-up>"] = { "scroll_documentation_up", "fallback" },
+  --           ["<C-down>"] = { "scroll_documentation_down", "fallback" },
+  --       },
+  --
+  --       -- Experimental signature help support
+  --       signature = {
+  --           enabled = true,
+  --           window = { border = "rounded" },
+  --       },
+  --
+  --       sources = {
+  --           default = { "lsp", "path", "snippets", "buffer" },
+  --           -- cmdline = {}, -- Disable sources for command-line mode
+  --           providers = {
+  --             path = {
+  --               opts = {
+  --                 get_cwd = function(_)
+  --                   return vim.fn.getcwd()
+  --                 end,
+  --               },
+  --             },
+  --           },
+  --           -- providers = {
+  --           --     lsp = {
+  --           --         -- min_keyword_length = 2, -- Number of characters to trigger porvider
+  --           --         score_offset = 0, -- Boost/penalize the score of the items
+  --           --     },
+  --           --     path = {
+  --           --         min_keyword_length = 0,
+  --           --     },
+  --           --     snippets = {
+  --           --         min_keyword_length = 2,
+  --           --     },
+  --           --     buffer = {
+  --           --         min_keyword_length = 5,
+  --           --         max_items = 5,
+  --           --     },
+  --           -- },
+  --       },
+  --   },
+  -- },
 -- {
 --   'saghen/blink.cmp',
 --   -- optional: provides snippets for the snippet source
@@ -281,89 +290,89 @@ return {
 -- }
   -- start copy from https://github.com/LazyVim/LazyVim/blob/ec5981dfb1222c3bf246d9bcaa713d5cfa486fbd/lua/lazyvim/plugins/extras/coding/nvim-cmp.lua#L11
    -- Setup nvim-cmp
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   version = false, -- last release is way too old
-  --   event = "InsertEnter",
-  --   dependencies = {
-  --     "hrsh7th/cmp-nvim-lsp",
-  --     "hrsh7th/cmp-buffer",
-  --     "hrsh7th/cmp-path",
-  --   },
-  --   -- Not all LSP servers add brackets when completing a function.
-  --   -- To better deal with this, LazyVim adds a custom option to cmp,
-  --   -- that you can configure. For example:
-  --   --
-  --   -- ```lua
-  --   -- opts = {
-  --   --   auto_brackets = { "python" }
-  --   -- }
-  --   -- ```
-  --   opts = function()
-  --     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-  --     local cmp = require("cmp")
-  --     local defaults = require("cmp.config.default")()
-  --     local auto_select = true
-  --     return {
-  --       auto_brackets = {}, -- configure any filetype to auto add brackets
-  --       completion = {
-  --         completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
-  --       },
-  --       preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
-  --       mapping = cmp.mapping.preset.insert({
-  --         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-  --         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-  --         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-  --         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-  --         ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-  --         ["<C-Space>"] = cmp.mapping.complete(),
-  --         ["<CR>"] = cmp_confirm({ select = auto_select }),
-  --         ["<C-y>"] = cmp_confirm({ select = true }),
-  --         ["<S-CR>"] = cmp_confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  --         ["<C-CR>"] = function(fallback)
-  --           cmp.abort()
-  --           fallback()
-  --         end,
-  --         ["<tab>"] = snippet_forward
-  --       }),
-  --       sources = cmp.config.sources({
-  --         { name = "lazydev" },
-  --         { name = "nvim_lsp" },
-  --         { name = "path" },
-  --       }, {
-  --         { name = "buffer" },
-  --       }),
-  --       formatting = {
-  --         format = function(entry, item)
-  --           local icons = kindsIcon
-  --           if icons[item.kind] then
-  --             item.kind = icons[item.kind] .. item.kind
-  --           end
-  --
-  --           local widths = {
-  --             abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-  --             menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-  --           }
-  --
-  --           for key, width in pairs(widths) do
-  --             if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
-  --               item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
-  --             end
-  --           end
-  --
-  --           return item
-  --         end,
-  --       },
-  --       experimental = {
-  --         -- only show ghost text when we show ai completions
-  --         ghost_text = vim.g.ai_cmp and {
-  --           hl_group = "CmpGhostText",
-  --         } or false,
-  --       },
-  --       sorting = defaults.sorting,
-  --     }
-  --   end,
-  -- },
+  {
+    "hrsh7th/nvim-cmp",
+    version = false, -- last release is way too old
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+    },
+    -- Not all LSP servers add brackets when completing a function.
+    -- To better deal with this, LazyVim adds a custom option to cmp,
+    -- that you can configure. For example:
+    --
+    -- ```lua
+    -- opts = {
+    --   auto_brackets = { "python" }
+    -- }
+    -- ```
+    opts = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+      local cmp = require("cmp")
+      local defaults = require("cmp.config.default")()
+      local auto_select = true
+      return {
+        auto_brackets = {}, -- configure any filetype to auto add brackets
+        completion = {
+          completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
+        },
+        preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+        mapping = cmp.mapping.preset.insert({
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<CR>"] = cmp_confirm({ select = auto_select }),
+          ["<C-y>"] = cmp_confirm({ select = true }),
+          ["<S-CR>"] = cmp_confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-CR>"] = function(fallback)
+            cmp.abort()
+            fallback()
+          end,
+          ["<tab>"] = snippet_forward
+        }),
+        sources = cmp.config.sources({
+          { name = "lazydev" },
+          { name = "nvim_lsp" },
+          { name = "path" },
+        }, {
+          { name = "buffer" },
+        }),
+        formatting = {
+          format = function(entry, item)
+            local icons = kindsIcon
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+
+            local widths = {
+              abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+              menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+            }
+
+            for key, width in pairs(widths) do
+              if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+                item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+              end
+            end
+
+            return item
+          end,
+        },
+        experimental = {
+          -- only show ghost text when we show ai completions
+          -- ghost_text = vim.g.ai_cmp and {
+          --   hl_group = "CmpGhostText",
+          -- } or false,
+        },
+        sorting = defaults.sorting,
+      }
+    end,
+  },
   -- end copy from https://github.com/LazyVim/LazyVim/blob/ec5981dfb1222c3bf246d9bcaa713d5cfa486fbd/lua/lazyvim/plugins/extras/coding/nvim-cmp.lua#L11
   -- {
   --   "hrsh7th/nvim-cmp",

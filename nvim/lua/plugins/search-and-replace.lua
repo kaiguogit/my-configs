@@ -81,7 +81,7 @@ return {
 		"MagicDuck/grug-far.nvim",
 		keys = {
 			{
-				"<leader>sw",
+				"<leader>rw",
 				function()
 					require("grug-far").open({ transient = true, prefills = { search = vim.fn.expand("<cword>") } })
 				end,
@@ -89,7 +89,7 @@ return {
 				desc = "grug-far: Search current word",
 			},
 			{
-				"<leader>sw",
+				"<leader>rw",
 				function()
 					require("grug-far").with_visual_selection({ transient = true })
 				end,
@@ -97,7 +97,7 @@ return {
 				desc = "grug-far: Search current word",
 			},
 			{
-				"<leader>sp",
+				"<leader>rp",
 				function()
 					require("grug-far").open({
 						transient = true,
@@ -108,7 +108,7 @@ return {
 				desc = "grug-far: Search on current file",
 			},
 			{
-				"<leader>sp",
+				"<leader>rp",
 				function()
 					require("grug-far").with_visual_selection({
 						transient = true,

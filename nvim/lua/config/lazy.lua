@@ -62,7 +62,7 @@ lazy.setup({
 		-- { import = "plugins.bufferline" },
 		{ import = "plugins.chezmoi" },
 		{ import = "plugins.cmp" },
-		-- { import = "plugins.code-movement" },
+		{ import = "plugins.code-movement" },
 		{ import = "plugins.copy-to-qf" },
 		{ import = "plugins.colorscheme" },
 		-- { import = "plugins.dashboard" },

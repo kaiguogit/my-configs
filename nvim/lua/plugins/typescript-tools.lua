@@ -83,9 +83,9 @@ return {
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			-- {
-			-- 	"neovim/nvim-lspconfig",
-			-- 	config = function()
+			{
+				"neovim/nvim-lspconfig",
+				config = function()
 			-- 		-- local keys = require("lazyvim.plugins.lsp.keymaps").get()
 			--
 			-- 		---- keys is a table of tables, where each table is a keymap, with 1st position being the key
@@ -114,19 +114,19 @@ return {
 			-- 		-- 	desc = "Rename File",
 			-- 		-- 	buffer = true,
 			-- 		-- })
-			-- 		vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions     jump1=true ignore_current_line=true<cr>", {desc = "Goto Definition" })
-			-- 		vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references      jump1=true ignore_current_line=true<cr>", {desc = "References" })
-			-- 		vim.keymap.set("n", "gI", "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>", {desc = "Goto Implementation" })
-			-- 		vim.keymap.set("n", "gy", "<cmd>FzfLua lsp_typedefs        jump1=true ignore_current_line=true<cr>", {desc = "Goto T[y]pe Definition" })
-			-- 		vim.keymap.set("n",  "gh", vim.lsp.buf.hover, {desc = "Hover"})
-			-- 		vim.keymap.set("n", "ge", vim.diagnostic.open_float, {desc = "Diagnose"})
-			-- 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
-			-- 		vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, {desc = "workspace_symbol"})
-			-- 		-- vim.keymap.set( "n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
-			-- 		vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, {desc = "Rename"})
-			-- 		vim.keymap.set("n", "<leader>ph", vim.lsp.buf.signature_help, {desc = "Signature help"})
-			-- 	end,
-			-- },
+					vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions     jump1=true ignore_current_line=true<cr>", {desc = "Goto Definition" })
+					vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references      jump1=true ignore_current_line=true<cr>", {desc = "References" })
+					vim.keymap.set("n", "gI", "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>", {desc = "Goto Implementation" })
+					vim.keymap.set("n", "gy", "<cmd>FzfLua lsp_typedefs        jump1=true ignore_current_line=true<cr>", {desc = "Goto T[y]pe Definition" })
+					vim.keymap.set("n",  "gh", vim.lsp.buf.hover, {desc = "Hover"})
+					vim.keymap.set("n", "ge", vim.diagnostic.open_float, {desc = "Diagnose"})
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
+					vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, {desc = "workspace_symbol"})
+					-- vim.keymap.set( "n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
+					vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, {desc = "Rename"})
+					vim.keymap.set("n", "<leader>ph", vim.lsp.buf.signature_help, {desc = "Signature help"})
+				end,
+			},
 		},
 		ft = ft_js,
 		opts = {
