@@ -44,8 +44,13 @@ return {
 			-- grep
 			{ "<C-M-l>", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "<M-S-l>", function() Snacks.picker.grep({dirs = {getCurrentFolderPath()}}) end, desc = "Grep" },
-			{ "<C-M-f>", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-			{ "<M-S-f>", function() Snacks.picker.grep_word({dirs = {getCurrentFolderPath()}}) end, desc = "Visual selection or word", mode = { "n", "x" } },
+			{ "<C-M-f>", function() Snacks.picker.grep_word({
+				live = true
+			}) end, desc = "Visual selection or word", mode = { "n", "x" } },
+			{ "<M-S-f>", function() Snacks.picker.grep_word({
+				dirs = {getCurrentFolderPath()},
+				live = true
+			}) end, desc = "Visual selection or word", mode = { "n", "x" } },
 			{ "<C-f>", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
 			-- search
 			{ "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
