@@ -124,6 +124,7 @@ return {
 			-- },
 			settings = {
 				code_lens = "off",
+				expose_as_code_action = "all",
 				complete_function_calls = false,
 				include_completions_with_insert_text = true,
 				separate_diagnostic_server = true,

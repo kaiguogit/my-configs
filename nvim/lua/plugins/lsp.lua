@@ -360,7 +360,7 @@ return {
 			},
 		},
 		opts = {
-			backend = { "nui" },
+			backend = { "snacks" },
 			diff = {
 				algorithm = "patience",
 				ignore_whitespace = true,

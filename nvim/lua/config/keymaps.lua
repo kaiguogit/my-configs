@@ -113,12 +113,13 @@ vim.keymap.set("n", "<leader>q", ":x<CR>", silentopts)
 -- vim.keymap.set("n", "<leader>gs", ":0G<CR>", silentopts)
 
 -- Move lines
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("x", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("x", "<A-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
 vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+
 
 vim.keymap.set("i", "<C-j>", "<Down>")
 vim.keymap.set("i", "<C-k>", "<Up>")
@@ -268,9 +269,6 @@ vim.keymap.set("n", "[d", function()
 end, opts)
 vim.keymap.set("n", "]d", function()
 	vim.diagnostic.goto_prev()
-end, opts)
-vim.keymap.set("n", "<leader>ca", function()
-	vim.lsp.buf.code_action()
 end, opts)
 -- Used <leader>fr in telescope.lua
 -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)

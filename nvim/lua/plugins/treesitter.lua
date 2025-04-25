@@ -193,16 +193,16 @@ return {
 
     keys = {
       -- movement
-      { "<A-S-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "x" } },
-      { "<A-S-j>", "<cmd>Treewalker Down<cr>", mode = { "n", "x" } },
-      { "<A-S-l>", "<cmd>Treewalker Right<cr>", mode = { "n", "x" } },
-      { "<A-S-h>", "<cmd>Treewalker Left<cr>", mode = { "n", "x" } },
+      { "<A-S-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "x" } , silent = true},
+      { "<A-S-l>", "<cmd>Treewalker Right<cr>", mode = { "n", "x" } , silent = true},
+      { "<A-S-j>", "<cmd>Treewalker Down<cr>", mode = { "n", "x" } , silent = true},
+      { "<A-S-h>", "<cmd>Treewalker Left<cr>", mode = { "n", "x" } , silent = true},
 
       -- swapping
-      { "<C-S-j>", "<cmd>Treewalker SwapDown<cr>" },
-      { "<C-S-k>", "<cmd>Treewalker SwapUp<cr>" },
-      { "<C-S-l>", "<cmd>Treewalker SwapRight<CR>" },
-      { "<C-S-h>", "<cmd>Treewalker SwapLeft<CR>" },
+      { "<C-M-j>", "<cmd>Treewalker SwapDown<CR><CR>", silent = true },
+      { "<C-M-k>", "<cmd>Treewalker SwapUp<CR>" , silent = true},
+      { "<C-M-l>", "<cmd>Treewalker SwapRight<CR>" , silent = true},
+      { "<C-M-h>", "<cmd>Treewalker SwapLeft<CR>" , silent = true},
     },
   },
   {

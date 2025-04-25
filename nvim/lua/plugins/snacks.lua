@@ -42,8 +42,8 @@ return {
 			{ "<M-S-p>", function() Snacks.picker.files({dirs = {getCurrentFolderPath()}}) end, desc = "Smart Find Files" },
 			{ "<C-p>", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			-- grep
-			{ "<C-M-l>", function() Snacks.picker.grep() end, desc = "Grep" },
-			{ "<M-S-l>", function() Snacks.picker.grep({dirs = {getCurrentFolderPath()}}) end, desc = "Grep" },
+			-- { "<C-M-l>", function() Snacks.picker.grep() end, desc = "Grep" },
+			-- { "<M-S-l>", function() Snacks.picker.grep({dirs = {getCurrentFolderPath()}}) end, desc = "Grep" },
 			{ "<C-M-f>", function() Snacks.picker.grep_word({
 				live = true
 			}) end, desc = "Visual selection or word", mode = { "n", "x" } },
