@@ -77,3 +77,7 @@ vim.g.autoformat = false
 
 -- Set global status so lualine can be wide across splits
 vim.o.laststatus = 3
+-- Dont let escape delay too long, it becomes alt and cause escape + j to become alt-j and move line
+-- https://stackoverflow.com/questions/12312178/tmux-and-vim-escape-key-being-seen-as-and-having-long-delay
+vim.o.timeoutlen = 1000
+vim.o.ttimeoutlen = 10

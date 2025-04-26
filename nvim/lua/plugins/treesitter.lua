@@ -192,11 +192,11 @@ return {
     },
 
     keys = {
-      -- movement
-      { "<A-S-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "x" } , silent = true},
-      { "<A-S-l>", "<cmd>Treewalker Right<cr>", mode = { "n", "x" } , silent = true},
-      { "<A-S-j>", "<cmd>Treewalker Down<cr>", mode = { "n", "x" } , silent = true},
-      { "<A-S-h>", "<cmd>Treewalker Left<cr>", mode = { "n", "x" } , silent = true},
+      -- movement,
+      { "<M-S-l>", "<cmd>Treewalker Right<cr>", mode = { "n", "x" } , silent = true},
+      { "<M-S-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "x" } , silent = true},
+      { "<M-S-h>", "<cmd>Treewalker Left<cr>", mode = { "n", "x" } , silent = true},
+      { "<M-S-j>", "<cmd>Treewalker Down<cr>", mode = { "n", "x" } , silent = true},
 
       -- swapping
       { "<C-M-j>", "<cmd>Treewalker SwapDown<CR><CR>", silent = true },
