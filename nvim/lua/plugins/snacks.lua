@@ -38,20 +38,22 @@ return {
 			-- lazygit
 			{ "<C-g>", function() Snacks.lazygit() end, desc = "Lazygit" },
 			-- Files
-			{ "<C-M-p>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+			{ "<C-M-p>", function() Snacks.picker.smart({preview=false}) end, desc = "Smart Find Files" },
 			{ "<M-S-p>", function() Snacks.picker.files({dirs = {getCurrentFolderPath()}}) end, desc = "Smart Find Files" },
 			{ "<C-p>", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			-- grep
 			-- { "<C-M-l>", function() Snacks.picker.grep() end, desc = "Grep" },
 			-- { "<M-S-l>", function() Snacks.picker.grep({dirs = {getCurrentFolderPath()}}) end, desc = "Grep" },
 			{ "<C-M-f>", function() Snacks.picker.grep_word({
-				live = true
+				live = true,
+				regex = true,
 			}) end, desc = "Visual selection or word", mode = { "n", "x" } },
 			{ "<M-S-f>", function() Snacks.picker.grep_word({
 				dirs = {getCurrentFolderPath()},
+				regex = true,
 				live = true
 			}) end, desc = "Visual selection or word", mode = { "n", "x" } },
-			{ "<C-f>", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+			{ "<C-f>", function() Snacks.picker.lines({regex = true}) end, desc = "Buffer Lines" },
 			-- search
 			{ "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
 			{ "<leader>kp", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
