@@ -2,12 +2,12 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s", "<Plug>(leap)", desc = "Leap" },
+      { "s", "<Plug>(leap)", mode={"n", "x", "o"}, desc = "Leap" },
       { "gs", "<Plug>(leap-from-window)", desc = "Leap from window" },
     },
     config = true,
   },
-  {
+ {
     "rasulomaroff/telepath.nvim",
     dependencies = "ggandor/leap.nvim",
     lazy = false,
