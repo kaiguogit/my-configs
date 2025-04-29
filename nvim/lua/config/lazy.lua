@@ -113,7 +113,7 @@ lazy.setup({
 		{ import = "plugins.switch-src-test" },
 		{ import = "plugins.tab" },
 		-- { import = "plugins.tab-behavior" },
-		-- { import = "plugins.telescope" },
+		{ import = "plugins.telescope" },
 		{ import = "plugins.tmux" },
 		{ import = "plugins.toggle-term" },
 		{ import = "plugins.tpope" },
