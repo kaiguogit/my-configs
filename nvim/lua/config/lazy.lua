@@ -103,6 +103,7 @@ lazy.setup({
 		{ import = "plugins.qf" },
 		-- { import = "plugins.run-jest-in-split" },
 		{ import = "plugins.rust" },
+		-- { import = "plugins.scratch" },
 		{ import = "plugins.search-and-replace" },
 		{ import = "plugins.session" },
 		{ import = "plugins.show-file-owner" },
