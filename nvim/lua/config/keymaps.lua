@@ -312,32 +312,31 @@ local find_file = function()
     end
 	return {count =count, file_list = file_list, found_cur_file = found_cur_file, file_idx= file_idx}
 end
-local find_next_file = function(opt)
+local open_next_file = function(opt)
+	local next_file_path
 	local r = find_file()
     if r.found_cur_file then
 		if opt and opt.reverse then
 			if r.file_idx == 1 then
-				return r.file_list[r.count]
+				next_file_path = r.file_list[r.count]
+			else
+				next_file_path = r.file_list[r.file_idx - 1]
 			end
-			return r.file_list[r.file_idx - 1]
 		else
 			if r.file_idx == r.count then
-				return r.file_list[1]
+				next_file_path = r.file_list[1]
+			else
+				next_file_path = r.file_list[r.file_idx + 1]
 			end
-			return r.file_list[r.file_idx + 1]
 		end
     end
+	if next_file_path then
+		vim.cmd('e ' .. vim.fn.expand("%:p:h") .. '/' .. next_file_path)
+	end
+
 end
 
 vim.keymap.set("n", "<A-n>", function ()
-	local next_file_path = find_next_file({reverse = true})
-	if next_file_path then
-		vim.cmd('e ' .. vim.fn.expand("%:p:h") .. '/' .. next_file_path)
-	end
+	open_next_file({reverse = true})
 end)
-vim.keymap.set("n", "<A-m>", function ()
-	local next_file_path = find_next_file()
-	if next_file_path then
-		vim.cmd('e ' .. vim.fn.expand("%:p:h") .. '/' .. next_file_path)
-	end
-end)
+vim.keymap.set("n", "<A-m>", open_next_file)
