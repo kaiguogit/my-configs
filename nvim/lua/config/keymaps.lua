@@ -316,7 +316,7 @@ local find_next_file = function(opt)
 	local r = find_file()
     if r.found_cur_file then
 		if opt and opt.reverse then
-			if r.file_idx == 0 then
+			if r.file_idx == 1 then
 				return r.file_list[r.count]
 			end
 			return r.file_list[r.file_idx - 1]
