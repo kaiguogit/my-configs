@@ -32,7 +32,9 @@ return {
 	-- auto comment lines with ctrl-/
 	{
 		"numToStr/Comment.nvim",
-		config = function() end,
+		config = function()
+		  require('Comment').setup()
+		end,
 	},
 	-- {
 	-- 	"windwp/nvim-autopairs",
