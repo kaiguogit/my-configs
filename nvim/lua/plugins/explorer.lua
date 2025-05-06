@@ -28,164 +28,168 @@ end
 
 ---@type LazySpec
 return {
-	-- {
-	-- 	"nvim-neo-tree/neo-tree.nvim",
-	-- 	lazy = false,
-	-- 	dependencies = {
-	-- 		"ibhagwan/fzf-lua",
-	-- 		"MunifTanjim/nui.nvim"
-	-- 	},
-	-- 	keys = {
-	-- 		{
-	-- 			"<leader>e",
-	-- 			function()
-	-- 				require("neo-tree.command").execute({
-	-- 					toggle = true,
-	-- 					dir = vim.uv.cwd(),
-	-- 					reveal = true,
-	-- 					no_wait = true,
-	-- 				})
-	-- 			end,
-	-- 			desc = "Explorer NeoTree (cwd)",
-	-- 		},
-	-- 		{
-	-- 			"<leader>ge",
-	-- 			function()
-	-- 				require("neo-tree.command").execute({ source = "git_status", toggle = true, dir = vim.uv.cwd() })
-	-- 			end,
-	-- 			desc = "Git Explorer NeoTree (cwd)",
-	-- 		},
-	-- 	},
-	-- 	opts = {
-	-- 		default_component_configs = {
-	-- 			file_size = {
-	-- 				enabled = false,
-	-- 			},
-	-- 			type = {
-	-- 				enabled = false,
-	-- 			},
-	-- 			last_modified = {
-	-- 				enabled = false,
-	-- 			},
-	-- 		},
-	-- 		filesystem = {
-	-- 			hijack_netrw_behavior = "disabled",
-	-- 			filtered_items = {
-	-- 				visible = true, -- when true, they will just be displayed differently than normal items
-	-- 				hide_dotfiles = false,
-	-- 				hide_gitignored = true,
-	-- 				hide_hidden = false, -- only works on Windows for hidden files/directories
-	-- 				hide_by_name = {
-	-- 					-- "node_modules",
-	-- 				},
-	-- 				hide_by_pattern = {
-	-- 					--"*.meta",
-	-- 					--"*/src/*/tsconfig.json",
-	-- 				},
-	-- 				always_show = { -- remains visible even if other settings would normally hide it
-	-- 					--".gitignored",
-	-- 				},
-	-- 				never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-	-- 					--".DS_Store",
-	-- 					--"thumbs.db",
-	-- 				},
-	-- 				never_show_by_pattern = { -- uses glob style patterns
-	-- 					--".null-ls_*",
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 		buffers = {
-	-- 			follow_current_file = {
-	-- 				enabled = true, -- This will find and focus the file in the active buffer every time
-	-- 				-- the current file is changed while the tree is open.
-	-- 				leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-	-- 			},
-	-- 		},
-	--
-	-- 		window = {
-	-- 			position = "float",
-	-- 			width = 50,
-	-- 			mappings = {
-	-- 				["<leader>nf"] = "find_in_dir",
-	-- 				["<leader>ng"] = "grep_in_dir",
-	-- 				["K"] = "focus_parent",
-	-- 				["D"] = "diff_files",
-	-- 				[";"] = "open_in_oil",
-	-- 				["<2-leftmouse>"] = safe_open("open"),
-	-- 				["<cr>"] = safe_open("open"),
-	-- 				["S"] = safe_open("open_split"),
-	-- 				["l"] = safe_open("open"),
-	-- 				["s"] = safe_open("open_vsplit"),
-	-- 				["t"] = safe_open("open_tabnew"),
-	-- 				["w"] = safe_open("open_with_window_picker"),
-	-- 			},
-	-- 		},
-	-- 		commands = {
-	-- 			find_in_dir = function(state)
-	-- 				local node = state.tree:get_node()
-	-- 				local path = node:get_id()
-	-- 				require("fzf-lua").files({ cwd = path, winopts = winopts.large.vertical })
-	-- 			end,
-	-- 			grep_in_dir = function(state)
-	-- 				local node = state.tree:get_node()
-	-- 				local path = node:get_id()
-	-- 				require("fzf-lua").live_grep({ cwd = path, winopts = winopts.large.vertical })
-	-- 			end,
-	-- 			focus_parent = function(state)
-	-- 				local node = state.tree:get_node()
-	-- 				require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
-	-- 			end,
-	-- 			open_in_oil = function(state)
-	-- 				local node = state.tree:get_node()
-	-- 				local path = node:get_id()
-	--
-	-- 				-- make sure it's a directory
-	-- 				if vim.fn.isdirectory(path) == 0 then
-	-- 					return
-	-- 				end
-	-- 				require("oil").open_float(path)
-	-- 			end,
-	-- 			diff_files = function(state)
-	-- 				local node = state.tree:get_node()
-	-- 				if node.type ~= "file" then
-	-- 					return
-	-- 				end
-	--
-	-- 				state.clipboard = state.clipboard or {}
-	--
-	-- 				if not state.__current_diff_node__ then
-	-- 					state.__current_diff_node__ = node
-	-- 					state.clipboard[node.id] = { action = "diff", node = node }
-	-- 				else
-	-- 					local first_file = state.clipboard[state.__current_diff_node__.id].node.path
-	-- 					local second_file = node.path
-	--
-	-- 					vim.cmd("tabnew " .. vim.fn.fnameescape(first_file))
-	-- 					vim.cmd("vertical diffsplit " .. vim.fn.fnameescape(second_file))
-	--
-	-- 					local cleanup_and_close = function()
-	-- 						vim.cmd("diffoff!")
-	-- 						vim.cmd("tabclose")
-	-- 					end
-	--
-	-- 					vim.keymap.set("n", "q", cleanup_and_close, {
-	-- 						buffer = true,
-	-- 						silent = true,
-	-- 						noremap = true,
-	-- 						desc = "Clear diff and close tab",
-	-- 					})
-	--
-	-- 					-- Clear the diff source
-	-- 					state.clipboard[node.id] = nil
-	-- 					state.clipboard[state.__current_diff_node__.id] = nil
-	-- 					state.__current_diff_node__ = nil
-	-- 				end
-	--
-	-- 				require("neo-tree.ui.renderer").redraw(state)
-	-- 			end,
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		lazy = false,
+		dependencies = {
+			"folke/snacks.nvim",
+			"MunifTanjim/nui.nvim"
+		},
+		keys = {
+			{
+				"<leader>e",
+				function()
+					require("neo-tree.command").execute({
+						toggle = true,
+						dir = vim.uv.cwd(),
+						reveal = true,
+						no_wait = true,
+					})
+				end,
+				desc = "Explorer NeoTree (cwd)",
+			},
+			{
+				"<leader>ge",
+				function()
+					require("neo-tree.command").execute({ source = "git_status", toggle = true, dir = vim.uv.cwd() })
+				end,
+				desc = "Git Explorer NeoTree (cwd)",
+			},
+		},
+		opts = {
+			default_component_configs = {
+				file_size = {
+					enabled = false,
+				},
+				type = {
+					enabled = false,
+				},
+				last_modified = {
+					enabled = false,
+				},
+			},
+			filesystem = {
+				hijack_netrw_behavior = "disabled",
+				filtered_items = {
+					visible = true, -- when true, they will just be displayed differently than normal items
+					hide_dotfiles = false,
+					hide_gitignored = true,
+					hide_hidden = false, -- only works on Windows for hidden files/directories
+					hide_by_name = {
+						-- "node_modules",
+					},
+					hide_by_pattern = {
+						--"*.meta",
+						--"*/src/*/tsconfig.json",
+					},
+					always_show = { -- remains visible even if other settings would normally hide it
+						--".gitignored",
+					},
+					never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+						--".DS_Store",
+						--"thumbs.db",
+					},
+					never_show_by_pattern = { -- uses glob style patterns
+						--".null-ls_*",
+					},
+				},
+			},
+			buffers = {
+				follow_current_file = {
+					enabled = true, -- This will find and focus the file in the active buffer every time
+					-- the current file is changed while the tree is open.
+					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+				},
+			},
+
+			window = {
+				position = "float",
+				width = 50,
+				mappings = {
+					["<leader>nf"] = "find_in_dir",
+					["<leader>ng"] = "grep_in_dir",
+					["K"] = "focus_parent",
+					["D"] = "diff_files",
+					[";"] = "open_in_oil",
+					["<2-leftmouse>"] = safe_open("open"),
+					["<cr>"] = safe_open("open"),
+					["S"] = safe_open("open_split"),
+					["l"] = safe_open("open"),
+					["s"] = safe_open("open_vsplit"),
+					["t"] = safe_open("open_tabnew"),
+					["w"] = safe_open("open_with_window_picker"),
+				},
+			},
+			commands = {
+				find_in_dir = function(state)
+					local node = state.tree:get_node()
+					local path = node:get_id()
+					Snacks.picker.files({dirs = {path}})
+				end,
+				grep_in_dir = function(state)
+					local node = state.tree:get_node()
+					local path = node:get_id()
+					Snacks.picker.grep({
+						dirs = {path},
+						regex = true,
+						live = true
+					})
+				end,
+				focus_parent = function(state)
+					local node = state.tree:get_node()
+					require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+				end,
+				open_in_oil = function(state)
+					local node = state.tree:get_node()
+					local path = node:get_id()
+
+					-- make sure it's a directory
+					if vim.fn.isdirectory(path) == 0 then
+						return
+					end
+					require("oil").open_float(path)
+				end,
+				diff_files = function(state)
+					local node = state.tree:get_node()
+					if node.type ~= "file" then
+						return
+					end
+
+					state.clipboard = state.clipboard or {}
+
+					if not state.__current_diff_node__ then
+						state.__current_diff_node__ = node
+						state.clipboard[node.id] = { action = "diff", node = node }
+					else
+						local first_file = state.clipboard[state.__current_diff_node__.id].node.path
+						local second_file = node.path
+
+						vim.cmd("tabnew " .. vim.fn.fnameescape(first_file))
+						vim.cmd("vertical diffsplit " .. vim.fn.fnameescape(second_file))
+
+						local cleanup_and_close = function()
+							vim.cmd("diffoff!")
+							vim.cmd("tabclose")
+						end
+
+						vim.keymap.set("n", "q", cleanup_and_close, {
+							buffer = true,
+							silent = true,
+							noremap = true,
+							desc = "Clear diff and close tab",
+						})
+
+						-- Clear the diff source
+						state.clipboard[node.id] = nil
+						state.clipboard[state.__current_diff_node__.id] = nil
+						state.__current_diff_node__ = nil
+					end
+
+					require("neo-tree.ui.renderer").redraw(state)
+				end,
+			},
+		},
+	},
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",

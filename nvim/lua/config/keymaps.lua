@@ -172,14 +172,13 @@ local function organize_imports()
 	-- 	title = "",
 	-- }
 	-- vim.lsp.buf_request_sync(0, "workspace/executeCommand", params, 3000)
+	vim.cmd('EslintFixAll')
 end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
 vim.keymap.set("n", "<leader>f", function(args)
 	-- organize_imports()
-	vim.cmd("TSToolsOrganizeImports")
 	-- vim.cmd("FormatWrite")
 	require("conform").format()
-	vim.cmd('EslintFixAll')
 end)
 
 -- vim.keymap.set("n", "<leader>f", function()

@@ -38,7 +38,7 @@ return {
 			-- lazygit
 			{ "<C-g>", function() Snacks.lazygit() end, desc = "Lazygit" },
 			-- Files
-			{ "<C-M-p>", function() Snacks.picker.smart({preview=false}) end, desc = "Smart Find Files" },
+			{ "<C-M-p>", function() Snacks.picker.files({preview = 'none'}) end, desc = "Smart Find Files" },
 			{ "<M-S-p>", function() Snacks.picker.files({dirs = {getCurrentFolderPath()}}) end, desc = "Smart Find Files" },
 			{ "<C-p>", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			-- grep
@@ -57,8 +57,8 @@ return {
 			-- search
 			{ "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
 			{ "<leader>kp", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-			-- explorer
-			{ "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+			-- -- explorer
+			-- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 			--lsp
 			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
