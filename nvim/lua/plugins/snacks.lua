@@ -11,11 +11,23 @@ return {
 			bigfile = { enabled = false },
 			dashboard = { enabled = false },
 			explorer = { enabled = false },
-			quickfile = { enabled = false },
+			quickfile = { enabled = true },
 			indent = { enabled = false },
 			input = { enabled = false },
 			scope = { enabled = false },
-			scroll = { enabled = true },
+			scroll = {
+				enabled = true,
+				animate = {
+					duration = { step = 15, total = 150 },
+					easing = "linear",
+				},
+				-- faster animation when repeating scroll after delay
+				animate_repeat = {
+					delay = 100, -- delay in ms before using the repeat animation
+					duration = { step = 5, total = 25 },
+					easing = "linear",
+				},
+			},
 			statuscolumn = { enabled = false }, -- lazyvim handles that
 			toggle = { enabled = false },
 			words = { enabled = false },
@@ -24,7 +36,7 @@ return {
 				win = {
 					style = "lazygit",
 				},
-			}
+			},
 		},
 		keys = {
 			{
