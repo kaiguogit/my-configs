@@ -7,14 +7,14 @@ cp $SCRIPT_DIR/.zshrc $HOME/
 cp $SCRIPT_DIR/.bashrc $HOME/
 cp $SCRIPT_DIR/.tigrc $HOME/
 # Alacritty
-cp $SCRIPT_DIR/alacritty/.alacritty.yml $HOME/
-cp $SCRIPT_DIR/alacritty/Alacritty.desktop ~/build/alacritty/extra/linux/
+#cp $SCRIPT_DIR/alacritty/.alacritty.yml $HOME/
+#cp $SCRIPT_DIR/alacritty/Alacritty.desktop ~/build/alacritty/extra/linux/
 
 # sudo desktop-file-install ~/build/alacritty/extra/linux/Alacritty.desktop
 
 # nvim
+mkdir -p $HOME/.config/nvim
 cp -r $SCRIPT_DIR/nvim/* $HOME/.config/nvim/
-
 # git
 cp $SCRIPT_DIR/.gitconfig $HOME/
 
@@ -25,6 +25,7 @@ cp $SCRIPT_DIR/vscode/keybindings.json $VSCODE_CONFIG_DIR/keybindings.json
 cat $SCRIPT_DIR/vscode/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
 
 # zsh config
+mkdir -p $HOME/.oh-my-zsh/custom
 cp $SCRIPT_DIR/zsh/zsh-auto-suggestions-patch.zsh /home/kguo/.oh-my-zsh/custom/
 
 # backup gnome setting

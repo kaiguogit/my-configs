@@ -90,6 +90,5 @@ sudo apt install -yy ibus-pinyin
 # Install keepassxc
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.keepassxc.KeePassXC
-
-
-
+flatpak install flathub org.wezfurlong.wezterm
+flatpak run org.wezfurlong.wezterm
