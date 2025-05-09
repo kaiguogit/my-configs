@@ -268,13 +268,19 @@ return {
 				},
 				debounce_delay = 3000,
 			})
-			-- local augroup = vim.api.nvim_create_augroup('ConformFormatting', {})
-			-- vim.api.nvim_create_autocmd('BufWritePre', {
-			-- 	group = augroup,
-			-- 	callback = function()
-			-- 		require("conform").format()
-			-- 	end,
-			-- })
+			local augroup = vim.api.nvim_create_augroup('ConformFormatting', {})
+			local function endswith(ending)
+				    return ending == "" or self:sub(-#ending) == ending
+			end
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = augroup,
+				callback = function(args)
+					local ext = ".ts"
+					if args.file:sub(-#ext) == ext then
+						require("conform").format()
+					end
+				end,
+			})
 		end,
 	},
 }
