@@ -12,11 +12,11 @@ return {
 			dashboard = { enabled = false },
 			explorer = { enabled = false },
 			quickfile = { enabled = true },
-			indent = { enabled = false },
+			indent = { enabled = true },
 			input = { enabled = false },
 			scope = { enabled = false },
 			scroll = {
-				enabled = true,
+				enabled = false,
 				animate = {
 					duration = { step = 15, total = 150 },
 					easing = "linear",

@@ -80,6 +80,13 @@ return {
 				desc = "TSTools: File References",
 				buffer = true,
 			},
+			{
+				"gs",
+				"<cmd>TSToolsGoToSourceDefinition<cr>",
+				ft = ft_js,
+				desc = "TSTools: Source definition",
+				buffer = true,
+			},
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
