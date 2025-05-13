@@ -19,6 +19,7 @@ $SCRIPT_DIR/automated/sxhkd/sxhkd.sh
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install v20
 
 # Install zsh and make it default
 $SCRIPT_DIR/automated/zsh.sh
