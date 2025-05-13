@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/copyq
+Exec=env QT_QPA_PLATFORM=xcb copyq
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

@@ -56,6 +56,8 @@ sudo apt-get install -yy simplescreenrecorder
 $SCRIPT_DIR/automated/ssh.sh
 
 # install copyq
+# solution for waylnad shortcut not working
+# https://github.com/hluk/CopyQ/issues/27#issuecomment-549766568
 sudo apt-get install -yy copyq
 
 # install ftp

@@ -1,22 +1,22 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
-# sudo apt-get install -yy vim-gtk3 neovim
+sudo apt-get install -yy vim-gtk3
 # install vim plug
-# VIM_PLUG=/home/kguo/.vim/autoload/plug.vim
-# if [ ! -f "$VIM_PLUG" ]; then
-#   curl -fLo "$VIM_PLUG" --create-dirs \
-#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# fi
+VIM_PLUG=/home/kguo/.vim/autoload/plug.vim
+if [ ! -f "$VIM_PLUG" ]; then
+  curl -fLo "$VIM_PLUG" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # Install plugins
 # https://github.com/junegunn/vim-plug/issues/675
-# vim +'PlugInstall --sync' +qa
+vim +'PlugInstall --sync' +qa
 
 # Install AnsiEsc plugin
 # It's needed to use vim as git pager for color
 # https://www.vim.org/scripts/script.php?script_id=302
-# vim +'so $SCRIPT_DIR/../../nvim/AnsiEsc.vba' +qa
+vim +'so $SCRIPT_DIR/../../nvim/AnsiEsc.vba' +qa
 
 # Setup nvim config
 NVIM_DIR=~/.config/nvim
@@ -30,7 +30,7 @@ cp $SCRIPT_DIR/../../nvim/* $NVIM_DIR/
 # Nerd font
 mkdir -p ~/.local/share/fonts
 if [ ! -f "~/.local/share/fonts/UbuntuMonoNerdFontMono-Regular.ttf" ]; then
-  curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf
+  curl -fLO --output-dir ~/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/UbuntuMono/Regular/UbuntuMonoNerdFontMono-Regular.ttf
 fi
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
