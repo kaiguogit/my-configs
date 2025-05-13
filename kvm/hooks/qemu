@@ -1,0 +1,16 @@
+#!/bin/bash
+# Hook to insert NEW rule to allow connection for VMs
+# 192.168.122.0/24 is NATed subnet 
+# virbr0 is networking interface for VM and host
+# -----------------------------------------------------------------
+# Written by Vivek Gite under GPL v3.x {https://www.cyberciti.biz}
+# -----------------------------------------------------------------
+# get count
+#################################################################
+## NOTE replace 192.168.2.0/24 with your public IPv4 sub/net   ##
+#################################################################
+v=$(/sbin/iptables -L FORWARD -n -v | /usr/bin/grep 192.168.122.0/24 | /usr/bin/wc -l)
+# avoid duplicate as this hook get called for each VM
+if [ $v -le 2 ]; then
+   /sbin/iptables -I FORWARD 1 -o virbr0 -m state -d 192.168.122.0/24 --state NEW,RELATED,ESTABLISHED -j ACCEPT
+fi

@@ -1,0 +1,14 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit bridge-client
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>bridge-client</name>
+  <uuid>f7c13e27-c62a-49d2-98e5-4fde48969589</uuid>
+  <bridge name='virbr1' stp='on' delay='0'/>
+  <mac address='52:54:00:3a:6a:c8'/>
+  <domain name='bridge-client'/>
+</network>
