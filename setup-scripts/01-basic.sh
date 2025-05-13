@@ -4,6 +4,9 @@
 
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 
+# Set higher watch count
+echo fs.inotify.max_user_watches= 5242880 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 sudo apt-get update -qq
 # Install basic utilities
 sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux vlc pigz unzip ranger
@@ -87,3 +90,6 @@ sudo apt install -yy ibus-pinyin
 # Install keepassxc
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.keepassxc.KeePassXC
+
+
+
