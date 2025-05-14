@@ -88,10 +88,11 @@ $SCRIPT_DIR/automated/change-file-watch-limit.sh
 # Install pinyin input
 sudo apt install -yy ibus-pinyin
 
+# Setup caplock override
+$SCRIPT_DIR/automated/keyd.sh
+
 # Install xcape for swapping caplock
 
 # Install keepassxc
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.keepassxc.KeePassXC
-flatpak install flathub org.wezfurlong.wezterm
-flatpak run org.wezfurlong.wezterm
