@@ -25,6 +25,19 @@ config.window_padding = {
 	bottom = 0,
 }
 
+config.keys = {
+	{
+		key = "p",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "f",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	}
+}
+
 config.colors = {
 	-- The default text color
 	foreground = "#b9bcba",
