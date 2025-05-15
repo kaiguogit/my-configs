@@ -68,7 +68,7 @@ lazy.setup({
 		-- { import = "plugins.dashboard" },
 		{ import = "plugins.diff" },
 		{ import = "plugins.disable-flash" },
-		-- { import = "plugins.eslint" },
+		{ import = "plugins.eslint" },
 		{ import = "plugins.explorer" },
 		{ import = "plugins.format" },
 		-- { import = "plugins.fish" },
