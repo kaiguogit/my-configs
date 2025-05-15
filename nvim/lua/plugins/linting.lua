@@ -16,6 +16,7 @@ return {
         -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
         -- ['_'] = { 'fallback linter' },
         -- ["*"] = { "typos" },
+        typescript = {"eslint_d"}
       },
       -- LazyVim extension to easily override linter options
       -- or add custom linters.
@@ -29,6 +30,18 @@ return {
         --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
         --   end,
         -- },
+        eslint_d = {
+          args = {
+            '--no-warn-ignored', -- <-- this is the key argument
+            '--format',
+            'json',
+            '--stdin',
+            '--stdin-filename',
+            function()
+              return vim.api.nvim_buf_get_name(0)
+            end,
+          },
+        },
       },
     },
     config = function(_, opts)

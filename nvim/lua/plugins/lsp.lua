@@ -15,9 +15,9 @@ end
 
 local LazyVimDiagnosticsIcons = {
 	Error = " ",
-	Warn  = " ",
-	Hint  = " ",
-	Info  = " ",
+	Warn = " ",
+	Hint = " ",
+	Info = " ",
 }
 ---@class lazyvim.util.lsp
 local M = {}
@@ -26,19 +26,90 @@ M._supports_method = {}
 ---@param method string
 ---@param fn fun(client:vim.lsp.Client, buffer)
 function M.on_supports_method(method, fn)
-  M._supports_method[method] = M._supports_method[method] or setmetatable({}, { __mode = "k" })
-  return vim.api.nvim_create_autocmd("User", {
-    pattern = "LspSupportsMethod",
-    callback = function(args)
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      local buffer = args.data.buffer ---@type number
-      if client and method == args.data.method then
-        return fn(client, buffer)
-      end
-    end,
-  })
+	M._supports_method[method] = M._supports_method[method] or setmetatable({}, { __mode = "k" })
+	return vim.api.nvim_create_autocmd("User", {
+		pattern = "LspSupportsMethod",
+		callback = function(args)
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			local buffer = args.data.buffer ---@type number
+			if client and method == args.data.method then
+				return fn(client, buffer)
+			end
+		end,
+	})
 end
 
+-- @opts table
+-- @opts.command string
+-- @opts.arguments table
+-- @opts.on_result function
+local function lsp_execute(opts)
+	local clients = vim.lsp.get_clients({ bufnr = 0, name = "vtsls" })
+	local vtsls_client = nil
+	for _, client in ipairs(clients) do
+		if client.name == "vtsls" then
+			vtsls_client = client
+			break
+		end
+	end
+
+	if vtsls_client then
+		local params = {
+			command = opts.command,
+			arguments = opts.arguments,
+		}
+
+		vtsls_client.request("workspace/executeCommand", params, function(err, result, ctx)
+			if err then
+				vim.notify("Error executing command: " .. vim.inspect(err), vim.log.levels.ERROR)
+			else
+				if opts.on_result ~= nil then
+					opts.on_result(result)
+				end
+			end
+		end)
+	else
+		vim.notify("vtsls client not found", vim.log.levels.WARN)
+	end
+end
+
+-- @opts table
+-- @opts.command string
+-- @opts.arguments table
+local function lsp_execute_to_qf(opts)
+	lsp_execute({
+		command = opts.command,
+		arguments = opts.arguments,
+		on_result = function(result)
+			if result and #result > 0 then
+				local qf_list = {}
+				for _, item in ipairs(result) do
+					table.insert(qf_list, {
+						filename = vim.uri_to_fname(item.uri),
+						lnum = item.range.start.line + 1,
+						col = item.range.start.character + 1,
+						text = item.lineText,
+					})
+				end
+				vim.fn.setqflist(qf_list, "r")
+				vim.cmd("copen")
+				vim.notify("File references found and added to quickfix list", vim.log.levels.INFO)
+			else
+				vim.notify("No file references found", vim.log.levels.INFO)
+			end
+		end,
+	})
+end
+
+local function lsp_action(action)
+	vim.lsp.buf.code_action({
+		apply = true,
+		context = {
+			only = { action },
+			diagnostics = {},
+		},
+	})
+end
 return {
 	-- start copy from https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/lsp/init.lua
 	-- lspconfig
@@ -48,6 +119,131 @@ return {
 		-- event = "LazyFile",
 		dependencies = {
 			"mason.nvim",
+			{
+				"yioneko/nvim-vtsls",
+				keys = {
+					-- {
+					-- 	"gd",
+					-- 	function()
+					-- 		local params = vim.lsp.util.make_position_params(0, "utf-8")
+					--
+					-- 		lsp_execute_to_qf({
+					-- 			command = "typescript.goToTypeDefinition",
+					-- 			arguments = {
+					-- 				params.textDocument.uri,
+					-- 				params.position,
+					-- 			},
+					-- 		})
+					-- 	end,
+					-- 	desc = "Goto Definition",
+					-- },
+					{
+						"gd",
+						function()
+							require("vtsls").commands.goto_source_definition()
+						end,
+						desc = "Goto Source Definition",
+					},
+					-- {
+					-- 	"gr",
+					-- 	function()
+					-- 		require("vtsls").commands.file_references()
+					-- 	end,
+					-- 	desc = "File References",
+					-- },
+					{
+						"<leader>oi",
+						function()
+							require("vtsls").commands.organize_imports()
+							-- lsp_action("source.organizeImports")
+						end,
+						desc = "Organize Imports",
+					},
+					-- {
+					-- 	"<leader>cM",
+					-- 	function()
+					-- 		lsp_action("source.addMissingImports.ts")
+					-- 	end,
+					-- 	desc = "Add missing imports",
+					-- },
+					-- {
+					-- 	"<leader>cu",
+					-- 	function()
+					-- 		lsp_action("source.removeUnused.ts")
+					-- 	end,
+					-- 	desc = "Remove unused imports",
+					-- },
+					-- {
+					-- 	"<leader>cD",
+					-- 	function()
+					-- 		lsp_action("source.fixAll.ts")
+					-- 	end,
+					-- 	desc = "Fix all diagnostics",
+					-- },
+					-- {
+					-- 	"<leader>cV",
+					-- 	function()
+					-- 		lsp_execute({ command = "typescript.selectTypeScriptVersion" })
+					-- 	end,
+					-- 	desc = "Select TS workspace version",
+					-- },
+					{
+						"gl",
+						function()
+							local clients = vim.lsp.get_clients({ bufnr = 0, name = "vtsls" })
+							local vtsls_client = nil
+							for _, client in ipairs(clients) do
+								if client.name == "vtsls" then
+									vtsls_client = client
+									break
+								end
+							end
+
+							if vtsls_client then
+								local capabilities = vtsls_client.server_capabilities
+
+								local lines = {}
+
+								-- Add executeCommandProvider information
+								table.insert(lines, "")
+								table.insert(lines, "Execute Command Provider:")
+								if capabilities.executeCommandProvider then
+									local commands = capabilities.executeCommandProvider.commands
+									if commands and #commands > 0 then
+										table.insert(lines, "Supported commands:")
+										for _, command in ipairs(commands) do
+											table.insert(lines, "  - " .. command)
+										end
+									else
+										table.insert(lines, "No specific commands listed")
+									end
+								else
+									table.insert(lines, "Not supported by this LSP server")
+								end
+
+								table.insert(lines, "")
+								table.insert(lines, "Code Action Provider:")
+								if capabilities.codeActionProvider then
+									local codeActionKinds = capabilities.codeActionProvider.codeActionKinds
+									if codeActionKinds then
+										for _, kind in ipairs(codeActionKinds) do
+											table.insert(lines, "- " .. kind)
+										end
+									else
+										table.insert(
+											lines,
+											"- All code actions are supported (no specific kinds listed)"
+										)
+									end
+								end
+
+								vim.lsp.util.open_floating_preview(lines, "markdown", { border = "single" })
+							end
+						end,
+						desc = "Show supported LSP actions",
+					},
+				},
+			},
 			{ "williamboman/mason-lspconfig.nvim", config = function() end },
 		},
 		opts = function()
@@ -139,6 +335,54 @@ return {
 							},
 						},
 					},
+					vtsls = {
+						filetypes = {
+							"javascript",
+							"jsx",
+							"tsx",
+							"javascriptreact",
+							"javascript.jsx",
+							"typescript",
+							"typescriptreact",
+							"typescript.tsx",
+						},
+						settings = {
+							complete_function_calls = false,
+							vtsls = {
+								enableMoveToFileCodeAction = true,
+								autoUseWorkspaceTsdk = true,
+								experimental = {
+									completion = {
+										enableServerSideFuzzyMatch = true,
+									},
+								},
+							},
+							typescript = {
+								updateImportsOnFileMove = { enabled = "always" },
+								suggest = {
+									completeFunctionCalls = false,
+								},
+								tsserver = {
+									maxTsServerMemory = 32000,
+								},
+								preferences = {
+									includePackageJsonAutoImports = "on",
+									preferTypeOnlyAutoImports = true,
+								},
+								inlayHints = {
+									parameterNames = { enabled = "literals" },
+									parameterTypes = { enabled = true },
+									variableTypes = { enabled = true },
+									propertyDeclarationTypes = { enabled = true },
+									functionLikeReturnTypes = { enabled = true },
+									enumMemberValues = { enabled = true },
+								},
+							},
+						},
+						root_dir = function()
+							return vim.fn.getcwd()
+						end,
+					},
 				},
 				-- you can do any additional lsp server setup here
 				-- return true if you don't want this server to be setup with lspconfig
@@ -210,14 +454,14 @@ return {
 			-- This is for inline linting message
 			if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
 				opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-				or function(diagnostic)
-					local icons = LazyVimDiagnosticsIcons
-					for d, icon in pairs(icons) do
-						if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-							return icon
+					or function(diagnostic)
+						local icons = LazyVimDiagnosticsIcons
+						for d, icon in pairs(icons) do
+							if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+								return icon
+							end
 						end
 					end
-				end
 			end
 			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
@@ -353,9 +597,9 @@ return {
 			{
 				"neovim/nvim-lspconfig",
 				-- opts = function()
-					-- local keys = require("lazyvim.plugins.lsp.keymaps").get()
-					--
-					-- keys[#keys + 1] = { "<leader>ca", false }
+				-- local keys = require("lazyvim.plugins.lsp.keymaps").get()
+				--
+				-- keys[#keys + 1] = { "<leader>ca", false }
 				-- end,
 			},
 		},

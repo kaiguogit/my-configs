@@ -253,9 +253,6 @@ vim.keymap.set("n", "<leader>cn", ':let @+ = expand("%:t")<CR>')
 -- LSP
 local opts = { remap = false }
 
-vim.keymap.set("n", "gh", function()
-	vim.lsp.buf.hover()
-end, opts)
 vim.keymap.set("n", "<leader>vws", function()
 	vim.lsp.buf.workspace_symbol()
 end, opts)
@@ -276,9 +273,10 @@ end, opts)
 
 vim.keymap.set("n",  "gh", vim.lsp.buf.hover, {desc = "Hover"})
 vim.keymap.set("n", "ge", vim.diagnostic.open_float, {desc = "Diagnose"})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
+-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
 vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, {desc = "workspace_symbol"})
 -- vim.keymap.set( "n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
+-- vim.keymap.set( "n", "gr", vim.lsp.buf.references, {desc = "Go to references"})
 vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, {desc = "Rename"})
 vim.keymap.set("n", "<leader>ph", vim.lsp.buf.signature_help, {desc = "Signature help"})
 
@@ -288,7 +286,7 @@ end, opts)
 vim.keymap.set("n", "<leader>ph", function()
 	vim.lsp.buf.signature_help()
 end, opts)
-vim.keymap.set("n", "<leader>oi", organize_imports)
+-- vim.keymap.set("n", "<leader>oi", organize_imports)
 
 local find_file = function()
     local file_list = {}
