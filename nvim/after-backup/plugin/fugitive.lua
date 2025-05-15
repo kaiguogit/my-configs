@@ -20,7 +20,7 @@ end, {})
 vim.keymap.set(
 	"n",
 	"<leader>gfh",
-	":vert G --paginate log --remerge-diff --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --follow -p -20 -- %<CR>",
+	":vert G --paginate log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --follow -p -20 -- %<CR>",
 	silentopts
 )
 vim.keymap.set(
@@ -32,7 +32,7 @@ vim.keymap.set(
 
 vim.keymap.set("v", "<leader>gl", function()
 	vim.cmd(
-		'vert G --paginate log --remerge-diff --pretty="tformat: %Creset%n****************************************************************************************'
+		'vert G --paginate log --pretty="tformat: %Creset%n****************************************************************************************'
 			.. '%n%Cred%h%Creset %Cgreen%s%Creset%Cgreen(%cr) %C(bold blue)<%an>%Creset" -L'
 			.. vim.fn.line("v")
 			.. ","
@@ -44,7 +44,7 @@ end, {})
 
 vim.keymap.set("n", "<leader>gl", function()
 	vim.cmd(
-		'vert G --paginate log --remerge-diff --pretty="tformat: %Creset%n****************************************************************************************'
+		'vert G --paginate log --pretty="tformat: %Creset%n****************************************************************************************'
 			.. '%n%Cred%h%Creset %Cgreen%s%Creset%Cgreen(%cr) %C(bold blue)<%an>%Creset" -L'
 			.. math.max(1, vim.fn.line(".") - 1)
 			.. ","
