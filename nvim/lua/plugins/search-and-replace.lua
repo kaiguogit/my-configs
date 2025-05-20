@@ -118,6 +118,53 @@ return {
 				mode = { "v" },
 				desc = "grug-far: Search on current file",
 			},
-		}
+		},
+	},
+	-- show search occurence count
+	{
+		"kevinhwang91/nvim-hlslens",
+		lazy = false,
+		dependencies = {
+			{
+				-- "haya14busa/vim-asterisk",
+				-- config = function()
+				-- 	require("asterisk").setup()
+				-- end,
+			},
+			{
+				"petertriho/nvim-scrollbar",
+				config = function()
+					require("scrollbar").setup()
+				end,
+			},
+		},
+		config = function()
+			require("hlslens").setup()
+			local kopts = { noremap = true, silent = true }
+
+			vim.keymap.set(
+				"n",
+				"n",
+				[[<Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR><Cmd>lua require('hlslens').start()<CR>]],
+				kopts
+			)
+
+			vim.keymap.set(
+				"n",
+				"N",
+				[[<Cmd>execute('normal! ' . v:count1 . 'Nzzzv')<CR><Cmd>lua require('hlslens').start()<CR>]],
+				kopts
+			)
+			vim.keymap.set("n", "*", [[*zz<Cmd>lua require('hlslens').start()<CR>]], kopts)
+			vim.keymap.set("n", "#", [[#zz<Cmd>lua require('hlslens').start()<CR>]], kopts)
+			vim.keymap.set("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+			vim.keymap.set("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+
+
+			vim.keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
+			require("scrollbar.handlers.search").setup({
+				-- hlslens config overrides
+			})
+		end,
 	},
 }

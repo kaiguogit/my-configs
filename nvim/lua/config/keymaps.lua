@@ -137,9 +137,9 @@ vim.keymap.set("n", "{", "{zz")
 vim.keymap.set("n", "}", "}zz")
 vim.keymap.set("n", "j", "jzz")
 vim.keymap.set("n", "k", "kzz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "*", "*zz")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
+-- vim.keymap.set("n", "*", "*zz")
 
 vim.keymap.set("n", "<leader>vwm", function()
 	require("vim-with-me").StartVimWithMe()
@@ -172,7 +172,7 @@ local function organize_imports()
 	-- 	title = "",
 	-- }
 	-- vim.lsp.buf_request_sync(0, "workspace/executeCommand", params, 3000)
-	vim.cmd('EslintFixAll')
+	vim.cmd("EslintFixAll")
 end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
 vim.keymap.set("n", "<leader>f", function(args)
@@ -188,8 +188,8 @@ end)
 -- quick fix navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- set executable permission
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -271,14 +271,14 @@ end, opts)
 -- 	vim.lsp.buf.definition()
 -- end, opts)
 
-vim.keymap.set("n",  "gh", vim.lsp.buf.hover, {desc = "Hover"})
-vim.keymap.set("n", "ge", vim.diagnostic.open_float, {desc = "Diagnose"})
+vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "Hover" })
+vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "Diagnose" })
 -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
-vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, {desc = "workspace_symbol"})
+vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "workspace_symbol" })
 -- vim.keymap.set( "n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
 -- vim.keymap.set( "n", "gr", vim.lsp.buf.references, {desc = "Go to references"})
-vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, {desc = "Rename"})
-vim.keymap.set("n", "<leader>ph", vim.lsp.buf.signature_help, {desc = "Signature help"})
+vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, { desc = "Rename" })
+vim.keymap.set("n", "<leader>ph", vim.lsp.buf.signature_help, { desc = "Signature help" })
 
 vim.keymap.set("n", "<leader>vrn", function()
 	vim.lsp.buf.rename()
@@ -289,30 +289,30 @@ end, opts)
 -- vim.keymap.set("n", "<leader>oi", organize_imports)
 
 local find_file = function()
-    local file_list = {}
-    local list = vim.fn.glob(vim.fn.expand("%:p:h") .. "/*", true, true)
-    local found_cur_file = false
-    local file_idx = 0
-    local count = 0;
-    for k, file_path in pairs(list) do
-        local filename = vim.fs.basename(file_path)
-        local is_file = string.find(filename, '%.')
-        local is_same = filename == vim.fn.expand("%:t")
-        if is_file then
-            table.insert(file_list, filename)
-            count = count + 1
-        end
-        if is_same and is_file then
-            found_cur_file = true
-            file_idx = count
-        end
-    end
-	return {count =count, file_list = file_list, found_cur_file = found_cur_file, file_idx= file_idx}
+	local file_list = {}
+	local list = vim.fn.glob(vim.fn.expand("%:p:h") .. "/*", true, true)
+	local found_cur_file = false
+	local file_idx = 0
+	local count = 0
+	for k, file_path in pairs(list) do
+		local filename = vim.fs.basename(file_path)
+		local is_file = string.find(filename, "%.")
+		local is_same = filename == vim.fn.expand("%:t")
+		if is_file then
+			table.insert(file_list, filename)
+			count = count + 1
+		end
+		if is_same and is_file then
+			found_cur_file = true
+			file_idx = count
+		end
+	end
+	return { count = count, file_list = file_list, found_cur_file = found_cur_file, file_idx = file_idx }
 end
 local open_next_file = function(opt)
 	local next_file_path
 	local r = find_file()
-    if r.found_cur_file then
+	if r.found_cur_file then
 		if opt and opt.reverse then
 			if r.file_idx == 1 then
 				next_file_path = r.file_list[r.count]
@@ -326,25 +326,30 @@ local open_next_file = function(opt)
 				next_file_path = r.file_list[r.file_idx + 1]
 			end
 		end
-    end
-	if next_file_path then
-		vim.cmd('e ' .. vim.fn.expand("%:p:h") .. '/' .. next_file_path)
 	end
-
+	if next_file_path then
+		vim.cmd("e " .. vim.fn.expand("%:p:h") .. "/" .. next_file_path)
+	end
 end
 
-vim.keymap.set("n", "<A-n>", function ()
-	open_next_file({reverse = true})
+vim.keymap.set("n", "<A-n>", function()
+	open_next_file({ reverse = true })
 end)
 vim.keymap.set("n", "<A-m>", open_next_file)
 
-vim.api.nvim_create_user_command('WQ', 'wq', {})
-vim.api.nvim_create_user_command('Wq', 'wq', {})
-vim.api.nvim_create_user_command('W', 'w', {})
-vim.api.nvim_create_user_command('Qa', 'qa', {})
-vim.api.nvim_create_user_command('Q', 'q', {})
-vim.api.nvim_create_user_command('Q', 'q', {})
+vim.api.nvim_create_user_command("WQ", "wq", {})
+vim.api.nvim_create_user_command("Wq", "wq", {})
+vim.api.nvim_create_user_command("W", "w", {})
+vim.api.nvim_create_user_command("Qa", "qa", {})
+vim.api.nvim_create_user_command("Q", "q", {})
+vim.api.nvim_create_user_command("Q", "q", {})
 
-vim.keymap.set('n', 'Q', 'q', { noremap = true, silent = true })
-vim.keymap.set('n', 'q', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set("n", "Q", "q", { noremap = true, silent = true })
+vim.keymap.set("n", "q", "<Nop>", { noremap = true, silent = true })
 
+-- hide notifictaion and search highlight
+vim.keymap.set("n", "<esc>", function()
+	-- notify.dismiss()
+	require("snacks").notifier.hide()
+	vim.cmd.noh()
+end)

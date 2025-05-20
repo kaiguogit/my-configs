@@ -1,6 +1,7 @@
 [alias]
    	lg = !git --no-pager log --color --graph --max-count=1000 --pretty=format:'%h -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- | /usr/bin/vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -
    	lg2 = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- | less
+	log2 = !git --no-pager log | /usr/bin/vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -
 	#lg2 = !git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | nvim -R -c 'set hidden nowrap keywordprg=:enew | nnoremap q :q!<cr>' -
 	g = !git grep --break --heading --line-number
 	rb = !git pull --rebase=merges
@@ -31,7 +32,7 @@
 	name = Kai Guo
 	email = kguo@fortinet.com
 [core]
-	editor = vim.basic
+	editor = vim
 	commitGraph = true
 	#https://salferrarello.com/using-vim-view-git-commits/
     ; pager = "vim --not-a-term -R -c 'set foldmethod=syntax filetype=git nowrap | nnoremap q :q!<cr>' -c 'AnsiEsc' -"
@@ -105,3 +106,8 @@
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
     #side-by-side = true
 
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

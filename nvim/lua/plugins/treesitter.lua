@@ -223,7 +223,7 @@ return {
   {
     "junegunn/vim-easy-align",
     keys = {
-      { "<leader>la", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "Easy align" },
+      { "<leader>la",   "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "Easy align" },
       { "<leader>lA", "<Plug>(LiveEasyAlign)", mode = { "n", "x" }, desc = "Live Easy align" },
     },
   },

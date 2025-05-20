@@ -82,6 +82,10 @@ vim.o.laststatus = 3
 vim.o.timeoutlen = 1000
 vim.o.ttimeoutlen = 10
 
+-- for nvim-hlslens 
+vim.o.hlsearch = true
+
+
 function ansi_colorize()
   vim.wo.number = false
   vim.wo.relativenumber = false
