@@ -129,6 +129,12 @@ return {
   {
     "FabijanZulj/blame.nvim",
     cmd = "BlameToggle",
+    keys = {
+      {
+        "<leader>gb",
+        "<cmd>BlameToggle<CR>"
+      }
+    },
     opts = {
       max_summary_width = 25,
       mappings = {

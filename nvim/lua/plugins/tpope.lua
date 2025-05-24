@@ -4,7 +4,7 @@ return {
 		"tpope/vim-fugitive",
 		config = function()
 			local silentopts = { noremap = true, silent = true }
-			vim.keymap.set("n", "<leader>gb", "<cmd>G blame<CR>")
+			-- vim.keymap.set("n", "<leader>gb", "<cmd>G blame<CR>")
 			vim.keymap.set(
 				"n",
 				"<leader>gsh",
