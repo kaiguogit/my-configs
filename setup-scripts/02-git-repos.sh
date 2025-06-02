@@ -20,3 +20,9 @@ if [ ! -d $REPO/.git ]; then
     mkdir -p $REPO
     git clone git@git-van.corp.fortinet.com:neutrino/tapestry.git $REPO
 fi
+
+REPO=~/build/devtools
+if [ ! -d $REPO/.git ]; then
+    git clone "ssh://kguo@gerrit.fortinet.com:29418/devtools" && (cd "devtools" && mkdir -p `git rev-parse --git-dir`/hooks/ && curl -Lo `git rev-parse --git-dir`/hooks/commit-msg https://gerrit.fortinet.com/tools/hooks/commit-msg && chmod +x `git rev-parse --git-dir`/hooks/commit-msg)
+fi
+
