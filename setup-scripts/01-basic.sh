@@ -15,7 +15,7 @@ sudo apt-get install -yy htop gdebi grsync bleachbit gufw curl tmux vlc pigz unz
 sudo apt-get install -yy chrome-gnome-shell gnome-tweaks gnome-startup-applications
 
 # Install sxhkd for shortcuts. especially for tdrop for dropdown terminal for alacritty.
-$SCRIPT_DIR/automated/sxhkd/sxhkd.sh
+# $SCRIPT_DIR/automated/sxhkd/sxhkd.sh
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
