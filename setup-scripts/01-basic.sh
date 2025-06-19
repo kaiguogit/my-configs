@@ -95,3 +95,6 @@ $SCRIPT_DIR/automated/keyd.sh
 # Install keepassxc
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub org.keepassxc.KeePassXC
+
+# Install rbgenco 
+$SCRIPT_DIR/automated/eco.sh
