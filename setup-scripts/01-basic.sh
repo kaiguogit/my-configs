@@ -19,7 +19,6 @@ sudo apt-get install -yy chrome-gnome-shell gnome-tweaks gnome-startup-applicati
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-nvm install v20
 
 # Install zsh and make it default
 $SCRIPT_DIR/automated/zsh.sh
@@ -44,7 +43,7 @@ $SCRIPT_DIR/automated/catppucin-bat.sh
 sudo apt-get install -yy xclip
 
 # install java runtime
-sudo apt-get install default-jre
+sudo apt-get install -yy default-jre
 
 # Install kvm
 $SCRIPT_DIR/automated/kvm.sh
@@ -95,4 +94,4 @@ $SCRIPT_DIR/automated/keyd.sh
 
 # Install keepassxc
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --user flathub org.keepassxc.KeePassXC
+flatpak install -y --user flathub org.keepassxc.KeePassXC
