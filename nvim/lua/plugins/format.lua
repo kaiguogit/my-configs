@@ -9,7 +9,8 @@ return {
 					vim.list_extend(opts.ensure_installed, {
 						-- "js-debug-adapter",
 						"prettierd",
-						-- "angular-language-server",
+						"angularls",
+						"eslint"
 					})
 				end,
 			},

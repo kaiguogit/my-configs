@@ -20,6 +20,7 @@ return {
 				"html-lsp",
 				"css-variables-language-server",
 				"css-lsp",
+				"emmet_language_server",
 				-- "htmlhint",
 				-- "stylelint",
 			})
