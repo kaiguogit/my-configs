@@ -16,7 +16,7 @@ vim +'PlugInstall --sync' +qa
 # Install AnsiEsc plugin
 # It's needed to use vim as git pager for color
 # https://www.vim.org/scripts/script.php?script_id=302
-vim +'so $SCRIPT_DIR/../../nvim/AnsiEsc.vba' +qa
+vim +"so $SCRIPT_DIR/../../nvim/AnsiEsc.vba" +qa
 
 # Setup nvim config
 NVIM_DIR=~/.config/nvim
