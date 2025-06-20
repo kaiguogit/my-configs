@@ -6,7 +6,19 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
-			picker = { enabled = true },
+			picker = { enabled = true,
+				layout = {
+					box = "horizontal",
+					width = 0.8,
+					min_width = 140,
+					height = 0.8,
+				},
+				formatters = {
+					file = {
+						truncate = 120
+					}
+				}
+			},
 			notifier = { enabled = true },
 			bigfile = { enabled = false },
 			dashboard = { enabled = false },

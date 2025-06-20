@@ -102,12 +102,6 @@ bindkey '^[OB' history-substring-search-down
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-set -o ignoreeof
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Dont let ctrl-d exit shell
 set -o ignoreeof
 
@@ -193,30 +187,13 @@ if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
 fi
 
 # Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
+# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export TMOUT=0
 # Install npm dev dependencie
 ANGULAR_VERSION=14
-
-function install-npm-dev-deps() {
-  npm_install_pkgs=(
-      # Required for https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-      typescript
-      typescript-language-server
-      # Required for https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint and
-      # https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls and
-      # https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
-      vscode-langservers-extracted
-      # Required for CLI utility and https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls
-      @angular/cli@$ANGULAR_VERSION
-      @angular/language-server@$ANGULAR_VERSION
-  )
-  npm install -g "${npm_install_pkgs[@]}"
-}
 
 # Node/NPM
 if [ -f "$HOME/.nvm/nvm.sh" ]; then
