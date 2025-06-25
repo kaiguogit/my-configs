@@ -23,8 +23,21 @@ return {
 					return ""
 				end
 			end
+
+			vim.keymap.set("n", "<leader>gd", function()
+				vim.cmd("Gdiff")
+			end, {})
+
+			vim.keymap.set("n", "<leader>gd", function()
+				vim.cmd("Gstatus")
+			end, {})
+
 			vim.keymap.set("v", "<leader>gsh", function()
 				vim.cmd("vert G --paginate show " .. get_visual_selection())
+			end, {})
+
+			vim.keymap.set("v", "<leader>gsd", function()
+				vim.cmd("DiffviewOpen " .. get_visual_selection())
 			end, {})
 
 			-- without remerge-diff

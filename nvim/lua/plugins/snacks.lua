@@ -6,18 +6,20 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
-			picker = { enabled = true,
-				layout = {
-					box = "horizontal",
-					width = 0.8,
-					min_width = 140,
-					height = 0.8,
-				},
+			picker = {
+				enabled = true,
 				formatters = {
+					text = {
+						ft = nil, ---@type string? filetype for highlighting
+					},
 					file = {
-						truncate = 120
-					}
-				}
+						filename_first = false, -- display filename before the file path
+						truncate = 120, -- truncate the file path to (roughly) this length
+						filename_only = false, -- only show the filename
+						icon_width = 2, -- width of the icon (in characters)
+						git_status_hl = true, -- use the git status highlight group for the filename
+					},
+				},
 			},
 			notifier = { enabled = true },
 			bigfile = { enabled = false },

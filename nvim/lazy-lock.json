@@ -78,6 +78,7 @@
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },
   "ssr.nvim": { "branch": "main", "commit": "7c95cfa5836508f08ae833a4b31d2ed265560f64" },
   "telepath.nvim": { "branch": "master", "commit": "2879da05463db7bdc8824b13cccd8e8920c62a55" },
+  "telescope-diff.nvim": { "branch": "master", "commit": "c797b722516e871b51def7e69266f0cc9875bacf" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
   "telescope-hop.nvim": { "branch": "master", "commit": "337a1e9f08f972ebf7a7d26251577812ebaadc78" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
