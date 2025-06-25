@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: LicenseRef-Fortinet
+
+bear=/home/kguo/build/open-source/bear-tools/bear-2.4.4-1/bin/host/bear
+libear=/home/kguo/build/open-source/bear-tools/bear-2.4.4-1/lib/host/libear.so
+
+if ! [ -x ${bear} ]; then
+        echo "Error.  Could not get bear from fortipkg."
+        exit 1
+fi
+
+SILENT= V=1 ${bear} \
+        --remove-flags=".*DJSON_GEN.*:.*fortiweb\/json_gen.*" \
+        --exclude fortiweb/json_gen \
+        --exclude tools/ \
+        --exclude migadmin/pkg \
+        --libear ${libear} $@

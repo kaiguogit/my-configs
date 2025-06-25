@@ -98,3 +98,6 @@ flatpak install -y --user flathub org.keepassxc.KeePassXC
 
 # Install rbgenco 
 $SCRIPT_DIR/automated/eco.sh
+
+# Install bear
+$SCRIPT_DIR/automated/bear.sh
