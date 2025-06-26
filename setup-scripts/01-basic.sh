@@ -96,6 +96,9 @@ $SCRIPT_DIR/automated/keyd.sh
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user flathub org.keepassxc.KeePassXC
 
+# Install ccls
+sudo apt install -yy ccls
+
 # Install rbgenco 
 $SCRIPT_DIR/automated/eco.sh
 
