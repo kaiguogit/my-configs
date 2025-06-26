@@ -10,7 +10,7 @@ return {
 				enabled = true,
 				formatters = {
 					text = {
-						ft = nil, ---@type string? filetype for highlighting
+						ft = nil
 					},
 					file = {
 						filename_first = false, -- display filename before the file path
