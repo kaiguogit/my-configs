@@ -20,10 +20,16 @@ return {
 				},
 				sections = {
 					lualine_a = {
-						{
-							"macro_recording", "%S"
-						},
+						{"macro_recording", "%S"},
 					},
+					lualine_c = {
+						{function()
+							local statusline = require('arrow.statusline')
+							return statusline.text_for_statusline_with_icons()
+						end},
+						{'filename'}
+					},
+
 					lualine_x = {
 						function()
 							-- invoke `progress` here.

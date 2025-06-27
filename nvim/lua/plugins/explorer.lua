@@ -292,4 +292,23 @@ return {
 		config = true,
 		event = "VeryLazy",
 	},
+	{
+		"otavioschwanck/arrow.nvim",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			-- or if using `mini.icons`
+			-- { "echasnovski/mini.icons" },
+		},
+		opts = {
+			show_icons = true,
+			leader_key = ";", -- Recommended to be a single key
+			buffer_leader_key = "m", -- Per Buffer Mappings
+		},
+		config = function(_, opts)
+			-- Delete m for bookmark because arrow.nvim use m
+			vim.keymap.del("n", "m")
+			require("arrow").setup(opts)
+			-- Custom configuration or commands
+		end,
+	},
 }
