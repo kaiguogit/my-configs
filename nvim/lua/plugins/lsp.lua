@@ -555,8 +555,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"stylua",
-				"shfmt",
-				"angularls"
+				"shfmt"
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
