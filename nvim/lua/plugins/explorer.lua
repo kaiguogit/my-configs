@@ -33,7 +33,7 @@ return {
 		lazy = false,
 		dependencies = {
 			"folke/snacks.nvim",
-			"MunifTanjim/nui.nvim"
+			"MunifTanjim/nui.nvim",
 		},
 		keys = {
 			{
@@ -124,15 +124,15 @@ return {
 				find_in_dir = function(state)
 					local node = state.tree:get_node()
 					local path = node:get_id()
-					Snacks.picker.files({dirs = {path}})
+					Snacks.picker.files({ dirs = { path } })
 				end,
 				grep_in_dir = function(state)
 					local node = state.tree:get_node()
 					local path = node:get_id()
 					Snacks.picker.grep({
-						dirs = {path},
+						dirs = { path },
 						regex = true,
-						live = true
+						live = true,
 					})
 				end,
 				focus_parent = function(state)
@@ -268,15 +268,19 @@ return {
 				},
 				debounce_delay = 3000,
 			})
-			local augroup = vim.api.nvim_create_augroup('ConformFormatting', {})
+			local augroup = vim.api.nvim_create_augroup("ConformFormatting", {})
 			local function endswith(ending)
-				    return ending == "" or self:sub(-#ending) == ending
+				return ending == "" or self:sub(-#ending) == ending
 			end
-			vim.api.nvim_create_autocmd('BufWritePre', {
+			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				callback = function(args)
 					local ext = ".ts"
-					if args.file:sub(-#ext) == ext or args.file:find("migadmin/pkg/angular") then
+					local html = ".html"
+					if
+						args.file:sub(-#ext) == ext
+						or (args.file:find("migadmin/pkg/angular") and args.file:sub(-#html) == html)
+					then
 						require("conform").format()
 					end
 				end,
