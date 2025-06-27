@@ -276,7 +276,7 @@ return {
 				group = augroup,
 				callback = function(args)
 					local ext = ".ts"
-					if args.file:sub(-#ext) == ext then
+					if args.file:sub(-#ext) == ext or args.file:find("migadmin/pkg/angular") then
 						require("conform").format()
 					end
 				end,
