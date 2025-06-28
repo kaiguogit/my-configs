@@ -8,13 +8,27 @@ return {
 		opts = {
 			picker = {
 				enabled = true,
+				layout = {
+					fullscreen = true,
+					layout = {
+						box = "horizontal",
+						{
+							box = "vertical",
+							border = "rounded",
+							title = "{title} {live} {flags}",
+							{ win = "input", height = 1, border = "bottom" },
+							{ win = "list", border = "none" },
+						},
+						{ win = "preview", title = "{preview}", border = "rounded", width = 0.4 },
+					}
+				},
 				formatters = {
 					text = {
-						ft = nil
+						ft = nil,
 					},
 					file = {
 						filename_first = false, -- display filename before the file path
-						truncate = 96, -- truncate the file path to (roughly) this length
+						truncate = 180, -- truncate the file path to (roughly) this length
 						filename_only = false, -- only show the filename
 						icon_width = 2, -- width of the icon (in characters)
 						git_status_hl = true, -- use the git status highlight group for the filename
@@ -78,7 +92,7 @@ return {
 			{
 				"<C-M-p>",
 				function()
-					Snacks.picker.files({ preview = "none" })
+					Snacks.picker.files()
 				end,
 				desc = "Smart Find Files",
 			},
