@@ -4,6 +4,13 @@ return {
 		config = function()
 			require("toggleterm").setup({
 				direction = "float",
+				float_opts = {
+					border = 'single',
+					width = 270,
+					height = 72,
+					row = 2,
+					winblend = 3,
+				},
 			})
 
 			-- Lazy git
