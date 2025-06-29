@@ -277,9 +277,20 @@ return {
 				callback = function(args)
 					local ext = ".ts"
 					local html = ".html"
+					-- .ts,.js,.json,.scss,.html,.md
 					if
 						args.file:sub(-#ext) == ext
-						or (args.file:find("migadmin/pkg/angular") and args.file:sub(-#html) == html)
+						or (
+							args.file:find("migadmin/pkg/angular")
+							and (
+								endswith(".ts")
+								or endswith(".json")
+								or endswith(".js")
+								or endswith(".scss")
+								or endswith(".html")
+								or endswith(".md")
+							)
+						)
 					then
 						require("conform").format()
 					end
@@ -304,13 +315,13 @@ return {
 			leader_key = ";",
 			buffer_leader_key = "m",
 			per_buffer_config = {
-				sort_automatically = false
-			}
+				sort_automatically = false,
+			},
 		},
 		config = function(_, opts)
 			-- Delete m for bookmark because arrow.nvim use m
-			if vim.fn.maparg('m', 'n') ~= '' then
-				  vim.keymap.del('n', 'm')
+			if vim.fn.maparg("m", "n") ~= "" then
+				vim.keymap.del("n", "m")
 			end
 			vim.keymap.set("n", "H", require("arrow.persist").previous)
 			vim.keymap.set("n", "L", require("arrow.persist").next)
