@@ -9,9 +9,11 @@ return {
 			picker = {
 				enabled = true,
 				layout = {
-					fullscreen = true,
 					layout = {
 						box = "horizontal",
+						width = 0.99,
+						min_width = 120,
+						height = 0.96,
 						{
 							box = "vertical",
 							border = "rounded",
