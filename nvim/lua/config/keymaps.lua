@@ -354,6 +354,3 @@ vim.keymap.set("n", "<esc>", function()
 	vim.cmd.noh()
 end)
 
-vim.keymap.set("n", "<C-w>q", function()
-	Snacks.bufdelete()
-end, {noremap = true, silent = true})
