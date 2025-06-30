@@ -30,7 +30,7 @@ return {
 				keys = {
 					telescope = {
 						i = {
-							paste = "<cr>",
+							paste_behind = "<cr>",
 							-- paste_behind = "<c-o>",
 							past_visual = "<c-s-k>",
 						},
