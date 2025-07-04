@@ -1,6 +1,7 @@
 -- fat cursor
 -- vim.opt.guicursor = ""
 vim.opt.guifont = "Ubuntu Mono:h18"
+-- vim.lsp.set_log_level("DEBUG")
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
