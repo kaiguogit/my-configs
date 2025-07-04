@@ -315,8 +315,8 @@ return {
 			vim.keymap.set("n", "H", require("arrow.persist").previous)
 			vim.keymap.set("n", "L", require("arrow.persist").next)
 			vim.keymap.set("n", "<C-s>", require("arrow.persist").toggle)
-			vim.keymap.set("n", "<", require("arrow.commands").commands.prev_buffer_bookmark)
-			vim.keymap.set("n", ">", require("arrow.commands").commands.next_buffer_bookmark)
+			vim.keymap.set("n", "<M-h>", require("arrow.commands").commands.prev_buffer_bookmark)
+			vim.keymap.set("n", "<M-l>", require("arrow.commands").commands.next_buffer_bookmark)
 			vim.keymap.set("n", "M", require("arrow.commands").commands.toggle_current_line_for_buffer)
 			require("arrow").setup(opts)
 			-- Custom configuration or commands
