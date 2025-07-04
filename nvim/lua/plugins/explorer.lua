@@ -294,6 +294,7 @@ return {
 	},
 	{
 		"otavioschwanck/arrow.nvim",
+		lazy = false,
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			-- or if using `mini.icons`
@@ -310,7 +311,7 @@ return {
 		config = function(_, opts)
 			-- Delete m for bookmark because arrow.nvim use m
 			if vim.fn.maparg('m', 'n') ~= '' then
-				  vim.keymap.del('n', 'm')
+				vim.keymap.del('n', 'm')
 			end
 			vim.keymap.set("n", "H", require("arrow.persist").previous)
 			vim.keymap.set("n", "L", require("arrow.persist").next)
