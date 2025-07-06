@@ -160,6 +160,13 @@ return {
 				end,
 				desc = "Keymaps",
 			},
+			{
+				"<leader>rl",
+				function()
+					Snacks.picker.registers()
+				end,
+				desc = "Registers"
+			},
 			-- -- explorer
 			-- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 			--lsp
