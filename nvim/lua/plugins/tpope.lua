@@ -5,6 +5,7 @@ return {
 		config = function()
 			local silentopts = { noremap = true, silent = true }
 			-- vim.keymap.set("n", "<leader>gb", "<cmd>G blame<CR>")
+			-- show commit with hash in current + register
 			vim.keymap.set(
 				"n",
 				"<leader>gsh",
@@ -24,12 +25,16 @@ return {
 				end
 			end
 
-			vim.keymap.set("n", "<leader>gd", function()
-				vim.cmd("Gdiff")
-			end, {})
+			vim.keymap.set("n", "<leader>gaa", function()
+				vim.cmd("G add %")
+			end, { desc = "Run git add for current file" })
 
 			vim.keymap.set("n", "<leader>gd", function()
-				vim.cmd("Gstatus")
+				vim.cmd("G diff")
+			end, {})
+
+			vim.keymap.set("n", "<leader>gs", function()
+				vim.cmd("G status")
 			end, {})
 
 			vim.keymap.set("v", "<leader>gsh", function()
@@ -40,6 +45,7 @@ return {
 				vim.cmd("DiffviewOpen " .. get_visual_selection())
 			end, {})
 
+			-- Log current file history and patch
 			-- without remerge-diff
 			vim.keymap.set(
 				"n",
@@ -47,6 +53,7 @@ return {
 				":vert G --paginate log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --follow -p -20 -- %<CR>",
 				silentopts
 			)
+			-- Log current file history and patch
 			-- with remerge-diff
 			vim.keymap.set(
 				"n",
@@ -54,6 +61,7 @@ return {
 				":vert G --paginate log --remerge-diff --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --follow -p -20 -- %<CR>",
 				silentopts
 			)
+			-- Log current file history graph
 			vim.keymap.set(
 				"n",
 				"<leader>ggl",
@@ -61,6 +69,7 @@ return {
 				silentopts
 			)
 
+			-- Show history for selected lines
 			vim.keymap.set("v", "<leader>gl", function()
 				vim.cmd(
 					'vert G --paginate log --remerge-diff --pretty="tformat: %Creset%n****************************************************************************************'
@@ -73,6 +82,7 @@ return {
 				)
 			end, {})
 
+			-- Show history for current line
 			vim.keymap.set("n", "<leader>gl", function()
 				vim.cmd(
 					'vert G --paginate log --remerge-diff --pretty="tformat: %Creset%n****************************************************************************************'

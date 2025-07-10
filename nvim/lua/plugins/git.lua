@@ -200,22 +200,28 @@ return {
 		keys = {
 			{
 				"<leader>sC",
-				function ()
+				function()
 					require("telescope").extensions.diff.diff_files({ hidden = true })
-				end
+				end,
 			},
 			{
 				"<leader>sc",
-				function ()
+				function()
 					require("telescope").extensions.diff.diff_current({ hidden = true })
-				end
-			}
+				end,
+			},
 		},
 		dependencies = {
 			{ "nvim-telescope/telescope.nvim" },
 		},
 	},
-  {
-    "sindrets/diffview.nvim"
-  }
+	{
+		"sindrets/diffview.nvim",
+	},
+	{ "akinsho/git-conflict.nvim", version = "*", config = true, keys = {
+		{
+			"<leader>cr",
+			"<cmd>GitConflictRefresh<CR>"
+		}
+	} },
 }
