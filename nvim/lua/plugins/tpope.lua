@@ -96,8 +96,12 @@ return {
 			end, {})
 		end,
 	},
-	{ "tpope/vim-abolish" },
+	{
+		"gregorias/coerce.nvim",
+		tag = "v4.1.0",
+		config = true,
+	},
 	{ "tpope/vim-repeat" },
-	{ "tpope/vim-surround" },
+	{ "kylechui/nvim-surround" },
 	{ "tpope/vim-characterize" },
 }

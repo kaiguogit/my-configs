@@ -118,9 +118,12 @@ return {
 			{
 				"<C-M-f>",
 				function()
-					Snacks.picker.grep_word({
+					Snacks.picker.grep({
 						live = true,
 						regex = true,
+						search = function(picker)
+							    return picker:word()
+						end,
 					})
 				end,
 				desc = "Visual selection or word",

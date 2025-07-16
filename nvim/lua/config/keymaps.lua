@@ -355,3 +355,7 @@ vim.keymap.set("n", "<esc>", function()
 	vim.cmd.noh()
 end)
 
+-- Delete current line html tag and its closing tag
+vim.keymap.set('n', 'Dst', '<Plug>(nvim-surround-delete)tdd}dd<C-o>')
+
+
