@@ -218,11 +218,21 @@ return {
 	{
 		"sindrets/diffview.nvim",
 	},
-	{ "akinsho/git-conflict.nvim", version = "*", lazy = false, config = true, keys = {
-		{
-			"<leader>cr",
-			"<cmd>GitConflictRefresh<CR>",
-			{desc = "Refresh git conflicts highlights"}
-		}
-	} },
+	-- ]x for go to next conflict
+	-- co for choose ours
+	-- cb for choose both
+	-- ct for choose theirs
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		lazy = false,
+		config = true,
+		keys = {
+			{
+				"<leader>cr",
+				"<cmd>GitConflictRefresh<CR>",
+				{ desc = "Refresh git conflicts highlights" },
+			},
+		},
+	},
 }

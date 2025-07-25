@@ -165,20 +165,20 @@ vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 local function organize_imports()
-	vim.cmd("TSToolsOrganizeImports")
+	-- vim.cmd("TSToolsOrganizeImports")
 	-- local params = {
 	-- 	command = "typescript-tools.organizeImports",
 	-- 	arguments = { vim.api.nvim_buf_get_name(0) },
 	-- 	title = "",
 	-- }
 	-- vim.lsp.buf_request_sync(0, "workspace/executeCommand", params, 3000)
-	vim.cmd("EslintFixAll")
+	vim.cmd("LspEslintFixAll")
 end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
 vim.keymap.set("n", "<leader>f", function(args)
-	-- organize_imports()
+	organize_imports()
 	-- vim.cmd("FormatWrite")
-	require("conform").format()
+	-- require("conform").format()
 end)
 
 -- vim.keymap.set("n", "<leader>f", function()
@@ -271,12 +271,13 @@ end, opts)
 -- 	vim.lsp.buf.definition()
 -- end, opts)
 
-vim.keymap.set("n", "gh", function() vim.lsp.buf.hover({border = 'rounded'})
+vim.keymap.set("n", "gh", function()
+	vim.lsp.buf.hover({ border = "rounded" })
 end, { desc = "Hover" })
 vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "Diagnose" })
 -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
 vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "workspace_symbol" })
-vim.keymap.set( "n", "gD", vim.lsp.buf.definition, {desc = "Go to definition"})
+vim.keymap.set("n", "gD", vim.lsp.buf.definition, { desc = "Go to definition" })
 -- vim.keymap.set( "n", "gr", vim.lsp.buf.references, {desc = "Go to references"})
 vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<leader>ph", vim.lsp.buf.signature_help, { desc = "Signature help" })
@@ -354,8 +355,3 @@ vim.keymap.set("n", "<esc>", function()
 	require("snacks").notifier.hide()
 	vim.cmd.noh()
 end)
-
--- Delete current line html tag and its closing tag
-vim.keymap.set('n', 'Dst', '<Plug>(nvim-surround-delete)tdd}dd<C-o>')
-
-
