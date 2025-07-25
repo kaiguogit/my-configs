@@ -10,7 +10,7 @@ return {
 						-- "js-debug-adapter",
 						"prettierd",
 						"angular-language-server",
-						"eslint-lsp"
+						"eslint-lsp",
 					})
 				end,
 			},
@@ -18,8 +18,15 @@ return {
 		opts = {
 			formatters_by_ft = {
 				typescript = { "prettierd", stop_after_first = true },
-                lua = { "stylua" },
+				lua = { "stylua" },
 				html = { "prettierd", stop_after_first = true },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_format = "first",
+				filter = function(client)
+					return client.name == "eslint"
+				end,
 			},
 		},
 	},
