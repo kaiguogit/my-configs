@@ -256,40 +256,40 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"0x00-ketsu/autosave.nvim",
-	-- 	config = function()
-	-- 		local autosave = require("autosave")
-	-- 		autosave.setup({
-	-- 			enable = true,
-	-- 			prompt_style = "stdout",
-	-- 			events = {
-	-- 				"TextChanged",
-	-- 			},
-	-- 			debounce_delay = 3000,
-	-- 		})
-	-- 		local augroup = vim.api.nvim_create_augroup("ConformFormatting", {})
-	-- 		local function endswith(ending)
-	-- 			return ending == "" or self:sub(-#ending) == ending
-	-- 		end
-	-- 		vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 			group = augroup,
-	-- 			callback = function(args)
-	-- 				local ext = ".ts"
-	-- 				local html = ".html"
-	-- 				if
-	-- 					args.file:sub(-#ext) == ext
-	-- 					or (args.file:find("migadmin/pkg/angular") and args.file:sub(-#html) == html)
-	-- 				then
-	-- 					require("conform").format()
-	-- 				end
-	-- 			end,
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"0x00-ketsu/autosave.nvim",
+		config = function()
+			local autosave = require("autosave")
+			autosave.setup({
+				enable = true,
+				prompt_style = "stdout",
+				events = {
+					"TextChanged",
+				},
+				debounce_delay = 3000,
+			})
+			-- local augroup = vim.api.nvim_create_augroup("ConformFormatting", {})
+			-- local function endswith(ending)
+			-- 	return ending == "" or self:sub(-#ending) == ending
+			-- end
+			-- vim.api.nvim_create_autocmd("BufWritePre", {
+			-- 	group = augroup,
+			-- 	callback = function(args)
+			-- 		local ext = ".ts"
+			-- 		local html = ".html"
+			-- 		if
+			-- 			args.file:sub(-#ext) == ext
+			-- 			or (args.file:find("migadmin/pkg/angular") and args.file:sub(-#html) == html)
+			-- 		then
+			-- 			require("conform").format()
+			-- 		end
+			-- 	end,
+			-- })
+		end,
+	},
 	{
 		"chrisgrieser/nvim-early-retirement",
 		config = true,
 		event = "VeryLazy",
-	}
+	},
 }
