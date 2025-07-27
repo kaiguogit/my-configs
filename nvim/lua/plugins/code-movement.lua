@@ -32,9 +32,17 @@ return {
 	-- auto comment lines with ctrl-/
 	{
 		"numToStr/Comment.nvim",
+		-- lazy = false,
 		config = function()
-		  require('Comment').setup()
+			require("Comment").setup()
 		end,
+	},
+	{
+		"folke/ts-comments.nvim",
+		opts = {},
+		lazy = false,
+		-- event = "VeryLazy",
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 	-- {
 	-- 	"windwp/nvim-autopairs",
