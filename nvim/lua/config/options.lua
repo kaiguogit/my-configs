@@ -76,6 +76,8 @@ vim.o.cmdheight = 0
 -- https://www.reddit.com/r/neovim/comments/1arkhtx/how_to_disable_format_on_save_in_lazyvim/
 vim.g.autoformat = false
 
+--vim.opt.formatoptions:remove({ "c", "r", "o" })
+
 -- Set global status so lualine can be wide across splits
 vim.o.laststatus = 3
 -- Dont let escape delay too long, it becomes alt and cause escape + j to become alt-j and move line
@@ -83,27 +85,26 @@ vim.o.laststatus = 3
 vim.o.timeoutlen = 1000
 vim.o.ttimeoutlen = 10
 
--- for nvim-hlslens 
+-- for nvim-hlslens
 vim.o.hlsearch = true
 
-
 function ansi_colorize()
-  vim.wo.number = false
-  vim.wo.relativenumber = false
-  vim.wo.statuscolumn = ""
-  vim.wo.signcolumn = "no"
-  vim.opt.listchars = { space = " " }
+	vim.wo.number = false
+	vim.wo.relativenumber = false
+	vim.wo.statuscolumn = ""
+	vim.wo.signcolumn = "no"
+	vim.opt.listchars = { space = " " }
 
-  local buf = vim.api.nvim_get_current_buf()
+	local buf = vim.api.nvim_get_current_buf()
 
-  local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-  while #lines > 0 and vim.trim(lines[#lines]) == "" do
-	    lines[#lines] = nil
-	  end
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, {})
+	local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+	while #lines > 0 and vim.trim(lines[#lines]) == "" do
+		lines[#lines] = nil
+	end
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, {})
 
-  vim.api.nvim_chan_send(vim.api.nvim_open_term(buf, {}), table.concat(lines, "\r\n"))
-  vim.keymap.set("n", "q", "<cmd>qa!<cr>", { silent = true, buffer = buf })
-  vim.api.nvim_create_autocmd("TextChanged", { buffer = buf, command = "normal! G$" })
-  vim.api.nvim_create_autocmd("TermEnter", { buffer = buf, command = "stopinsert" })
+	vim.api.nvim_chan_send(vim.api.nvim_open_term(buf, {}), table.concat(lines, "\r\n"))
+	vim.keymap.set("n", "q", "<cmd>qa!<cr>", { silent = true, buffer = buf })
+	vim.api.nvim_create_autocmd("TextChanged", { buffer = buf, command = "normal! G$" })
+	vim.api.nvim_create_autocmd("TermEnter", { buffer = buf, command = "stopinsert" })
 end

@@ -1,0 +1,11 @@
+{
+    "comment block": {
+        "prefix": "/",
+        "body": [
+            "/**",
+            " * ${1:Comment.}$0",
+            " */"
+        ],
+        "description": "Comment block"
+    }
+}

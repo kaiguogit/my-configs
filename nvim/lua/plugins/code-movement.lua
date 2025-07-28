@@ -40,9 +40,20 @@ return {
 	{
 		"folke/ts-comments.nvim",
 		opts = {},
+		event = "VeryLazy",
+	},
+	{
+		"kkoomen/vim-doge",
 		lazy = false,
-		-- event = "VeryLazy",
-		enabled = vim.fn.has("nvim-0.10.0") == 1,
+		keys = {
+        {
+            "<leader>cg",
+            function()
+                vim.api.nvim_command("DogeGenerate")
+            end,
+            { desc = "doge generate" },
+        },
+     },
 	},
 	-- {
 	-- 	"windwp/nvim-autopairs",

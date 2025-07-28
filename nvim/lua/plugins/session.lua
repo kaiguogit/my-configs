@@ -10,7 +10,7 @@ return {
       { "nvim-telescope/telescope.nvim", opt = true },
     },
     keys = {
-      { "<localleader>ss", "<cmd>SessionSave<CR>", desc = "Save session" },
+      { "<leader>ss", "<cmd>SessionSave<CR>", desc = "Save session" },
     },
     ---enables autocomplete for opts
     ---@module "auto-session"
