@@ -29,11 +29,11 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = { "~/.config/nvim/vscode_snippets" },
 			})
-			ls.config.setup({ update_events = "TextChanged,TextChangedI" })
+			local types = require("luasnip.util.types")
 			ls.config.setup({
+				update_events = "TextChanged,TextChangedI",
 				enable_autosnippets = true,
 			})
-			-- require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
 		end,
 	},
 }
