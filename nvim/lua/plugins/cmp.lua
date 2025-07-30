@@ -304,7 +304,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-calc",
 			"L3MON4D3/cmp-luasnip-choice",
-			"saadparwaiz1/cmp_luasnip"
+			"saadparwaiz1/cmp_luasnip",
 		},
 		-- Not all LSP servers add brackets when completing a function.
 		-- To better deal with this, LazyVim adds a custom option to cmp,
@@ -327,7 +327,18 @@ return {
 			-- for custom snippets
 
 			cmp.setup.cmdline("/", {
-				mapping = cmp.mapping.preset.cmdline(),
+				mapping = cmp.mapping.preset.cmdline({
+					["<Tab>"] = {
+						c = function()
+							if cmp.visible() then
+								-- Set count = 0 so that go to next item, select current item
+								cmp.select_next_item({ count = 0 })
+							else
+								cmp.complete()
+							end
+						end,
+					},
+				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp_document_symbol" },
 				}, {
@@ -335,7 +346,18 @@ return {
 				}),
 			})
 			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
+				mapping = cmp.mapping.preset.cmdline({
+					["<Tab>"] = {
+						c = function()
+							if cmp.visible() then
+								-- Set count = 0 so that go to next item, select current item
+								cmp.select_next_item({ count = 0 })
+							else
+								cmp.complete()
+							end
+						end,
+					},
+				}),
 				sources = cmp.config.sources({
 					{ name = "path" },
 				}, {
@@ -359,7 +381,7 @@ return {
 					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-Space>"] = cmp_confirm({ select = true }),
 					["<C-y>"] = cmp_confirm({ select = true }),
 					["<S-CR>"] = cmp_confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					["<C-CR>"] = function(fallback)
@@ -384,7 +406,8 @@ return {
 
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
-							cmp.select_next_item()
+							-- Set count = 0 so that go to next item, select current item
+							cmp.select_next_item({ count = 0 })
 						elseif luasnip.locally_jumpable(1) then
 							luasnip.jump(1)
 						else
