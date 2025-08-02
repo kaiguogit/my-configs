@@ -11,6 +11,7 @@ return {
 						"prettierd",
 						"angular-language-server",
 						"eslint-lsp",
+						"json-lsp",
 					})
 				end,
 			},
