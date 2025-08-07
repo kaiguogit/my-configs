@@ -11,6 +11,8 @@ return {
     },
     keys = {
       { "<leader>ss", "<cmd>SessionSave<CR>", desc = "Save session" },
+      { "<leader>sl", "<cmd>SessionSearch<CR>", desc = "List session" },
+      { "<leader>sd", "<cmd>SessionDelete<CR>", desc = "Delete session" },
     },
     ---enables autocomplete for opts
     ---@module "auto-session"

@@ -22,7 +22,7 @@ return {
 							{ win = "list", border = "none" },
 						},
 						{ win = "preview", title = "{preview}", border = "rounded", width = 0.4 },
-					}
+					},
 				},
 				formatters = {
 					text = {
@@ -122,7 +122,7 @@ return {
 						live = true,
 						regex = true,
 						search = function(picker)
-							    return picker:word()
+							return picker:word()
 						end,
 					})
 				end,
@@ -149,13 +149,13 @@ return {
 				desc = "Buffer Lines",
 			},
 			-- search
-			{
-				"<leader>fj",
-				function()
-					Snacks.picker.jumps()
-				end,
-				desc = "Jumps",
-			},
+			-- {
+			-- 	"<leader>lj",
+			-- 	function()
+			-- 		Snacks.picker.jumps()
+			-- 	end,
+			-- 	desc = "Jumps",
+			-- },
 			{
 				"<leader>kp",
 				function()
@@ -168,7 +168,7 @@ return {
 				function()
 					Snacks.picker.registers()
 				end,
-				desc = "Registers"
+				desc = "Registers",
 			},
 			-- -- explorer
 			-- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
