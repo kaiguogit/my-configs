@@ -84,7 +84,7 @@ return {
 			},
 			-- lazygit
 			{
-				"<C-g>",
+				"<leader>lg",
 				function()
 					Snacks.lazygit()
 				end,

@@ -102,9 +102,17 @@ return {
 		config = true,
 		dependencies = {
 			"gregorias/coop.nvim",
-		}
+		},
 	},
 	{ "tpope/vim-repeat" },
-	{ "kylechui/nvim-surround" },
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
 	{ "tpope/vim-characterize" },
 }
