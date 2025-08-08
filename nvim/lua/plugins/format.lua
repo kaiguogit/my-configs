@@ -37,14 +37,15 @@ return {
 				if bufname:match("/node_modules/") then
 					return
 				end
-				local result = { timeout_ms = 500, lsp_format = "fallback" }
-				if "ts" == vim.bo[bufnr].filetype then
+				local result = { timeout_ms = 500, lsp_format = "last" }
+				if vim.tbl_contains({ "ts" }, vim.bo[bufnr].filetype) then
 					return result
 				end
-				if "html" == vim.bo[bufnr].filetype and bufname:match("migadmin/pkg/angular") then
+				if vim.tbl_contains({ "html" }, vim.bo[bufnr].filetype) and bufname:match("migadmin/pkg/angular") then
 					return result
 				end
-				return
+				-- return result
+				return {}
 				-- ...additional logic...
 			end,
 			-- format_on_save = {
