@@ -177,9 +177,10 @@ end
 -- vim.keymap.set("n", "<leader>f", "<space>oi<cmd>FormatWrite<CR>")
 vim.keymap.set("n", "<leader>f", function(args)
 	-- organize_imports()
-	vim.cmd("LspEslintFixAll")
+	-- vim.cmd("LspEslintFixAll")
 	-- vim.cmd("FormatWrite")
 	-- require("conform").format()
+	vim.cmd("LspEslintFixAll")
 end)
 
 -- vim.keymap.set("n", "<leader>f", function()

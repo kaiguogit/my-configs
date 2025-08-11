@@ -18,7 +18,7 @@ return {
 		},
 		opts = {
 			formatters_by_ft = {
-				typescript = { "prettierd", stop_after_first = true },
+				typescript = { "prettierd" },
 				lua = { "stylua" },
 				html = { "prettierd", stop_after_first = true },
 			},
@@ -41,7 +41,13 @@ return {
 				if vim.tbl_contains({ "ts" }, vim.bo[bufnr].filetype) then
 					return result
 				end
-				if vim.tbl_contains({ "html" }, vim.bo[bufnr].filetype) and bufname:match("migadmin/pkg/angular") then
+				if vim.tbl_contains({ "scss" }, vim.bo[bufnr].filetype) then
+					return result
+				end
+				if
+					vim.tbl_contains({ "html" }, vim.bo[bufnr].filetype)
+					and (bufname:match("packages/core") or bufname:match("migadmin/pkg/angular"))
+				then
 					return result
 				end
 				-- return result
