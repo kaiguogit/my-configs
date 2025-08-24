@@ -30,6 +30,7 @@ return {
 				keys = {
 					telescope = {
 						i = {
+							paste = "c-k",
 							paste_behind = "<cr>",
 							-- paste_behind = "<c-o>",
 							past_visual = "<c-s-k>",
@@ -76,12 +77,12 @@ return {
 							["<esc>"] = function(prompt_bufnr)
 								require("telescope.actions").close(prompt_bufnr)
 							end,
-							["<C-j>"] = function(prompt_bufnr)
-								require("telescope.actions").move_selection_next(prompt_bufnr)
-							end,
-							["<C-k>"] = function(prompt_bufnr)
-								require("telescope.actions").move_selection_previous(prompt_bufnr)
-							end,
+							-- ["<C-j>"] = function(prompt_bufnr)
+							-- 	require("telescope.actions").move_selection_next(prompt_bufnr)
+							-- end,
+							-- ["<C-k>"] = function(prompt_bufnr)
+							-- 	require("telescope.actions").move_selection_previous(prompt_bufnr)
+							-- end,
 
 							-- map actions.which_key to <C-h> (default: <C-/>)
 							-- actions.which_key shows the mappings for your picker,
