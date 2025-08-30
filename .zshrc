@@ -173,18 +173,18 @@ export SASE_CHECKOUT_PATH=/home/kguo/build/sase/fos-gui-light
 export SASE_BIND_PORT=44308
 export FORTISASE_HARBOR_PASSWORD=dBYa2ZueeK2B8wMhUJ6lcPRu6U4zXeQX
 
-if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-    export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
-    export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
-else
-    export VISUAL="nvim"
-    export EDITOR="nvim"
-fi
-
-# nvim remote
-if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-    alias nvim=nvr -cc split --remote-wait +'set bufhidden=wipe'
-fi
+# if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+#     export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+#     export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+# else
+#     export VISUAL="nvim"
+#     export EDITOR="nvim"
+# fi
+#
+# # nvim remote
+# if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+#     alias nvim=nvr -cc split --remote-wait +'set bufhidden=wipe'
+# fi
 
 # Generated for envman. Do not edit.
 # [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

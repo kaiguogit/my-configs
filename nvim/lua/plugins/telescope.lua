@@ -58,6 +58,7 @@ return {
 			{ "nvim-telescope/telescope-hop.nvim" },
 			-- { "isak102/telescope-git-file-history.nvim" },
 			{ "natecraddock/workspaces.nvim" },
+			{ "jemag/telescope-diff.nvim" },
 		},
 		config = function()
 			local actions = require("telescope.actions")
@@ -249,6 +250,7 @@ return {
 			-- telescope.load_extension("live_grep_args")
 			telescope.load_extension("hop")
 			telescope.load_extension("neoclip")
+			telescope.load_extension("diff")
 			-- telescope.load_extension("git_file_history")
 
 			-- falllback to find_files if it's not a git folder
@@ -362,6 +364,12 @@ return {
 			vim.keymap.set("n", "<leader>pj", function()
 				vim.cmd("Telescope workspaces")
 			end, { desc = "Open workspaces list" })
+			vim.keymap.set("n", "<leader>dco", function()
+				require("telescope").extensions.diff.diff_files({ hidden = true })
+			end, { desc = "Compare 2 files" })
+			vim.keymap.set("n", "<leader>dc", function()
+				require("telescope").extensions.diff.diff_current({ hidden = true })
+			end, { desc = "Compare file with current" })
 
 			-- vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
 			-- vim.keymap.set("n", "<leader>ghh", telescope.extensions.git_file_history.git_file_history, {})
