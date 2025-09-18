@@ -153,6 +153,7 @@ alias vpn_status="/opt/forticlient/forticlient-cli vpn status"
 alias replace_caplock="/bin/bash -c \"/usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'\""
 alias restore_caplock="/usr/bin/setxkbmap -option"
 alias build="fos-npx nx run-many --target build --projects"
+alias lint-fix="fos-npm run lint-fix"
 alias watch_nx="npx nx watch --all -- echo \$NX_PROJECT_NAME \$NX_FILE_CHANGES"
 
 

@@ -5,6 +5,7 @@ vim.opt.guifont = "Ubuntu Mono:h18"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.o.mouse = ""
 -- line number
 vim.opt.nu = true
 vim.opt.relativenumber = true
