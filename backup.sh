@@ -5,8 +5,8 @@ cp ~/.vimrc $SCRIPT_DIR/.vimrc
 cp ~/.zshrc $SCRIPT_DIR/.zshrc
 cp ~/.tigrc $SCRIPT_DIR/.tigrc
 # backup alacritty setting
-cp ~/.alacritty.yml $SCRIPT_DIR/alacritty/.alacritty.yml
-cp ~/build/alacritty/extra/linux/Alacritty.desktop $SCRIPT_DIR/alacritty
+# cp ~/.alacritty.yml $SCRIPT_DIR/alacritty/.alacritty.yml
+# cp ~/build/alacritty/extra/linux/Alacritty.desktop $SCRIPT_DIR/alacritty
 
 # Setup nvim config
 NVIM_DIR=~/.config/nvim

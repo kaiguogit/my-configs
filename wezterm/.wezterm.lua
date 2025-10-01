@@ -8,6 +8,8 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 -- config.color_scheme = 'AdventureTime'
 
+config.initial_cols = 247
+config.initial_rows = 78
 config.default_prog = { "/bin/zsh", "-l", "-c", "/home/kguo/build/my-configs/tmux.sh" }
 config.default_cwd = "/home/kguo/build/fos-ci/fortios-ci"
 config.font = wezterm.font_with_fallback({ "Ubuntu Mono Nerd Font Mono", "DroidSansFallbackFull" })
@@ -35,7 +37,7 @@ config.keys = {
 		key = "f",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.DisableDefaultAssignment,
-	}
+	},
 }
 
 config.colors = {
