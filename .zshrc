@@ -153,8 +153,12 @@ alias vpn_status="/opt/forticlient/forticlient-cli vpn status"
 alias replace_caplock="/bin/bash -c \"/usr/bin/setxkbmap -option ctrl:nocaps && /usr/bin/xcape -e 'Control_L=Escape'\""
 alias restore_caplock="/usr/bin/setxkbmap -option"
 alias build="fos-npx nx run-many --target build --projects"
+alias test-head="fos-npm run test-head"
+alias test-ci="fos-npm run test-ci"
 alias lint-fix="fos-npm run lint-fix"
+alias lint="fos-npm run lint"
 alias watch_nx="npx nx watch --all -- echo \$NX_PROJECT_NAME \$NX_FILE_CHANGES"
+alias make="/fortidev/bin/make"
 
 
 source ~/build/devtools/fos/fos_node_env
@@ -193,8 +197,6 @@ export FORTISASE_HARBOR_PASSWORD=dBYa2ZueeK2B8wMhUJ6lcPRu6U4zXeQX
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export TMOUT=0
-# Install npm dev dependencie
-ANGULAR_VERSION=14
 
 # Node/NPM
 if [ -f "$HOME/.nvm/nvm.sh" ]; then
