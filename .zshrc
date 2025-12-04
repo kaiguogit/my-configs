@@ -26,7 +26,7 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -173,10 +173,13 @@ export PATH="$PATH:/home/kguo/build/devtools/git/contrib"
 
 export CHROME_BIN=/usr/bin/google-chrome
 export CHROMIUM_BIN=/usr/bin/google-chrome
-export CLICKUP_TOKEN=pk_54677030_HFWHP1FJKBMF6E28AL7X4LKAA2QKZNUW
 export SASE_CHECKOUT_PATH=/home/kguo/build/sase/fos-gui-light/fos-gui-light
 export SASE_BIND_PORT=44308
-export FORTISASE_HARBOR_PASSWORD=dBYa2ZueeK2B8wMhUJ6lcPRu6U4zXeQX
+# Sensitive credentials loaded from ~/.zshrc.local (not backed up)
+# fc() function moved to ~/.zshrc.local (contains sensitive tokens)
+alias oc='NODE_TLS_REJECT_UNAUTHORIZED=0 opencode'
+alias enable_node='sudo setcap 'cap_net_bind_service=+ep' $(which node)'
+
 
 # if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
 #     export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
@@ -224,3 +227,6 @@ fi
 #   *) export PATH="$PNPM_HOME:$PATH" ;;
 # esac
 # pnpm end
+
+# Load private credentials (not backed up)
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

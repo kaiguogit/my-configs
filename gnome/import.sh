@@ -8,3 +8,4 @@ dconf load /org/gnome/desktop/screensaver/ < $SCRIPT_DIR/org-gnome-desktop-scree
 dconf load /org/gnome/desktop/notifications/application/ < $SCRIPT_DIR/org-gnome-desktop-notifications-application.conf
 dconf load /org/gnome/desktop/interface/ < $SCRIPT_DIR/org-gnome-desktop-interface.conf
 dconf load /org/gnome/desktop/wm/keybindings/ < $SCRIPT_DIR/org-gnome-desktop-wm-keybindings.conf
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < $SCRIPT_DIR/org-gnome-settings-daemon-plugins-media-keys.conf

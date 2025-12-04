@@ -57,6 +57,7 @@ lazy.setup({
 		-- { import = "plugins.toggle-win-width" },
 		-- { import = "plugins.ts-move-exports" },
 		{ import = "plugins.vtsls" },
+		{ import = "plugins.ai" },
 		-- { import = "plugins.ai" },
 		{ import = "plugins.bash" },
 		{ import = "plugins.bookmark" },
@@ -156,4 +157,3 @@ lazy.setup({
 		},
 	},
 })
-

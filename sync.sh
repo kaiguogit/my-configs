@@ -3,6 +3,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 HOME=/home/kguo
 cp $SCRIPT_DIR/.tmux.conf $HOME/
 cp $SCRIPT_DIR/.vimrc $HOME/
+cp $SCRIPT_DIR/.profile $HOME/
 cp $SCRIPT_DIR/.zshrc $HOME/
 cp $SCRIPT_DIR/.bashrc $HOME/
 cp $SCRIPT_DIR/.tigrc $HOME/

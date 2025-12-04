@@ -20,7 +20,7 @@ return {
 			formatters_by_ft = {
 				typescript = { "prettierd" },
 				lua = { "stylua" },
-				html = { "prettierd", stop_after_first = true },
+				-- html = { "prettierd", stop_after_first = true },
 			},
 			format_on_save = function(bufnr)
 				-- Disable autoformat on certain filetypes
@@ -41,15 +41,15 @@ return {
 				if vim.tbl_contains({ "ts" }, vim.bo[bufnr].filetype) then
 					return result
 				end
-				if vim.tbl_contains({ "scss" }, vim.bo[bufnr].filetype) then
-					return result
-				end
-				if
-					vim.tbl_contains({ "html" }, vim.bo[bufnr].filetype)
-					and (bufname:match("packages/core") or bufname:match("migadmin/pkg/angular"))
-				then
-					return result
-				end
+				-- if vim.tbl_contains({ "scss" }, vim.bo[bufnr].filetype) then
+				-- 	return result
+				-- end
+				-- if
+				-- 	vim.tbl_contains({ "html" }, vim.bo[bufnr].filetype)
+				-- 	and (bufname:match("packages/core") or bufname:match("migadmin/pkg/angular"))
+				-- then
+				-- 	return result
+				-- end
 				-- return result
 				return {}
 				-- ...additional logic...

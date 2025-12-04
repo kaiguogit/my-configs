@@ -2,6 +2,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 cp ~/.tmux.conf $SCRIPT_DIR/.tmux.conf
 cp ~/.vimrc $SCRIPT_DIR/.vimrc
+cp ~/.profile $SCRIPT_DIR/.profile
 cp ~/.zshrc $SCRIPT_DIR/.zshrc
 cp ~/.tigrc $SCRIPT_DIR/.tigrc
 # backup alacritty setting
