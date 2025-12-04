@@ -8,6 +8,7 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 -- config.color_scheme = 'AdventureTime'
 
+config.scrollback_lines = 7500
 config.initial_cols = 247
 config.initial_rows = 78
 config.default_prog = { "/bin/zsh", "-l", "-c", "/home/kguo/build/my-configs/tmux.sh" }

@@ -244,6 +244,27 @@ return {
 				end,
 				desc = "Select Scratch Buffer",
 			},
+			{
+				"<leader>ghh",
+				function()
+					Snacks.picker.git_log_file()
+				end,
+				desc = "Git Log File",
+			},
+			{
+				"<leader>ghl",
+				function()
+					Snacks.picker.git_log_line()
+				end,
+				desc = "Git Log Line",
+			},
+			{
+				"<leader>gsl",
+				function()
+					Snacks.picker.git_log()
+				end,
+				desc = "Git Log",
+			},
 		},
 	},
 }
