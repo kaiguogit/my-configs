@@ -65,7 +65,7 @@ return {
 			vim.keymap.set(
 				"n",
 				"<leader>ggl",
-				":vert G --paginate log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit<CR>",
+				":vert G --paginate log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- %<CR>",
 				silentopts
 			)
 
