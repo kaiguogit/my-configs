@@ -1,0 +1,33 @@
+<TaskerData sr="" dvi="1" tv="6.6.20">
+	<Profile sr="prof8" ve="2">
+		<cdate>1776498121574</cdate>
+		<clp>true</clp>
+		<edate>1776498582686</edate>
+		<flags>40</flags>
+		<id>8</id>
+		<mid0>9</mid0>
+		<nme>Wealthsimple Forward Specific SMS2</nme>
+		<Event sr="con0" ve="2">
+			<code>7</code>
+			<pri>0</pri>
+			<Int sr="arg0" val="0"/>
+			<Str sr="arg1" ve="3"/>
+			<Str sr="arg2" ve="3">Your verification code: *. NEVER share this specific code, not even with our agents. Anyone asking for it may be trying to get unwanted access.</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+		</Event>
+	</Profile>
+	<Task sr="task9">
+		<cdate>1745400000000</cdate>
+		<edate>1776498520550</edate>
+		<id>9</id>
+		<Action sr="act0" ve="7">
+			<code>41</code>
+			<Str sr="arg0" ve="3">7783027071</Str>
+			<Str sr="arg1" ve="3">Forwarded. %evtprm3</Str>
+			<Int sr="arg2" val="0"/>
+			<Str sr="arg3" ve="3"/>
+			<Int sr="arg4" val="0"/>
+		</Action>
+	</Task>
+</TaskerData>
